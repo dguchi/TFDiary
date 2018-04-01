@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.4.1
 
 * System dependencies
 
@@ -26,3 +26,31 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+## Name
+TFDiary
+
+## Description
+陸上競技専用の練習日誌作成サービス
+
+## Demo
+検討中
+
+## Requirements
+検討中
+
+## Installation
+検討中
+
+## Usage
+検討中
+
+## Contributing
+検討中
+
+## License
+検討中
+
+## Environments
+### Test
+### Deploy
