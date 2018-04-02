@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'home#top'
+  
+  # Home
+  get 'home/top'
+  get 'home/tfdiary'
+  get 'home/login_form'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
