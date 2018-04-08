@@ -8,25 +8,41 @@
 
 <%= render 'users/error_notification' %>
 <%= form_for @user, :url => {:action => 'create'} do |f| %>
-    <p>
-    <%= f.label :name, "お名前" %><br>
-    <%= f.text_field :name, :size => "40" %>
-    </p>
-    <p>
-    <%= f.label :mail, "メールアドレス" %><br>
-    <%= f.email_field :mail, :size => "40" %>
-    </p>
-    <p>
-    <%= f.label(:password, "パスワード") %><br>
-    <%= f.password_field :password, :size=>"40" %>
-    </p>
-    <p>
-    <%= f.label(:password_confirmation, "パスワード再入力") %><br>
-    <%= f.password_field :password_confirmation, :size=>"40" %>
-    </p>
-    <p>
-    <%= f.submit("登録") %>
-    </p>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label :name, "お名前" %><br>
+        </div>
+        <div class="form-field">
+            <%= f.text_field :name, :size => "40" %>
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label :mail, "メールアドレス" %><br>
+        </div>
+        <div class="form-field">
+            <%= f.email_field :mail, :size => "40" %>
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label(:password, "パスワード") %><br>
+        </div>
+        <div class="form-field">
+            <%= f.password_field :password, :size=>"40" %>
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label(:password_confirmation, "パスワード再入力") %><br>
+        </div>
+        <div class="form-field">
+            <%= f.password_field :password_confirmation, :size=>"40" %>
+        </div>
+    </div>
+    <div class="form-item">
+        <%= f.submit("登録") %>
+    </div>
 <% end %>
 <br>
 <br>

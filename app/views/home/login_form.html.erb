@@ -4,24 +4,42 @@
 <br>
 <br>
 <h2>ログインページ</h2>
+<br>
 
 <%= render 'users/error_notification' %>
 
 <%= form_for @user, :url => {:action => 'login'} do |f| %>
-    <p>
-    <%= f.label :mail, "メールアドレス" %><br>
-    <%= f.email_field :mail, :size => "40" %>
-    </p>
-    <p>
-    <%= f.label(:password, "パスワード") %><br>
-    <%= f.password_field :password, :size=>"40" %>
-    </p>
-    <p>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label :mail, "メールアドレス" %>
+        </div>
+        <div class="form-field">
+            <%= f.email_field :mail, :size => "40" %>
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="form-label">
+            <%= f.label :password, "パスワード" %>
+        </div>
+        <div class="form-field">
+            <%= f.password_field :password, :size => "40" %>
+        </div>
+    </div>
+    <br>
+    <div class="form-item">
     <%= f.submit("ログイン") %>
-    </p>
+    </div>
 <% end %>
 <br>
-<br>
+<p>
+初めての方は
+<%= link_to "新規登録", new_user_path %>
+を行ってください
+</p>
+<p>
+パスワードを忘れた方は
+<%= link_to "こちら", "" %>
+</p>
 <br>
 <br>
 <br>

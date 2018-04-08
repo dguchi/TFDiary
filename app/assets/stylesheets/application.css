@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.form-item {
+    width: 450px;
+    clear: both;
+    margin: auto;
+    padding: 15px 0;
+}
+
+.form-label {
+    width: 150px;
+    float: left;
+}
+
+.form-field {
+    width: 300px;
+    float: left;
+}
