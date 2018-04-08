@@ -5,6 +5,17 @@ Rails.application.routes.draw do
   get 'home/top'
   get 'home/tfdiary'
   get 'home/login_form'
+  post 'home/login'
+  get 'home/logout'
+
+  # Users
+  resources :users do
+    collection do
+      get 'follow_index'
+      get 'menu_index'
+      get 'group_index'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,14 @@
+<% if nil != @user %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul style="list-style:none;">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>

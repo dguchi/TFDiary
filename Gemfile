@@ -46,3 +46,4 @@ group :development do
 end
 
 gem 'bootstrap', '~> 4.0.0'
+gem 'bcrypt'

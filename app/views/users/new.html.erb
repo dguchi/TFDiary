@@ -1,0 +1,36 @@
+<div class="user-new-body">
+<br>
+<br>
+<br>
+<br>
+<h2>新規登録</h2>
+<p>下記フォームへ情報を入力して、今すぐ開始しましょう！</p>
+
+<%= render 'users/error_notification' %>
+<%= form_for @user, :url => {:action => 'create'} do |f| %>
+    <p>
+    <%= f.label :name, "お名前" %><br>
+    <%= f.text_field :name, :size => "40" %>
+    </p>
+    <p>
+    <%= f.label :mail, "メールアドレス" %><br>
+    <%= f.email_field :mail, :size => "40" %>
+    </p>
+    <p>
+    <%= f.label(:password, "パスワード") %><br>
+    <%= f.password_field :password, :size=>"40" %>
+    </p>
+    <p>
+    <%= f.label(:password_confirmation, "パスワード再入力") %><br>
+    <%= f.password_field :password_confirmation, :size=>"40" %>
+    </p>
+    <p>
+    <%= f.submit("登録") %>
+    </p>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>

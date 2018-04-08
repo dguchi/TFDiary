@@ -1,2 +1,28 @@
-<h1>Home#login_form</h1>
-<p>Find me in app/views/home/login_form.html.erb</p>
+<div class="home-login">
+<br>
+<br>
+<br>
+<br>
+<h2>ログインページ</h2>
+
+<%= render 'users/error_notification' %>
+
+<%= form_for @user, :url => {:action => 'login'} do |f| %>
+    <p>
+    <%= f.label :mail, "メールアドレス" %><br>
+    <%= f.email_field :mail, :size => "40" %>
+    </p>
+    <p>
+    <%= f.label(:password, "パスワード") %><br>
+    <%= f.password_field :password, :size=>"40" %>
+    </p>
+    <p>
+    <%= f.submit("ログイン") %>
+    </p>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
