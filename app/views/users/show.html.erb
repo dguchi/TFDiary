@@ -7,7 +7,7 @@
       <%= image_tag @user.image, :size => "150x150" %>
       <% if current_user.id == @user.id %>
         <br>
-        <%= form_for @user, :url => change_image_users_path, :html => {method: 'POST'} do |f| %>
+        <%= form_for @user, :url => change_image_users_path, :html => {method: 'PATCH'} do |f| %>
           <%= f.label :image, :class => "ignore" %>
           <label for="user_image" class="square_btn">
             画像選択

@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   
   def change_image
     @user = User.find(view_context.current_user.id)
-    @user.image = image_param
+    @user.image = params[:user][:image]
     @user.save
     redirect_to user_path(@user.id)
   end
@@ -48,9 +48,5 @@ class UsersController < ApplicationController
 private
   def users_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :main_group_id, :image)
-  end
-  
-  def image_param
-    params.require(:user).permit(:image)
   end
 end

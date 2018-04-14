@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get 'follow_index'
       get 'menu_index'
       get 'group_index'
-      post 'change_image'
+      patch 'change_image'
     end
   end
 
