@@ -38,9 +38,19 @@ class UsersController < ApplicationController
   def group_index
   end
   
+  def change_image
+    @user = User.find(view_context.current_user.id)
+    @user.image = image_param
+    @user.save
+    redirect_to user_path(@user.id)
+  end
+  
 private
   def users_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :main_group_id, :image)
   end
   
+  def image_param
+    params.require(:user).permit(:image)
+  end
 end
