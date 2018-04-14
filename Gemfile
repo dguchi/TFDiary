@@ -45,5 +45,9 @@ group :development do
   gem 'spring'
 end
 
+gem 'kaminari'
+
 gem 'bootstrap', '~> 4.0.0'
 gem 'bcrypt'
+gem 'carrierwave'
+

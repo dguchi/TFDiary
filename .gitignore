@@ -94,4 +94,5 @@ config/settings.yml
 
 # img files
 **.jpg
+**.jpeg
 **.png

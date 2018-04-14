@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user-show-body">
+  <br>
+  <br>
+  <br>
+  <div class="user-profile div-center">
+    <div class="user-image div-center">
+      <%= image_tag @user.image.to_s, :size => "150x150" %>
+    </div>
+    <div class="user-info div-center">
+      名前：<%= @user.name %>
+      &emsp;
+      メイン所属グループ：<%= @user.main_group_id %>
+      <br>
+      <%= link_to "日誌作成", '#' %>
+      &emsp;
+      <%= link_to "過去の日誌", '#' %>
+      &emsp;
+      <%= link_to "登録メニュー", '#' %>
+      <br>
+      <%= link_to "フォローユーザー一覧", '#' %>
+      &emsp;
+      <%= link_to "所属グループ一覧", '#' %>
+    </div>
+  </div>
+  <div class="user-notice div-center">
+    <div class="user-timeline div-center">
+        お知らせ
+        <div class="timeline-box div-center">
+          <div class="timeline-area div-center">
+          </div>
+        </div>
+    </div>
+    <div class="user-practice div-center">
+        <div class="practice-box div-center">
+            <span class="box-title">今日の練習メニュー</span>
+            <p>腹筋 100回 ✖️ 3セット</p>
+        </div>
+    </div>
+  </div>
+</div>
