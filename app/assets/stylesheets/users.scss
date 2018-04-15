@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h2 {
+    text-align: center;
+}
+
 .user-new-body {
     text-align: center;
 }
@@ -118,4 +122,16 @@
     border: solid 1px #03A9F4;
     box-shadow: none;
     text-shadow: none;
+}
+
+#follow-index {
+    border: solid 1px black;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.follower {
+    border-bottom: solid 2px silver;
+    padding: 10px;
 }

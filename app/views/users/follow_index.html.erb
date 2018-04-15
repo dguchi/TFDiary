@@ -1,2 +1,16 @@
-<h1>Users#follow-index</h1>
-<p>Find me in app/views/users/follow-index.html.erb</p>
+<br>
+<br>
+<br>
+<br>
+<h2>フォローユーザー一覧</h2>
+<div id="follow-index">
+    フォロー数(<%= @user.follow_count %>)
+    <% @followers.each do |follower| %>
+        <div class="follower">
+            <%= image_tag follower.image, :size => "50x50" %>
+            &emsp;
+            <%= link_to follower.name, user_path(follower.id) %>
+        </div>
+    <% end %>
+</div>
+

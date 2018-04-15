@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   end
 
   def follow_index
+    @user = User.find(params[:id])
+    @followers = @user.all_following
   end
 
   def menu_index

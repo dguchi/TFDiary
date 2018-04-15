@@ -30,15 +30,17 @@
       &emsp;
       メイン所属グループ：<%= @user.main_group_id %>
       <br>
+      <% if current_user.id == @user.id %>
       <%= link_to "日誌作成", '#' %>
       &emsp;
+      <% end %>
       <%= link_to "過去の日誌", '#' %>
       &emsp;
-      <%= link_to "登録メニュー", '#' %>
+      <%= link_to "登録メニュー", "/users/#{@user.id}/menu_index" %>
       <br>
-      <%= link_to "フォローユーザー一覧", '#' %>
+      <%= link_to "フォローユーザー一覧", "/users/#{@user.id}/follow_index"  %>
       &emsp;
-      <%= link_to "所属グループ一覧", '#' %>
+      <%= link_to "所属グループ一覧", "/users/#{@user.id}/group_index" %>
     </div>
   </div>
   <div class="user-notice div-center">
