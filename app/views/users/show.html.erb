@@ -45,11 +45,13 @@
   </div>
   <div class="user-notice div-center">
     <div class="user-timeline div-center">
+      <% if current_user.id == @user.id %>
         お知らせ
         <div class="timeline-box div-center">
           <div class="timeline-area div-center">
           </div>
         </div>
+      <% end %>
     </div>
     <div class="user-practice div-center">
         <div class="practice-box div-center">

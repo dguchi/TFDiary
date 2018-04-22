@@ -52,4 +52,6 @@ gem 'bcrypt'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'acts_as_follower'
+gem 'enum_help'
+
 

@@ -31,10 +31,12 @@ class UsersController < ApplicationController
 
   def follow_index
     @user = User.find(params[:id])
-    @followers = @user.all_following
+    @followers = @user.following_users
   end
 
   def menu_index
+    @user = User.find(params[:id])
+    @menus = @user.following_menus
   end
 
   def group_index
@@ -46,7 +48,6 @@ class UsersController < ApplicationController
     @user.save
     redirect_to user_path(@user.id)
   end
-  
 private
   def users_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :main_group_id, :image)

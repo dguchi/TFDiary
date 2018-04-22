@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :check_root, only: [:top]
   def top
   end
 
@@ -23,5 +24,12 @@ class HomeController < ApplicationController
   def logout
     view_context.log_out
     redirect_to home_login_form_path
+  end
+  
+private
+  def check_root
+    if view_context.logged_in?
+      redirect_to user_path(view_context.current_user.id)
+    end
   end
 end

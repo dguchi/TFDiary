@@ -1,0 +1,16 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="menu-show">
+    <div class="menu-name">
+        <p>メニュー名：<%= @menu.name %></p>
+    </div>
+    <% if logged_in? %>
+    <div class="menu-regist">
+        <%= link_to "このメニューを登録", '#' %>
+        <%= link_to "メニューの編集", edit_menu_path(@menu.id) %>
+    </div>
+    <% end %>
+</div>

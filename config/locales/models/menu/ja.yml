@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      menu: メニュー
+    attributes:
+      menu:
+        name: メニュー名
+        explain: メニュー説明
+        secret: 公開設定
+        type: 分類
+  enums:
+    menu:
+      kind: 
+        run: 走
+        jump: 跳
+        throw: 投
+        drill: 補強・ドリル
+        other: その他
+      secret:
+        pub: 公開
+        pri: 非公開

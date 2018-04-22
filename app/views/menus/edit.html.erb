@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<br>
+<h2>メニュー編集</h2>
+<br>
+
+<%= render "menus/error_notice" %>
+
+<div class="menu-create">
+    <%= form_for @menu, :url => {:action => 'update'} do |f| %>
+        <%= f.label :name, "メニュー名" %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :kind, "分類" %>
+        <%= f.enum_select :kind %>
+        <br>
+        <%= f.label :explain, "メニューの説明" %>
+        <%= f.text_area :explain %>
+        <br>
+        <%= f.label :secret, "公開設定" %>
+        <%= f.enum_select :secret %>
+        <br>
+        <%= f.submit "更新" %>
+    <% end %>
+</div>

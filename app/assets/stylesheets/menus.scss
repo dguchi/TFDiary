@@ -1,0 +1,34 @@
+// Place all the styles related to the Menus controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.error_notice {
+}
+
+.error_explanation {
+    border: solid 1px black;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    & li {
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+.menu-create, .menu-search, .menu-show {
+    text-align: center;
+}
+
+.menu-box {
+    border: solid 1px black;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    & li {
+        text-align: center;
+        padding: 10px;
+    }
+}

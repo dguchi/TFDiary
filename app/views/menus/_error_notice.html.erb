@@ -1,0 +1,16 @@
+<div class="error_notice">
+<% if nil != @menu %>
+  <% if @menu.errors.any? %>
+    <div class="error_explanation">
+      <ul style="list-style:none;">
+      <% @menu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+<% end %>
+</div>

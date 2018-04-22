@@ -4,7 +4,7 @@
 <br>
 <h2>フォローユーザー一覧</h2>
 <div id="follow-index">
-    フォロー数(<%= @user.follow_count %>)
+    フォロー数(<%= @followers.count %>)
     <% @followers.each do |follower| %>
         <div class="follower">
             <%= image_tag follower.image, :size => "50x50" %>

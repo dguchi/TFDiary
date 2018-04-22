@@ -1,0 +1,34 @@
+<br>
+<br>
+<br>
+<br>
+<h2>メニュー一覧</h2>
+<br>
+
+<div class="menu-search">
+    <%= form_for(@menu, url: search_menus_path, html: { method: :get, role: 'form' }) do |f| %>
+        <%= f.label :name, "メニュー名" %>
+        &emsp;
+        <%= f.text_field :name %>
+        <br>
+        <label><%= f.radio_button :kind, Menu.kinds[:run] ,{:checked => true}%>走</label>
+        &emsp;
+        <label><%= f.radio_button :kind, Menu.kinds[:jump] %>跳</label>
+        &emsp;
+        <label><%= f.radio_button :kind, Menu.kinds[:throw] %>投</label>
+        &emsp;
+        <label><%= f.radio_button :kind, Menu.kinds[:drill] %>補強・サーキット</label>
+        &emsp;
+        <label><%= f.radio_button :kind, Menu.kinds[:other] %>その他</label>
+        <br>
+        <%= f.submit "検索する" %>
+    <% end %>
+    <br>
+    <div class="menu-box">
+        <ul>
+        <% @menus.each do |menu| %>
+            <li><%= link_to menu.name, menu_path(menu.id) %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>

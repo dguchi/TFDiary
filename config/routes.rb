@@ -11,10 +11,21 @@ Rails.application.routes.draw do
   # Users
   resources :users do
     collection do
-      get ':id/follow_index' => 'users#follow_index'
-      get ':id/menu_index' => 'users#menu_index'
-      get ':id/group_index' => 'users#group_index'
-      patch 'change_image'
+      patch :change_image
+    end
+    
+    member do
+      get :follow_index
+      get :menu_index
+      get :group_index
+      get :regist_menu
+    end
+  end
+
+  # Users
+  resources :menus do
+    collection do
+      get :search
     end
   end
 
