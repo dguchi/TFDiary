@@ -8,9 +8,20 @@
         <p>メニュー名：<%= @menu.name %></p>
     </div>
     <% if logged_in? %>
-    <div class="menu-regist">
-        <%= link_to "このメニューを登録", '#' %>
-        <%= link_to "メニューの編集", edit_menu_path(@menu.id) %>
-    </div>
+        <% if current_user.following?(@menu) %>
+            <div id="menu-regist-button" class="regist" onclick="OnClickRegistMenu(<%= @menu.id %>);">
+                このメニューを登録
+            </div>
+        <% else %>
+            <div id="menu-regist-button" class="deregist" onclick="OnClickRegistMenu(<%= @menu.id %>);">
+                登録解除
+            </div>
+        <% end %>
+        <br>
+        <% if @menu.author_id == current_user.id %>
+            <div id="menu-edit-button">
+                <%= link_to "メニューの編集", edit_menu_path(@menu.id) %>
+            </div>
+        <% end %>
     <% end %>
 </div>

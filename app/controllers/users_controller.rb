@@ -48,6 +48,20 @@ class UsersController < ApplicationController
     @user.save
     redirect_to user_path(@user.id)
   end
+  
+  def follow_menu
+    menu = Menu.find(params[:menu_id])
+    user = view_context.current_user
+    user.follow(menu)
+    render :json => user.id
+  end
+  
+  def unfollow_menu
+    menu = Menu.find(params[:menu_id])
+    user = view_context.current_user
+    user.stop_following(menu)
+    render :json => user.id
+  end
 private
   def users_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :main_group_id, :image)
