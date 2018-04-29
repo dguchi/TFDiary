@@ -18,10 +18,8 @@
 function OnClickRegistMenu(menu_id) {
     var target = document.getElementById("menu-regist-button");
 
-    if ("このメニューを登録" == target.innerText)
+    if ("メニュー登録" == target.innerText)
     {
-        // target.style.background = "white";
-        // target.style.color = "#67c5ff";
         target.className = "deregist";
         target.textContent = "登録解除";
         $.ajax({
@@ -35,9 +33,7 @@ function OnClickRegistMenu(menu_id) {
     else
     {
         target.className = "regist";
-        // target.style.background = "";
-        // target.style.color = "";
-        target.textContent = "このメニューを登録";
+        target.textContent = "メニュー登録";
         $.ajax({
             url: '/users/unfollow_menu',
             type: 'GET',

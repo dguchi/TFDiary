@@ -4,24 +4,39 @@
 <br>
 <br>
 <div class="menu-show">
-    <div class="menu-name">
-        <p>メニュー名：<%= @menu.name %></p>
-    </div>
+    <ul class="menu-name-list">
+    <li class="menu-name">
+        メニュー名：<%= @menu.name %>
+    </li>
     <% if logged_in? %>
+        <li class="menu-button">
         <% if current_user.following?(@menu) %>
-            <div id="menu-regist-button" class="regist" onclick="OnClickRegistMenu(<%= @menu.id %>);">
-                このメニューを登録
-            </div>
-        <% else %>
             <div id="menu-regist-button" class="deregist" onclick="OnClickRegistMenu(<%= @menu.id %>);">
                 登録解除
             </div>
-        <% end %>
-        <br>
-        <% if @menu.author_id == current_user.id %>
-            <div id="menu-edit-button">
-                <%= link_to "メニューの編集", edit_menu_path(@menu.id) %>
+        <% else %>
+            <div id="menu-regist-button" class="regist" onclick="OnClickRegistMenu(<%= @menu.id %>);">
+                メニュー登録
             </div>
         <% end %>
+        </li>
+        <% if @menu.author_id == current_user.id %>
+            <li class="menu-edit-link">
+                <%= link_to "メニューの編集", edit_menu_path(@menu.id) %>
+            </li>
+        <% end %>
     <% end %>
+    </ul>
+    <br>
+    <div class="menu-followers-num">
+        このメニューを登録している人：<%= @menu.followers_by_type('User').count %>人
+    </div>
+    <br>
+    <div class="menu-explain-title">
+        メニュー説明
+    </div>
+    <br>
+    <div class="menu-explain-box">
+        <%= @menu.explain %>
+    </div>
 </div>

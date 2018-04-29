@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       redirect_to user_path(@user.id)
     else
       flash[:notice] = "パスワードが違います。"
-      render login_form
+      render :login_form
     end
   end
   
