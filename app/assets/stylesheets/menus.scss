@@ -30,8 +30,8 @@
 .menu-name-list {
     width: 60%;
     margin: auto;
-    padding: 0;
-    height: 40px;
+    padding: 10px;
+    height: 60px;
     & li {
         float: left;
     }
@@ -55,16 +55,16 @@
 }
 
 .menu-followers-num {
-    clear:both;
     width: 60%;
     margin: auto;
+    padding: 10px;
     text-align: left;
 }
 
 .menu-author {
     width: 60%;
     margin: auto;
-    padding: 10px 0;
+    padding: 10px;
     text-align: left;
     
     .author-img {
@@ -74,15 +74,17 @@
     }
 }
 
-.menu-explain-title {
+.menu-column {
+    clear:both;
     width: 60%;
     position: relative;
     padding-left: 25px;
     margin: auto;
     text-align: left;
+    font-style: italic;
 }
 
-.menu-explain-title:before {
+.menu-column:before {
     position: absolute;
     content: '';
     bottom: -3px;
@@ -94,7 +96,7 @@
     border-bottom: solid 15px rgb(119, 195, 223);
 }
 
-.menu-explain-title:after {
+.menu-column:after {
     position: absolute;
     content: '';
     bottom: -3px;

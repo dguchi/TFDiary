@@ -4,9 +4,12 @@
 <br>
 <br>
 <div class="menu-show">
+    <div class="menu-column">
+        メニュー名
+    </div>
     <ul class="menu-name-list">
     <li class="menu-name">
-        メニュー名：<%= @menu.name %>
+        &emsp; <%= @menu.name %>
     </li>
     <% if logged_in? %>
         <li class="menu-button">
@@ -27,14 +30,19 @@
         <% end %>
     <% end %>
     </ul>
-    <br>
+    <div class="menu-column">
+        このメニューを登録している人
+    </div>
     <div class="menu-followers-num">
-        このメニューを登録している人：<%= @menu.followers_by_type('User').count %>人
+        &emsp; <%= @menu.followers_by_type('User').count %>人
+    </div>
+    <div class="menu-column">
+        メニュー作成者
     </div>
     <div class="menu-author">
-        メニュー作成者：&ensp; <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
+        &emsp; <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
     </div>
-    <div class="menu-explain-title">
+    <div class="menu-column">
         メニュー説明
     </div>
     <br>

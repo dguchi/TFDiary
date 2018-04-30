@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415132532) do
+ActiveRecord::Schema.define(version: 20180430072342) do
+
+  create_table "diaries", force: :cascade do |t|
+    t.date     "date"
+    t.text     "explain"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "follows", force: :cascade do |t|
     t.integer  "followable_id",                   null: false
