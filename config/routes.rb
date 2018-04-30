@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       patch :change_image
       get :follow_menu
       get :unfollow_menu
+      get :follow_user
+      get :unfollow_user
     end
     
     member do

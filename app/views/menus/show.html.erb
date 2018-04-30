@@ -31,7 +31,9 @@
     <div class="menu-followers-num">
         このメニューを登録している人：<%= @menu.followers_by_type('User').count %>人
     </div>
-    <br>
+    <div class="menu-author">
+        メニュー作成者：&ensp; <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
+    </div>
     <div class="menu-explain-title">
         メニュー説明
     </div>

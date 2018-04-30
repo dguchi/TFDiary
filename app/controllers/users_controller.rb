@@ -51,16 +51,26 @@ class UsersController < ApplicationController
   
   def follow_menu
     menu = Menu.find(params[:menu_id])
-    user = view_context.current_user
-    user.follow(menu)
-    render :json => user.id
+    view_context.current_user.follow(menu)
+    render :json
   end
   
   def unfollow_menu
     menu = Menu.find(params[:menu_id])
-    user = view_context.current_user
-    user.stop_following(menu)
-    render :json => user.id
+    view_context.current_user.stop_following(menu)
+    render :json
+  end
+
+  def follow_user
+    user = User.find(params[:user_id])
+    view_context.current_user.follow(user)
+    render :json
+  end
+  
+  def unfollow_user
+    user = User.find(params[:user_id])
+    view_context.current_user.stop_following(user)
+    render :json
   end
 private
   def users_params

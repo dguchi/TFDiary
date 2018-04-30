@@ -8,7 +8,7 @@
 
 <%= render 'users/error_notification' %>
 
-<%= form_for @user, :url => {:action => 'login'} do |f| %>
+<%= form_for @user, :url => {:action => 'login'}, :method => "post" do |f| %>
     <div class="form-item">
         <div class="form-label">
             <%= f.label :mail, "メールアドレス" %>

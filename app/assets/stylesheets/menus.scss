@@ -61,6 +61,19 @@
     text-align: left;
 }
 
+.menu-author {
+    width: 60%;
+    margin: auto;
+    padding: 10px 0;
+    text-align: left;
+    
+    .author-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+    }
+}
+
 .menu-explain-title {
     width: 60%;
     position: relative;

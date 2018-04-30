@@ -7,11 +7,6 @@
     height: 900px;
 }
 
-.home-body p {
-    text-align: center;
-    font-size: 30px;
-}
-
 .home-tfdiary-body {
     text-align: center;
 }
@@ -29,4 +24,20 @@
 
 .home-login {
     text-align: center;
+}
+
+.home-trans {
+    height: 100%;
+    background: rgba(255,255,255, 0.6);
+}
+
+.home-sentence {
+    height: 50%;
+    padding-top: 200px;
+    
+    & p {
+        text-align: center;
+        font-size: 30px;
+        font-family: 'mplus-1c-regular';
+    }
 }

@@ -26,33 +26,30 @@
       <% end %>
     </div>
     <div class="user-info div-center">
-      名前：<%= @user.name %>
-      &emsp;
-      メイン所属グループ：<%= @user.main_group_id %>
-      <br>
-      <% if current_user.id == @user.id %>
-      <%= link_to "日誌作成", '#' %>
-      &emsp;
-      <% end %>
-      <%= link_to "過去の日誌", '#' %>
-      &emsp;
-      <%= link_to "登録メニュー", "/users/#{@user.id}/menu_index" %>
-      <br>
-      <%= link_to "フォローユーザー一覧", "/users/#{@user.id}/follow_index"  %>
-      &emsp;
-      <%= link_to "所属グループ一覧", "/users/#{@user.id}/group_index" %>
+      <p><%= @user.name %></p>
+      <p>グループ：<%= @user.main_group_id %></p>
     </div>
   </div>
   <div class="user-notice div-center">
-    <div class="user-timeline div-center">
-      <% if current_user.id == @user.id %>
-        お知らせ
+    <% if current_user.id == @user.id %>
+      <div class="user-timeline div-center">
+        タイムライン
         <div class="timeline-box div-center">
           <div class="timeline-area div-center">
           </div>
         </div>
+      </div>
+    <% else %>
+      <% if current_user.following?(@user) %>
+          <div id="user-follow-button" class="unfollow" onclick="OnClickFollowUser(<%= @user.id %>);">
+              フォロー解除
+          </div>
+      <% else %>
+          <div id="user-follow-button" class="follow" onclick="OnClickFollowUser(<%= @user.id %>);">
+              フォロー
+          </div>
       <% end %>
-    </div>
+    <% end %>
     <div class="user-practice div-center">
         <div class="practice-box div-center">
             <span class="box-title">今日の練習メニュー</span>

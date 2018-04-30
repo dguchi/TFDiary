@@ -10,23 +10,29 @@ h2, p {
     text-align: center;
 }
 
+
 .user-show-body {
     text-align: center;
 
     .user-profile {
-        height: 100px;
+        height: 250px;
         width: 90%;
         .user-image {
-            float: left;
-            padding: 20px 30px;
+            padding: 0 30px;
             width: 40%; /* ボックスの幅 */
         }
         
+        .user-image img {
+          border-radius: 20px;
+        }
+        
         .user-info {
-            padding: 20px 30px;
             width: 50%;
-            float: left;
             line-height: 200%;
+            
+            & p {
+                margin: 0;
+            }
         }
     }
     
@@ -36,7 +42,6 @@ h2, p {
         clear: both;
         .user-timeline {
             width: 40%;
-            float: left;
             padding: 20px 30px;
             .timeline-box {
                 width: 100%; /* ボックスの幅 */
@@ -57,7 +62,6 @@ h2, p {
         }
         
         .user-practice {
-            float:left;
             padding: 20px 30px;
             width: 50%;
 
@@ -87,6 +91,29 @@ h2, p {
             }
         }
     }
+    
+    #user-follow-button {
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        border: solid 2px #67c5ff;
+        border-radius: 3px;
+        transition: .4s;
+        &:hover {
+            cursor : pointer;
+        }
+    }
+    
+    .follow {
+        background: #67c5ff;
+        color: white;
+    }
+    
+    .unfollow {
+        background: white;
+        color: #67c5ff;
+    }
+
 }
 
 .div-center {
@@ -126,6 +153,7 @@ h2, p {
 
 #follow-index {
     border: solid 1px black;
+    border-radius: 5px;
     background-color: white;
     width: 50%;
     margin: 0 auto;
@@ -134,10 +162,17 @@ h2, p {
 .follower {
     border-bottom: solid 2px silver;
     padding: 10px;
+    
+    & img {
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+    }
 }
 
 #menu-index {
     border: solid 1px black;
+    border-radius: 5px;
     background-color: white;
     width: 50%;
     margin: 0 auto;

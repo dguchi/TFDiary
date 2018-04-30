@@ -26,7 +26,12 @@
               <%= link_to current_user.name, '#', data: {toggle:"dropdown"}, class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", 'aria-haspopup': "true", 'aria-expanded': "false"%>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to "個人ページ", user_path(current_user.id), class:"dropdown-item" %>
-                <%= link_to "ログアウト", home_logout_path, class:"dropdown-item" %>
+                <%= link_to "日誌作成", '#', class:"dropdown-item"  %>
+                <%= link_to "過去の日誌", '#', class:"dropdown-item"  %>
+                <%= link_to "登録メニュー", "/users/#{current_user.id}/menu_index", class:"dropdown-item"  %>
+                <%= link_to "フォローユーザー一覧", "/users/#{current_user.id}/follow_index", class:"dropdown-item"   %>
+                <%= link_to "所属グループ一覧", "/users/#{current_user.id}/group_index", class:"dropdown-item"  %>
+                <%= link_to "ログアウト", home_logout_path, class:"dropdown-item", class:"dropdown-item"  %>
               </div>
             </li>
             <li class="nav-item">

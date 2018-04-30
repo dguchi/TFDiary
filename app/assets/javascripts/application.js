@@ -28,7 +28,7 @@ function OnClickRegistMenu(menu_id) {
             dataType: 'json',
             async: true,
             data: {menu_id: menu_id},
-        })
+        });
     }
     else
     {
@@ -40,7 +40,35 @@ function OnClickRegistMenu(menu_id) {
             dataType: 'json',
             async: true,
             data: {menu_id: menu_id},
-        })
+        });
     }
 }
 
+function OnClickFollowUser(user_id) {
+    var target = document.getElementById("user-follow-button");
+
+    if ("フォロー" == target.innerText)
+    {
+        target.className = "unfollow";
+        target.textContent = "フォロー解除";
+        $.ajax({
+            url: '/users/follow_user',
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            data: {user_id: user_id},
+        });
+    }
+    else
+    {
+        target.className = "follow";
+        target.textContent = "フォロー";
+        $.ajax({
+            url: '/users/unfollow_user',
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            data: {user_id: user_id},
+        });
+    }
+}
