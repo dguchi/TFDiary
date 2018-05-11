@@ -12,7 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
  */
+
+h2, p {
+    text-align: center;
+}
 
 .form-item {
     width: 450px;

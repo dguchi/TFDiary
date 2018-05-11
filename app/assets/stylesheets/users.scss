@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h2, p {
-    text-align: center;
-}
-
 .user-new-body {
     text-align: center;
 }
@@ -43,6 +39,12 @@ h2, p {
         .user-timeline {
             width: 40%;
             padding: 20px 30px;
+            
+            & p {
+                font-style: italic;
+                margin: 0;
+            }
+            
             .timeline-box {
                 width: 100%; /* ボックスの幅 */
                 background-color: #ffffff; /* ボックスの背景色 */
@@ -88,6 +90,10 @@ h2, p {
             .practice-box p {
                 margin: 0; 
                 padding: 0;
+            }
+            
+            .box-title {
+                font-style: italic;
             }
         }
     }

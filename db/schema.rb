@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430072342) do
+ActiveRecord::Schema.define(version: 20180501075319) do
 
   create_table "diaries", force: :cascade do |t|
     t.date     "date"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20180430072342) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "diary_menus", force: :cascade do |t|
+    t.integer  "diary_id"
+    t.integer  "menu_id"
+    t.integer  "set"
+    t.integer  "num"
+    t.integer  "rest_min",   default: 0
+    t.integer  "rest_sec",   default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "follows", force: :cascade do |t|

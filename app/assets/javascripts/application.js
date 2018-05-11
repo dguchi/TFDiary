@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+/* global $ */
+
+console.log("javascript read");
 
 function OnClickRegistMenu(menu_id) {
     var target = document.getElementById("menu-regist-button");
@@ -71,4 +74,19 @@ function OnClickFollowUser(user_id) {
             data: {user_id: user_id},
         });
     }
+}
+
+// メニュー追加ボタンクリック時の処理
+function OnClickAddMenuButton() {
+    $('#add-menu-popup-layer, #add-menu-popup').show();
+}
+
+// レイヤー/ポップアップの閉じるボタンクリック時の処理
+function OnClickCloseAddMenuButton() {
+    $('#add-menu-popup-layer, #add-menu-popup').hide();
+}
+
+function SubmitAction(url) {
+  $('form').attr('action', url);
+  $('form').submit();
 }

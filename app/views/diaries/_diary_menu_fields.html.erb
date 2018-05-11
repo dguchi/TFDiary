@@ -1,0 +1,23 @@
+<% @add_menus.each do |menu| %>
+    <div id="menu_form_<%= menu.id %>">
+    <%= menu.name %>
+    <%= f.fields_for :diary_menus do |fld| %>
+        <%= fld.hidden_field :menu_id, :value => "#{menu.id}" %>
+        <%= fld.number_field :num, :min => 0, :class => "diary_menu_num" %>
+        <% if menu.drill? %>
+            <%= fld.label :num, "回" %>
+        <% else %>
+            <%= fld.label :num, "本" %>
+        <% end %>
+        <%= fld.number_field :set, :min => 0, :class => "diary_menu_set" %>
+        <%= fld.label :set, "セット" %>
+        <br>
+        Rest &ensp;
+        <%= fld.number_field :rest_min, :min => 0, :class => "diary_menu_min" %>
+        <%= fld.label :rest_min, "分" %>
+        <%= fld.number_field :rest_sec, :min => 0, :class => "diary_menu_sec" %>
+        <%= fld.label :rest_sec, "秒" %>
+    <% end %>
+    </div>
+<% end %>
+

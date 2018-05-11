@@ -19,3 +19,12 @@ ja:
       secret:
         pub: 公開
         pri: 非公開
+
+  simple_calendar:
+    previous: "前の月"
+    next: "次の月"
+  
+  date:
+    abbr_day_names: ["日", "月", "火", "水", "木", "金", "土"]
+    month_names: [~, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    

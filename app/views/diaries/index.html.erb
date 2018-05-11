@@ -1,2 +1,19 @@
-<h1>Diaries#index</h1>
-<p>Find me in app/views/diaries/index.html.erb</p>
+<br>
+<br>
+<br>
+<br>
+<h2>過去の日誌</h2>
+<br>
+
+<div id="index_calender_area">
+    <div id="index_calender">
+    <%= month_calendar do |date| %>
+      <% diary = get_diary(date) %>
+      <% if nil != diary %>
+        <%= link_to date.day, diary_path(diary.id)  %>
+      <% else %>
+        <%= date.day %>
+      <% end %>
+    <% end %>
+    </div>
+</div>

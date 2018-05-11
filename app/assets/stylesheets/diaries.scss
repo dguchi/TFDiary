@@ -1,3 +1,123 @@
 // Place all the styles related to the diaries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.diary-create {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.diary-label {
+    width: 60%;
+    text-align: left;
+    position: relative;
+    padding-left: 25px;
+}
+
+.diary-label:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+
+.diary-label:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
+.dialy-explain-input {
+    border-radius: 5px;
+    width: 60%;
+}
+
+#add-menu-button {
+    margin: auto;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+}
+
+#add-menu-button:hover {
+    background: #1ec7bb;
+    cursor: pointer;
+}
+
+#add-menu-popup-layer {
+    display: none;  /* 初期表示は非表示 */
+    position: absolute; 
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0, 0.2);
+}
+
+#add-menu-popup {
+    display: none;  /* 初期表示は非表示 */
+    position: absolute; 
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 400px;
+    margin-left: -150px;
+    margin-top: -100px;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#add-menu-close {
+}
+
+#add-menu-list {
+    padding-top: 20px;
+    padding-left: 30px;
+    list-style: none;
+    
+    li {
+        width: 90%;
+        height: 50px;
+        padding-top: 10px;
+        text-align: left;
+        border-bottom: solid 1px gray;
+    }
+}
+
+.diary_menu_num, .diary_menu_set, .diary_menu_min, .diary_menu_sec {
+    width: 40px;
+}
+
+#index_calender_area {
+    width: 60%;
+    height: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 5px;
+}
+
+#index_calender {
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.table thead th {
+    text-align: center;
+}

@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   
   # Diaries
   resources :diaries do
+    collection do
+      post :add_menus
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
