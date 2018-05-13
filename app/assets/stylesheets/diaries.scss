@@ -122,7 +122,7 @@
     font-size: 30px;
 }
 
-#diary-edit-link, #diary-detail, #diary-favarite, #diary-comment {
+#diary-edit-link, #diary-detail, #diary-favorite, #diary-comment {
     width: 60%;
     margin: auto;
 }
@@ -185,4 +185,47 @@
 
 #diary-edit-link {
     text-align: center;
+}
+
+.diary-favorite-button, .diary-unfavorite-button {
+    display: inline-block;
+    text-decoration: none;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    border: solid 2px #668ad8;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .4s;
+    float: left;
+    margin: 10px 0px;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.diary-favorite-button {
+    color: #668ad8;;
+    background: white;
+}
+
+.diary-unfavorite-button {
+    color: white;
+    background: #668ad8;
+}
+
+#diary-favorite-count {
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    margin: 10px 0px;
+    padding-left: 10px;
+}
+
+#diary-comment {
+    
 }

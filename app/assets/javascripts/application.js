@@ -77,17 +77,32 @@ function OnClickFollowUser(user_id) {
     }
 }
 
-// メニュー追加ボタンクリック時の処理
-function OnClickAddMenuButton() {
-    $('#add-menu-popup-layer, #add-menu-popup').show();
+function OnClickDiaryFavorite(diary_id) {
+    var target = document.getElementById("diary-favo");
+    var target_count = document.getElementById("diary-favorite-count");
+    if ("diary-favorite-button" == target.className)
+    {
+        target.className = "diary-unfavorite-button";
+        target_count.innerText = (parseInt(target_count.innerText, 10) + 1).toString() + "件";
+        $.ajax({
+            url: '/users/follow_diary',
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            data: {diary_id: diary_id},
+        });
+    }
+    else
+    {
+        target.className = "diary-favorite-button";
+        target_count.innerText = (parseInt(target_count.innerText, 10) - 1).toString() + "件";
+        $.ajax({
+            url: '/users/unfollow_diary',
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            data: {diary_id: diary_id},
+        });
+    }
 }
 
-// レイヤー/ポップアップの閉じるボタンクリック時の処理
-function OnClickCloseAddMenuButton() {
-    $('#add-menu-popup-layer, #add-menu-popup').hide();
-}
-
-function SubmitAction(url) {
-  $('form').attr('action', url);
-  $('form').submit();
-}

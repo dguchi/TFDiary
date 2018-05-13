@@ -35,3 +35,7 @@ h2, p {
     width: 300px;
     float: left;
 }
+
+.clear {
+    clear:both;
+}

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get :unfollow_menu
       get :follow_user
       get :unfollow_user
+      get :follow_diary
+      get :unfollow_diary
     end
     
     member do

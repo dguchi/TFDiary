@@ -52,25 +52,39 @@ class UsersController < ApplicationController
   def follow_menu
     menu = Menu.find(params[:menu_id])
     view_context.current_user.follow(menu)
-    render :json
+    render :nothing => true
   end
   
   def unfollow_menu
     menu = Menu.find(params[:menu_id])
     view_context.current_user.stop_following(menu)
-    render :json
+    render :nothing => true
   end
 
   def follow_user
     user = User.find(params[:user_id])
     view_context.current_user.follow(user)
-    render :json
+    render :nothing => true
   end
   
   def unfollow_user
     user = User.find(params[:user_id])
     view_context.current_user.stop_following(user)
-    render :json
+    render :nothing => true
+  end
+  
+  def follow_diary
+    logger.debug("********follow_diary(#{params[:diary_id]})*********")
+    diary = Diary.find(params[:diary_id])
+    view_context.current_user.follow(diary)
+    render :nothing => true
+  end
+  
+  def unfollow_diary
+    logger.debug("********unfollow_diary(#{params[:diary_id]})*********")
+    diary = Diary.find(params[:diary_id])
+    view_context.current_user.stop_following(diary)
+    render :nothing => true
   end
 private
   def users_params

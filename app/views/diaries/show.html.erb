@@ -44,10 +44,19 @@
     </div>
 </div>
 
-<div id="diary-favarite">
-    いいね！件
+<div id="diary-favorite">
+    <% if current_user.following?(@diary) %>
+    <div id="diary-favo" class="diary-unfavorite-button" onClick="OnClickDiaryFavorite(<%= @diary.id %>);">
+    <% else %>
+    <div id="diary-favo" class="diary-favorite-button" onClick="OnClickDiaryFavorite(<%= @diary.id %>);">
+    <% end %>
+    いいね！
+    </div>
+    <div id="diary-favorite-count">
+    <%= current_user.following_by_type('Diary').count %>件
+    </div>
 </div>
-
+<div class="clear"></div>
 <div id="diary-comment">
     コメント
 </div>
