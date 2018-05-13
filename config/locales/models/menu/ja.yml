@@ -21,8 +21,8 @@ ja:
         pri: 非公開
 
   simple_calendar:
-    previous: "前の月"
-    next: "次の月"
+    previous: "<<"
+    next: ">>"
   
   date:
     abbr_day_names: ["日", "月", "火", "水", "木", "金", "土"]

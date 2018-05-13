@@ -103,6 +103,10 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    nested_form_fields (0.8.2)
+      coffee-rails (>= 3.2.1)
+      jquery-rails
+      rails (>= 3.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     popper_js (1.12.9)
@@ -195,6 +199,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  nested_form_fields
   rails (= 4.2.10)
   rmagick
   sass-rails (~> 5.0)

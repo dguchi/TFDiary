@@ -2,6 +2,52 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<h2>show</h2>
+<h2>
+    <%= @diary.date.year %> 年
+    <%= @diary.date.month %> 月
+    <%= @diary.date.day %> 日
+</h2>
+<% if current_user.id == @diary.user_id %>
+    <div id="diary-edit-link">
+        <%= link_to "編集", edit_diary_path(@diary.id) %>
+        &ensp;
+        <%= link_to "削除", diary_path(@diary.id), :method => :delete, :data => {:confirm => "本当に削除しますか？"} %>
+    </div>
+<% end %>
+<div id="diary-detail">
+    <div class="diary-column">
+        メニュー内容
+    </div>
+    <div id="diary-detail-menu">
+        <ul>
+        <% @diary.diary_menus.each do |menu| %>
+            <li>
+                <%= get_menu(menu.menu_id).name %>
+                <% if get_menu(menu.menu_id).drill? %>
+                    <%= menu.num.to_s %> 回
+                <% else %>
+                    <%= menu.num.to_s %> 本
+                <% end %>
+                <%= menu.set.to_s %> セット
+                Rest
+                <%= menu.rest_min %> 分
+                <%= menu.rest_sec %> 秒
+            </li>
+        <% end %>
+        </ul>
+    </div>
+    <div class="diary-column">
+        説明
+    </div>
+    <div id="diary-detail-explain">
+        <%= @diary.explain %>
+    </div>
+</div>
+
+<div id="diary-favarite">
+    いいね！件
+</div>
+
+<div id="diary-comment">
+    コメント
+</div>

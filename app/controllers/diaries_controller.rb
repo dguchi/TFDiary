@@ -1,8 +1,7 @@
 class DiariesController < ApplicationController
   def new
     @diary = Diary.new
-    @diary.diary_menus.build
-    get_new_paramater
+    @menu_list = get_menu_list
   end
   
   def create
@@ -10,29 +9,38 @@ class DiariesController < ApplicationController
     if !params[:add_menus] && @diary.save
       redirect_to diary_path(@diary.id)
     else
-      get_new_paramater
+      @menu_list = get_menu_list
       render :new
     end
   end
 
   def edit
+    @diary = Diary.find(params[:id])
+    @menu_list = get_menu_list
   end
   
   def update
+    @diary = Diary.find(params[:id])
+    if @diary.update(diary_params)
+      redirect_to diaries_path
+    else
+      @menu_list = get_menu_list
+      render :edit
+    end
   end
 
+  def destroy
+    @diary = Diary.find(params[:id])
+    @diary.destroy
+    redirect_to diaries_path
+  end
+  
   def index
     @diaries = Diary.all
   end
 
   def show
-  end
-  
-  def add_menus
-    @diary = Diary.new(diary_params_no_fields)
-    @diary.diary_menus.build
-    get_new_paramater
-    render :new
+    @diary = Diary.find(params[:id])
   end
   
 private
@@ -41,61 +49,17 @@ private
       :date,
       :explain,
       :user_id,
-      diary_menus_attributes: [:menu_id, :num, :set, :rest_min, :rest_sec]
+      diary_menus_attributes: [:id, :menu_id, :num, :set, :rest_min, :rest_sec, :_destroy]
     )
   end
 
-  def diary_params_no_fields
-    params.require(:diary).permit(
-      :date,
-      :explain,
-    )
-  end
-  
-  def get_new_paramater
-    @menus = view_context.current_user.following_by_type('Menu')
-    @add_menus = get_add_menus
-    @check_menuid_list = get_check_menu_list(@menus, @add_menus)
-  end
-  
-  def get_create_paramater
-    @menus = view_context.current_user.following_by_type('Menu')
-    @add_menus = []
-    @check_menuid_list = get_check_menu_list(@menus, @add_menus)
-  end
-  
-  def get_add_menus
-    add_menus = Array.new
-    logger.debug("*****#{params}*****")
-
-    if params[:menu_num]
-      menu_num = params[:menu_num]
-      menu_num.to_i.times do |number|
-        key = get_check_menu_key(number)
-        if params[key]
-          logger.debug("*****#{params[key]}*****")
-          add_menus << Menu.find(params[key])
-        end
-      end
+  def get_menu_list
+    menu_list = Hash.new
+    menus = view_context.current_user.following_by_type('Menu')
+    menus.each do |menu|
+      menu_list[menu.name] = menu.id
     end
     
-    add_menus
-  end
-  
-  def get_check_menu_key(number)
-    "add_menu_" + number.to_s
-  end
-  
-  def get_check_menu_list(reg_menus, add_menus)
-    retlist = Array.new
-    reg_menus.each do |regmenu|
-      if add_menus.index(regmenu)
-        retlist << true
-      else
-        retlist << false
-      end
-    end
-    
-    retlist
+    menu_list
   end
 end

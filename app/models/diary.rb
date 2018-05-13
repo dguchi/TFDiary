@@ -1,5 +1,7 @@
 class Diary < ActiveRecord::Base
-    has_many :diary_menus
+    acts_as_followable
+
+    has_many :diary_menus, dependent: :destroy
     accepts_nested_attributes_for :diary_menus, allow_destroy: true, reject_if: :all_blank
     
     validates :user_id, :presence => true

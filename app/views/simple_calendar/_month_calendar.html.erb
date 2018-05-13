@@ -1,7 +1,9 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    &emsp;
     <span class="calendar-title"><%= start_date.year %>年<%= t('date.month_names')[start_date.month] %>月</span>
+    &emsp;
     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
   </div>
 

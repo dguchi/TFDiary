@@ -3,37 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .diary-create {
-    width: 60%;
+    width: 80%;
     margin: auto;
     text-align: center;
 }
 
 .diary-label {
-    width: 60%;
+    width: 80%;
     text-align: left;
     position: relative;
     padding-left: 25px;
-}
 
-.diary-label:before {
-    position: absolute;
-    content: '';
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 0;
-    border: none;
-    border-left: solid 15px transparent;
-    border-bottom: solid 15px rgb(119, 195, 223);
-}
+    &:before {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: none;
+        border-left: solid 15px transparent;
+        border-bottom: solid 15px rgb(119, 195, 223);
+    }
 
-.diary-label:after {
-    position: absolute;
-    content: '';
-    bottom: -3px;
-    left: 10px;
-    width: 100%;
-    border-bottom: solid 3px rgb(119, 195, 223);
+    &:after {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+        left: 10px;
+        width: 100%;
+        border-bottom: solid 3px rgb(119, 195, 223);
+    }
 }
 
 .dialy-explain-input {
@@ -99,10 +99,6 @@
     }
 }
 
-.diary_menu_num, .diary_menu_set, .diary_menu_min, .diary_menu_sec {
-    width: 40px;
-}
-
 #index_calender_area {
     width: 60%;
     height: 600px;
@@ -119,5 +115,74 @@
 }
 
 .table thead th {
+    text-align: center;
+}
+
+.calendar-title {
+    font-size: 30px;
+}
+
+#diary-edit-link, #diary-detail, #diary-favarite, #diary-comment {
+    width: 60%;
+    margin: auto;
+}
+
+#diary-detail {
+    border-radius: 5px;
+    border: solid 1px black;
+    background: white;
+    padding-bottom: 20px;
+}
+
+.diary-column {
+    clear:both;
+    width: 90%;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 25px;
+    margin: auto;
+    text-align: left;
+    font-style: italic;
+
+    &:before {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: none;
+        border-left: solid 15px transparent;
+        border-bottom: solid 15px rgb(119, 195, 223);
+    }
+
+    &:after {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+        left: 10px;
+        width: 100%;
+        border-bottom: solid 3px rgb(119, 195, 223);
+    }
+}
+
+#diary-detail-menu, #diary-detail-explain {
+    width: 80%;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#diary-menu-table {
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    background: white;
+}
+
+.table-font {
+    font-size: 15px;
+}
+
+#diary-edit-link {
     text-align: center;
 }

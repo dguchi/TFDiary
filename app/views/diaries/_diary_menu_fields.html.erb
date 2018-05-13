@@ -1,23 +1,22 @@
-<% @add_menus.each do |menu| %>
-    <div id="menu_form_<%= menu.id %>">
-    <%= menu.name %>
-    <%= f.fields_for :diary_menus do |fld| %>
-        <%= fld.hidden_field :menu_id, :value => "#{menu.id}" %>
-        <%= fld.number_field :num, :min => 0, :class => "diary_menu_num" %>
-        <% if menu.drill? %>
-            <%= fld.label :num, "回" %>
-        <% else %>
-            <%= fld.label :num, "本" %>
+<div id="diary-menu-table">
+<table class="table table-striped table-bordered table-hover table-font">
+    <tbody>
+        <tr>
+           <th>メニュー名</th>
+           <th>回数</th>
+           <th>セット数</th>
+           <th>レスト(分)</th>
+           <th>レスト(秒)</th>
+        </tr>
+        <%= f.nested_fields_for :diary_menus, wrapper_tag: :tr do |q| %>
+            <td><%= q.select :menu_id, @menu_list, class: 'form-control' %></td>
+            <td><%= q.number_field :num, :min => 0, class: 'form-control' %></td>
+            <td><%= q.number_field :set, :min => 0, class: 'form-control' %></td>
+            <td><%= q.number_field :rest_min, :min => 0, class: 'form-control' %></td>
+            <td><%= q.number_field :rest_sec, :sec => 0, class: 'form-control' %></td>
+            <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
         <% end %>
-        <%= fld.number_field :set, :min => 0, :class => "diary_menu_set" %>
-        <%= fld.label :set, "セット" %>
-        <br>
-        Rest &ensp;
-        <%= fld.number_field :rest_min, :min => 0, :class => "diary_menu_min" %>
-        <%= fld.label :rest_min, "分" %>
-        <%= fld.number_field :rest_sec, :min => 0, :class => "diary_menu_sec" %>
-        <%= fld.label :rest_sec, "秒" %>
-    <% end %>
-    </div>
-<% end %>
-
+    </tbody>
+</table>
+<%= f.add_nested_fields_link :diary_menus, 'Add new', class: 'btn btn-primary', role: 'button' %>
+</div>
