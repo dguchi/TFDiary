@@ -14,7 +14,6 @@
             <%= f.file_field :image, :class => "ignore" %>
           </label>
         <% end %>
-        <script type="text/javascript" src="//code.jquery.com/jquery-3.1.1.min.js"></script>
         <script type="text/javascript">
             $('input[type=file]').on('change', function (e) {
                 console.log(e.target.files);
@@ -49,6 +48,38 @@
               フォロー
           </div>
       <% end %>
+      <div class="other-user-menu">
+        <ul>
+          <li>
+            <div class="user-menu-list">
+            <%= link_to image_tag(asset_path("icon/diary.png")), user_diaries_path(@user.id) %>
+            <br>
+            <%= link_to "練習日誌", user_diaries_path(@user.id) %>
+            </div>
+          </li>
+          <li>
+            <div class="user-menu-list">
+            <%= link_to image_tag(asset_path("icon/menu.png")), menu_index_user_path(@user.id) %>
+            <br>
+            <%= link_to "登録メニュー", menu_index_user_path(@user.id) %>
+            </div>
+          </li>
+          <li>
+            <div class="user-menu-list">
+            <%= link_to image_tag(asset_path("icon/follow.png")), follow_index_user_path(@user.id) %>
+            <br>
+            <%= link_to "フォロー", follow_index_user_path(@user.id) %>
+            </div>
+          </li>
+          <li>
+            <div class="user-menu-list">
+            <%= link_to image_tag(asset_path("icon/follower.png")), follower_index_user_path(@user.id) %>
+            <br>
+            <%= link_to "フォロワー", follower_index_user_path(@user.id) %>
+            </div>
+          </li>
+        </ul>
+      </div>
     <% end %>
     <div class="user-practice div-center">
         <div class="practice-box div-center">

@@ -8,11 +8,14 @@
 <div id="index_calender_area">
     <div id="index_calender">
     <%= month_calendar do |date| %>
-      <% diary = get_diary(date) %>
-      <% if nil != diary %>
-        <%= link_to date.day, diary_path(diary.id)  %>
+      <% diaries = get_diary(@user, date) %>
+      <% if 0 == diaries.count %>
+          <%= date.day %>
       <% else %>
-        <%= date.day %>
+        <% diaries.each do |diary| %>
+            <%= link_to date.day, diary_path(diary.id)  %>
+            <br>
+        <% end %>
       <% end %>
     <% end %>
     </div>

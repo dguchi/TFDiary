@@ -1,0 +1,16 @@
+<br>
+<br>
+<br>
+<br>
+<h2>フォロワー一覧</h2>
+<div id="follower-index">
+    フォロワー数(<%= @followers.count %>)
+    <% @followers.each do |follower| %>
+        <div class="follower-user">
+            <%= image_tag follower.image, :size => "50x50" %>
+            &emsp;
+            <%= link_to follower.name, user_path(follower.id) %>
+        </div>
+    <% end %>
+</div>
+

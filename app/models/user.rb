@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     acts_as_followable
     acts_as_follower
 
+    has_many :diaries, dependent: :destroy
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     
     validates :name, :presence => true

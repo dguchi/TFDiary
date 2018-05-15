@@ -22,23 +22,25 @@ Rails.application.routes.draw do
     
     member do
       get :follow_index
+      get :follower_index
       get :menu_index
       get :group_index
       get :regist_menu
     end
+    
+    resources :diaries, shallow: true do
+      # Comments
+      resources :comments, :only => [:create, :destroy]
+    end
   end
 
-  # Users
+  # Menus
   resources :menus do
     collection do
       get :search
     end
   end
   
-  # Diaries
-  resources :diaries do
-  end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

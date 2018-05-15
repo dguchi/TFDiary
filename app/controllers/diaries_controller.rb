@@ -1,30 +1,34 @@
 class DiariesController < ApplicationController
   def new
-    @diary = Diary.new
-    @menu_list = get_menu_list
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.build
+    @menu_list = get_menu_list(@user)
   end
   
   def create
-    @diary = Diary.new(diary_params)
-    if !params[:add_menus] && @diary.save
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.build(diary_params)
+    if @diary.save
       redirect_to diary_path(@diary.id)
     else
-      @menu_list = get_menu_list
+      @menu_list = get_menu_list(@user)
       render :new
     end
   end
 
   def edit
     @diary = Diary.find(params[:id])
-    @menu_list = get_menu_list
+    @user = User.find(@diary.user_id)
+    @menu_list = get_menu_list(@user)
   end
   
   def update
     @diary = Diary.find(params[:id])
+    @user = User.find(@diary.user_id)
     if @diary.update(diary_params)
-      redirect_to diaries_path
+      redirect_to user_diaries_path(@user.id)
     else
-      @menu_list = get_menu_list
+      @menu_list = get_menu_list(@user)
       render :edit
     end
   end
@@ -36,26 +40,28 @@ class DiariesController < ApplicationController
   end
   
   def index
-    @diaries = Diary.all
+    @user = User.find(params[:user_id])
+    @diaries = @user.diaries
   end
 
   def show
     @diary = Diary.find(params[:id])
+    @comments = @diary.comments
+    @comment = Comment.new
   end
-  
+
 private
   def diary_params
     params.require(:diary).permit(
       :date,
       :explain,
-      :user_id,
       diary_menus_attributes: [:id, :menu_id, :num, :set, :rest_min, :rest_sec, :_destroy]
     )
   end
-
-  def get_menu_list
+  
+  def get_menu_list(user)
     menu_list = Hash.new
-    menus = view_context.current_user.following_by_type('Menu')
+    menus = user.following_by_type('Menu')
     menus.each do |menu|
       menu_list[menu.name] = menu.id
     end

@@ -105,4 +105,3 @@ function OnClickDiaryFavorite(diary_id) {
         });
     }
 }
-

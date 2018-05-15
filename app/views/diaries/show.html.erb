@@ -20,18 +20,19 @@
     </div>
     <div id="diary-detail-menu">
         <ul>
-        <% @diary.diary_menus.each do |menu| %>
+        <% @diary.diary_menus.each do |diary_menu| %>
+            <% menu = get_menu(diary_menu.menu_id) %>
             <li>
-                <%= get_menu(menu.menu_id).name %>
-                <% if get_menu(menu.menu_id).drill? %>
-                    <%= menu.num.to_s %> 回
+                <%= link_to menu.name, menu_path(menu.id) %>
+                <% if menu.drill? %>
+                    <%= diary_menu.num.to_s %> 回
                 <% else %>
-                    <%= menu.num.to_s %> 本
+                    <%= diary_menu.num.to_s %> 本
                 <% end %>
-                <%= menu.set.to_s %> セット
+                <%= diary_menu.set.to_s %> セット
                 Rest
-                <%= menu.rest_min %> 分
-                <%= menu.rest_sec %> 秒
+                <%= diary_menu.rest_min %> 分
+                <%= diary_menu.rest_sec %> 秒
             </li>
         <% end %>
         </ul>
@@ -59,4 +60,29 @@
 <div class="clear"></div>
 <div id="diary-comment">
     コメント
+    <%= form_for @comment, :url => diary_comments_path(@diary.id) do |f| %>
+        <%= f.text_area :content, :size => "40x3", :class => "dialy-comment-input" %>
+        <br>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.submit "投稿" %>
+    <% end %>
+    
+    <div id="comment-index-title">コメント一覧</div>
+    <div id="comment-index">
+        <ul>
+        <% @comments.each do |comment| %>
+            <% user = get_user(comment.user_id) %>
+            <li>
+                <%= image_tag user.image, :class => "commenter-img" %> &ensp; <%= link_to user.name, user_path(user.id) %>
+                <% if user.id == current_user.id %>
+                    &emsp;
+                    <%= link_to "コメント削除", comment_path(comment.id), :method => 'DELETE' %>
+                <% end %>
+                <div class="comment-content">
+                    <%= comment.content %>
+                </div>
+            </li>
+        <% end %>
+        </ul>
+    </div>
 </div>
