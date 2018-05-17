@@ -66,23 +66,27 @@
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.submit "投稿" %>
     <% end %>
-    
-    <div id="comment-index-title">コメント一覧</div>
-    <div id="comment-index">
-        <ul>
-        <% @comments.each do |comment| %>
-            <% user = get_user(comment.user_id) %>
-            <li>
-                <%= image_tag user.image, :class => "commenter-img" %> &ensp; <%= link_to user.name, user_path(user.id) %>
-                <% if user.id == current_user.id %>
-                    &emsp;
-                    <%= link_to "コメント削除", comment_path(comment.id), :method => 'DELETE' %>
-                <% end %>
-                <div class="comment-content">
-                    <%= comment.content %>
-                </div>
-            </li>
-        <% end %>
-        </ul>
-    </div>
+
+    <% if 0 == @comments.count %>
+        <div id="comment-index-title">コメントはありません</div>
+    <% else %>
+        <div id="comment-index-title">コメント一覧</div>
+        <div id="comment-index">
+            <ul>
+            <% @comments.each do |comment| %>
+                <% user = get_user(comment.user_id) %>
+                <li>
+                    <%= image_tag user.image, :class => "commenter-img" %> &ensp; <%= link_to user.name, user_path(user.id) %>
+                    <% if user.id == current_user.id %>
+                        &emsp;
+                        <%= link_to "コメント削除", comment_path(comment.id), :method => 'DELETE' %>
+                    <% end %>
+                    <div class="comment-content">
+                        <%= comment.content %>
+                    </div>
+                </li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
 </div>

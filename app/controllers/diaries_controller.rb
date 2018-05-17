@@ -1,4 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :check_login
+
   def new
     @user = User.find(params[:user_id])
     @diary = @user.diaries.build
