@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180513133659) do
+ActiveRecord::Schema.define(version: 20180517134925) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 20180513133659) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "explain"
+    t.text     "target"
+    t.string   "image"
+    t.integer  "leader_id"
+    t.integer  "manager_id1"
+    t.integer  "manager_id2"
+    t.integer  "subleader_id1"
+    t.integer  "subleader_id2"
+    t.integer  "subleader_id3"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "name"

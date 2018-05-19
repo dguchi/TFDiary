@@ -40,7 +40,17 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  
+
+  # Groups
+  resources :groups do
+    collection do
+      get :member_top
+      get :member_index
+      get :menu_confirm
+      get :setting
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
