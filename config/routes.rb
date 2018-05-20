@@ -8,8 +8,15 @@ Rails.application.routes.draw do
   post 'home/login'
   get 'home/logout'
 
+  devise_for :users, controllers: {
+    confirmations: 'users/confirmations',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+  }
+  
   # Users
-  resources :users do
+  resources :users, :only => [:show] do
     collection do
       patch :change_image
       get :follow_menu

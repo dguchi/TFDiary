@@ -28,7 +28,7 @@ class HomeController < ApplicationController
   
 private
   def check_root
-    if view_context.logged_in?
+    if view_context.user_signed_in?
       redirect_to user_path(view_context.current_user.id)
     end
   end

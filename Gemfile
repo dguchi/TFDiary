@@ -55,3 +55,5 @@ gem 'acts_as_follower'
 gem 'enum_help'
 gem "simple_calendar", "~> 2.0"
 gem 'nested_form_fields'
+gem 'devise'
+gem 'devise-i18n'

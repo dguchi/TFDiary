@@ -15,6 +15,10 @@
  *= require simple_calendar
  */
 
+header {
+    height: 56px;
+}
+
 h2, p {
     text-align: center;
 }

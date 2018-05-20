@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :check_login
+  before_action :authenticate_user!
 
   def new
     @user = User.find(params[:user_id])
