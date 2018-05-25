@@ -1,8 +1,4 @@
 <br>
-<br>
-<br>
-<br>
-<br>
 <div class="menu-show">
     <div class="menu-column">
         メニュー名
@@ -11,7 +7,7 @@
     <li class="menu-name">
         &emsp; <%= @menu.name %>
     </li>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
         <li class="menu-button">
         <% if current_user.following?(@menu) %>
             <div id="menu-regist-button" class="deregist" onclick="OnClickRegistMenu(<%= @menu.id %>);">

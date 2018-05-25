@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   # Home
   get 'home/top'
   get 'home/tfdiary'
-  get 'home/login_form'
-  post 'home/login'
-  get 'home/logout'
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
