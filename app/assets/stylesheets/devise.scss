@@ -1,0 +1,19 @@
+
+.new-register, .login-form {
+    text-align: center;
+}
+
+.field {
+    padding: 5px 0px;
+    & label {
+        margin: 0;
+    }    
+}
+
+.actions {
+    padding: 10px 0px;
+    & input {
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

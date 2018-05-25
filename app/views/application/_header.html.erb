@@ -5,7 +5,7 @@
       </button>
     
       <div class="collapse navbar-collapse" id="Navbar">
-        <% if !(logged_in?) %>
+        <% if !(user_signed_in?) %>
           <%= link_to "TFDiary", root_path, class:"navbar-brand nav-link" %>
           <ul class="navbar-nav navbar-right ml-auto">
               <!--ログインしているかどうかで分岐-->
@@ -16,7 +16,7 @@
                 <%= link_to "メニュー検索", menus_path, class:"nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", home_login_form_path, class:"nav-link" %>
+                <%= link_to "ログイン", new_user_session_path, class:"nav-link" %>
               </li>
           </ul>
         <% else %>
@@ -32,7 +32,7 @@
                 <%= link_to "フォロー一覧", follow_index_user_path(current_user.id), class:"dropdown-item"   %>
                 <%= link_to "フォロワー一覧", follower_index_user_path(current_user.id), class:"dropdown-item"   %>
                 <%= link_to "所属グループ一覧", "/users/#{current_user.id}/group_index", class:"dropdown-item"  %>
-                <%= link_to "ログアウト", home_logout_path, class:"dropdown-item", class:"dropdown-item"  %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: "DELETE", class:"dropdown-item", class:"dropdown-item"  %>
               </div>
             </li>
             <li class="nav-item">
