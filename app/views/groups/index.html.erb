@@ -1,0 +1,27 @@
+<h2>グループ検索</h2>
+
+<br>
+
+<div class="group-search">
+    <%= form_for(@group, url: search_groups_path, html: { method: :get, role: 'form' }) do |f| %>
+        <%= f.label :name, "グループ名" %>
+        &emsp;
+        <%= f.text_field :name %>
+        <%= f.submit "検索する" %>
+    <% end %>
+    <br>
+    <% if user_signed_in? %>
+        <%= link_to "新規グループ作成", new_group_path %><br>
+        <br>
+    <% end %>
+    <div class="group-box">
+        <ul>
+        <% if @groups.count == 0 %>
+            <li>グループが見つかりませんでした</li>
+        <% end %>
+        <% @groups.each do |group| %>
+            <li><%= link_to group.name, group_path(group.id) %></li>
+        <% end %>
+        </ul>
+    </div>
+</div>

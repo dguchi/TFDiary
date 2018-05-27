@@ -1,7 +1,3 @@
-<br>
-<br>
-<br>
-<br>
 <h2>グループ作成</h2>
 <br>
 
@@ -9,11 +5,11 @@
 
 <div class="group-create">
     <%= form_for @group, :url => {:action => 'create'} do |f| %>
-        <%= f.label :name, "グループ名" %>
-        <%= f.text_field :name %>
+        <%= f.label :name, "グループ名" %> <br>
+        <%= f.text_field :name %> <br>
         <br>
-        <%= f.label :explain, "グループ説明" %>
-        <%= f.text_field :explain %>
+        <%= f.label :explain, "グループ説明" %> <br>
+        <%= f.text_area :explain, :size => "40×5" %> <br>
         <br>
         <%= f.hidden_field :leader_id, :value => current_user.id %>
         <%= f.submit "作成する" %>

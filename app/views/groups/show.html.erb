@@ -1,2 +1,41 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="group-show-body">
+  <div class="group-profile">
+    <div class="group-name">
+      <p><%= @group.name %></p>
+    </div>
+    <div class="group-image div-center">
+      <%= image_tag @group.image, :size => "150x150" %>
+      <% if current_user.id == @group.leader_id %>
+        <br>
+        <%= form_for @group, :url => change_image_group_path(@group.id), :html => {method: 'PATCH'} do |f| %>
+          <%= f.label :image, :class => "ignore" %>
+          <label for="group_image" class="square_btn">
+            画像選択
+            <%= f.file_field :image, :class => "ignore" %>
+          </label>
+        <% end %>
+        <script type="text/javascript">
+            $('input[type=file]').on('change', function (e) {
+                console.log(e.target.files);
+                if (e.target.files[0].size > 0) {
+                    $(this).parents('form').submit();
+                }
+            });
+        </script>
+      <% end %>
+    </div>
+  </div>
+  <div class="group-link">
+    <% if current_user.following?(@group) %>
+        <%= link_to "グループページへ", top_group_member_path(@group.id) %>
+    <% else %>
+        <%= link_to "加入申請", top_group_member_path(@group.id), :data => {:confirm => "加入申請しますか？"} %>
+    <% end %>
+  </div>
+  <div class="group-explain">
+    グループ説明
+    <div class="group-explain-box">
+      <%= @group.explain %>
+    </div>
+  </div>
+</div>

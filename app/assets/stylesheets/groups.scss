@@ -1,3 +1,75 @@
 // Place all the styles related to the Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.group-search, .group-create {
+    text-align: center;
+}
+
+.group-box {
+    border: solid 1px black;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+
+    & ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    & li {
+        text-align: left;
+        padding: 10px;
+    }
+}
+
+.group-show-body {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+
+    .group-profile {
+        height: 250px;
+        width: 90%;
+        margin: auto;
+        .group-image {
+            padding: 0 30px;
+            width: 40%; /* ボックスの幅 */
+            margin: auto;
+        }
+        
+        .group-image img {
+          border-radius: 20px;
+        }
+        
+        .group-info {
+            width: 50%;
+            margin: auto;
+            line-height: 200%;
+            
+            & p {
+                margin: 0;
+            }
+        }
+    }
+    
+    .group-link {
+        width: 60%;
+        margin: auto;
+        padding: 10px 0px;
+    }
+    
+    .group-explain {
+        height: 200px;
+        width: 60%;
+        margin: auto;
+        
+        .group-explain-box {
+            text-align: left;
+            border: solid 1px black;
+            border-radius: 5px;
+            background: white;
+        }
+    }
+}

@@ -48,10 +48,20 @@ Rails.application.routes.draw do
   # Groups
   resources :groups do
     collection do
-      get :member_top
-      get :member_index
-      get :menu_confirm
-      get :setting
+      get :search
+      get :follow
+    end
+    
+    member do
+      patch :change_image
+    end
+    
+    resources :group_member, :only => [:index], shallow: true do
+      member do
+        get :top
+        get :menu_confirm
+        get :setting
+      end
     end
   end
 
