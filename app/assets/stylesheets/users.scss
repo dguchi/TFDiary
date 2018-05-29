@@ -152,7 +152,7 @@
     text-shadow: none;
 }
 
-#follow-index, #follower-index {
+#follow-index, #follower-index, #menu-index, #group-index {
     border: solid 1px black;
     border-radius: 5px;
     background-color: white;
@@ -160,7 +160,7 @@
     margin: 0 auto;
 }
 
-.follow-user, .follower-user {
+.follow-user, .follower-user, .affiliation-group {
     border-bottom: solid 2px silver;
     padding: 10px;
     
@@ -169,14 +169,6 @@
         height: 50px;
         border-radius: 30px;
     }
-}
-
-#menu-index {
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: white;
-    width: 50%;
-    margin: 0 auto;
 }
 
 .menu {

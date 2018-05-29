@@ -1,2 +1,57 @@
-<h1>GroupMember#top</h1>
-<p>Find me in app/views/group_member/top.html.erb</p>
+<div class="group-member-top">
+  <div class="group-member-leftside">
+    <div class="group-member-name">
+      <p><%= @group.name %></p>
+    </div>
+    <div class="group-member-image">
+      <%= image_tag @group.image, :size => "150x150" %>
+      <% if admin_user?(@group.id, current_user.id) %>
+        <br>
+        <%= form_for @group, :url => change_image_group_path(@group.id), :html => {method: 'PATCH'} do |f| %>
+          <%= f.label :image, :class => "ignore" %>
+          <label for="group_image" class="square_btn">
+            画像選択
+            <%= f.file_field :image, :class => "ignore" %>
+          </label>
+        <% end %>
+        <script type="text/javascript">
+            $('input[type=file]').on('change', function (e) {
+                console.log(e.target.files);
+                if (e.target.files[0].size > 0) {
+                    $(this).parents('form').submit();
+                }
+            });
+        </script>
+      <% end %>
+    </div>
+    <div class="group-member-target">
+        グループ目標
+        <div class="group-member-target-box">
+            <%= @group.target %>
+        </div>
+    </div>
+  </div>
+  <div class="group-member-rightside">
+    <%= link_to "メンバ一覧", group_group_member_index_path(@group.id) %>
+    &emsp;
+    <%= link_to "メニュー達成状況", menu_status_group_member_path(@group.id) %>
+    <% if admin_user?(@group.id, current_user.id) %>
+        <br>
+        <%= link_to "グループ設定", setting_group_member_path(@group.id) %>
+        &emsp;
+        <%= link_to "加入申請", request_index_group_member_path(@group.id) %>
+    <% end %>
+    <div class="group-member-todaymenu">
+        今日のメニュー
+        <div class="group-member-todaymenu-box">
+        </div>
+    </div>
+    <div class="group-member-chat">
+        グループ内チャット
+        <div class="group-member-chat-box">
+            
+        </div>
+    </div>
+  
+  </div>
+</div>

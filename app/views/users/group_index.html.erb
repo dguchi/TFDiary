@@ -1,2 +1,14 @@
-<h1>Users#group-index</h1>
-<p>Find me in app/views/users/group-index.html.erb</p>
+<h2>所属グループ一覧</h2>
+<p>
+    <%= link_to "新規グループ作成", new_group_path %>
+</p>
+<div id="group-index">
+    グループ数(<%= @groups.count %>)
+    <% @groups.each do |group| %>
+        <div class="affiliation-group">
+            <%= image_tag group.image, :size => "50x50" %>
+            &emsp;
+            <%= link_to group.name, top_group_member_path(group.id) %>
+        </div>
+    <% end %>
+</div>

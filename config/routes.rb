@@ -49,7 +49,8 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       get :search
-      get :follow
+      post :follow
+      patch :follow_cancel
     end
     
     member do
@@ -61,6 +62,8 @@ Rails.application.routes.draw do
         get :top
         get :menu_confirm
         get :setting
+        get :menu_status
+        get :request_index
       end
     end
   end

@@ -1,2 +1,23 @@
-<h1>GroupMember#index</h1>
-<p>Find me in app/views/group_member/index.html.erb</p>
+<h2>メンバ一覧</h2>
+<div id="member-index">
+    メンバ数(<%= @members.count %>)
+    <% @members.each do |member| %>
+        <div class="member-user">
+            <%= image_tag member.image, :size => "50x50" %>
+            &emsp;
+            <%= link_to member.name, user_path(member.id) %>
+            &emsp;
+            <% case member.id %>
+            <% when @group.leader_id then %>
+                リーダー
+            <% when @group.subleader_id1, @group.subleader_id2, @group.subleader_id3 then %>
+                サブリーダー
+            <% when @group.manager_id1, @group.manager_id2 then %>
+                マネージャー
+            <% else %>
+                <!--処理なし-->
+            <% end %>
+        </div>
+    <% end %>
+</div>
+

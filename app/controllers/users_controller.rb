@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   end
 
   def group_index
+    @user = User.find(params[:id])
+    @groups = @user.following_groups
   end
   
   def change_image

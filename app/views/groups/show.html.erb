@@ -3,9 +3,9 @@
     <div class="group-name">
       <p><%= @group.name %></p>
     </div>
-    <div class="group-image div-center">
+    <div class="group-image">
       <%= image_tag @group.image, :size => "150x150" %>
-      <% if current_user.id == @group.leader_id %>
+      <% admin_user?(@group.id, current_user.id)  %>
         <br>
         <%= form_for @group, :url => change_image_group_path(@group.id), :html => {method: 'PATCH'} do |f| %>
           <%= f.label :image, :class => "ignore" %>
@@ -22,14 +22,26 @@
                 }
             });
         </script>
-      <% end %>
     </div>
   </div>
   <div class="group-link">
     <% if current_user.following?(@group) %>
         <%= link_to "グループページへ", top_group_member_path(@group.id) %>
     <% else %>
-        <%= link_to "加入申請", top_group_member_path(@group.id), :data => {:confirm => "加入申請しますか？"} %>
+      <% if !@request.user_id %>
+        <%= form_for @request, :url => {:action => "follow"} do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :group_id, :value => @group.id %>
+          <%= f.submit "加入申請", :data => {:confirm => "加入申請しますか？"} %>
+        <% end %>
+      <% else %>
+        加入申請中
+        <%= form_for @request, :url => {:action => "follow_cancel"} do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :group_id, :value => @group.id %>
+          <%= f.submit "キャンセル", :data => {:confirm => "キャンセルしますか？"} %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
   <div class="group-explain">
