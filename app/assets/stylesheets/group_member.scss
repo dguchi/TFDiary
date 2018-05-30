@@ -6,9 +6,10 @@
     text-align: center;
 }
 
-.group-member-leftside {
+.group-member-profile {
     width: 40%;
-    float: left;
+    margin: auto;
+    padding: 10px 0;
 
     .group-member-name {
     }
@@ -29,6 +30,7 @@
     
     .group-member-target-box {
         width: 80%;
+        height: 100px;
         margin: auto;
         border: solid 1px black;
         border-radius: 5px;
@@ -36,27 +38,32 @@
     }
 }
 
-.group-member-rightside {
+.group-member-menu {
     width: 60%;
-    float: left;
-    
+    margin: auto;
+    padding: 10px 0;
+
     .group-member-todaymenu {
-        width: 80%;
+        width: 60%;
+        padding: 10px 0px;
         margin: auto;
     }
     
     .group-member-todaymenu-box {
+        height: 100px;
         border: solid 1px black;
         border-radius: 5px;
         background: white;
     }
     
     .group-member-chat {
-        width: 80%;
+        width: 60%;
+        padding: 10px 0px;
         margin: auto;
     }
     
     .group-member-chat-box {
+        height: 100px;
         border: solid 1px black;
         border-radius: 5px;
         background: white;
@@ -86,4 +93,49 @@
     width: 60%;
     margin: auto;
     padding: 15px 0px;
+}
+
+.chat {
+    width: 90%;
+    margin: auto;
+    border-bottom: solid 2px silver;
+    padding: 10px;
+    text-align: left;
+    
+    .chat-user {
+        & img {
+            width: 25px;
+            height: 25px;
+            border-radius: 30px;
+        }
+    }
+    
+    .chat-content {
+        padding-left: 50px;
+    }
+}
+
+#group-chat {
+    width: 60%;
+    margin: auto;
+    
+    #group-chat-post {
+        width: 40%;
+        margin: auto;
+        padding: 10px 0px;
+        text-align: center;
+        
+        .chat-post {
+            padding: 5px 0px;
+        }
+    }
+    
+    #group-chat-box {
+        width: 80%;
+        margin: auto;
+        padding: 10px 0px;
+        border: solid 1px black;
+        border-radius: 5px;
+        background: white;
+    }
 }

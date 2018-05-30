@@ -1,7 +1,7 @@
 <div class="group-member-top">
-  <div class="group-member-leftside">
+  <div class="group-member-profile">
     <div class="group-member-name">
-      <p><%= @group.name %></p>
+      <p>グループ：<%= @group.name %></p>
     </div>
     <div class="group-member-image">
       <%= image_tag @group.image, :size => "150x150" %>
@@ -31,7 +31,7 @@
         </div>
     </div>
   </div>
-  <div class="group-member-rightside">
+  <div class="group-member-menu">
     <%= link_to "メンバ一覧", group_group_member_index_path(@group.id) %>
     &emsp;
     <%= link_to "メニュー達成状況", menu_status_group_member_path(@group.id) %>
@@ -47,9 +47,16 @@
         </div>
     </div>
     <div class="group-member-chat">
-        グループ内チャット
+        <%= link_to "グループチャット", chat_index_group_member_path(@group.id) %>
         <div class="group-member-chat-box">
-            
+            <% count = 1 %>
+            <% @group.chats.reverse_each do |chat| %>
+                <%= render "group_member/chat", {chat: chat} %>
+                <% count += 1 %>
+                <% if count > 5 %>
+                    <% break %>
+                <% end %>
+            <% end %>
         </div>
     </div>
   

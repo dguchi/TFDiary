@@ -1,0 +1,23 @@
+<h2>グループチャット</h2>
+<div id="group-chat">
+    <div id="group-chat-post">
+        <%= form_for @chat, :url => {:action => "post_chat"} do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.text_area :content, :size => "40×5", :class => "form-control" %>
+            <div class="chat-post">
+                <%= f.submit "投稿", :class => "btn btn-outline-primary" %>
+            </div>
+        <% end %>
+    </div>
+    <div id="group-chat-box">
+    <% if @group.chats.count == 0 %>
+        チャットの投稿はまだありません
+    <% else %>
+        <% @group.chats.reverse_each do |chat| %>
+            <% if chat.id != @chat.id %>
+                <%= render "group_member/chat", {chat: chat} %>
+            <% end %>
+        <% end %>
+    <% end %>
+    </div>
+</div>

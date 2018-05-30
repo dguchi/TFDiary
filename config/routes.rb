@@ -64,6 +64,9 @@ Rails.application.routes.draw do
         get :setting
         get :menu_status
         get :request_index
+        get :chat_index
+        post :post_chat
+        get :delete_chat
       end
     end
   end
