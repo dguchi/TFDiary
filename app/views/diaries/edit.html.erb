@@ -5,6 +5,10 @@
 
 <div class="diary-create">
     <%= form_for @diary, :url => {:action => 'update'} do |f| %>
+        <%= f.label :title, "タイトル", :class => "diary-label" %>
+        <br>
+        <%= f.text_field :title, :size => "40" %>
+        <br>
         <%= f.label :date, "日付", :class => "diary-label" %>
         <br>
         <%= f.date_field :date, value: Time.now.strftime("%Y-%m-%d") %>

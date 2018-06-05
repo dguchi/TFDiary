@@ -4,3 +4,6 @@
     <p><%= link_to "JOB割り当て", '#', :class => "btn btn-outline-warning" %></p>
     <p><%= link_to "グループ練習メニュー", new_group_group_diary_path(@group.id), :class => "btn btn-outline-success" %></p>
 </div>
+
+<%= render "group_member/return_link", id: @group.id %>
+

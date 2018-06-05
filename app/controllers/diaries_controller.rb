@@ -38,7 +38,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to diaries_path
+    redirect_to user_diaries_path(@diary.user_id)
   end
   
   def index
@@ -55,6 +55,7 @@ class DiariesController < ApplicationController
 private
   def diary_params
     params.require(:diary).permit(
+      :title,
       :date,
       :explain,
       diary_menus_attributes: [:id, :menu_id, :num, :set, :rest_min, :rest_sec, :_destroy]

@@ -2,12 +2,14 @@
     <%= @diary.date.year %> 年
     <%= @diary.date.month %> 月
     <%= @diary.date.day %> 日
+    &ensp;
+    <%= @diary.title %>
 </h2>
-<% if current_user.id == @diary.user_id %>
+<% if admin_user?(@group.id, current_user.id) %>
     <div id="diary-edit-link">
-        <%= link_to "編集", edit_diary_path(@diary.id) %>
+        <%= link_to "編集", edit_group_group_diary_path(:group_id => @group.id, :id => @diary.id) %>
         &ensp;
-        <%= link_to "削除", diary_path(@diary.id), :method => :delete, :data => {:confirm => "本当に削除しますか？"} %>
+        <%= link_to "削除", group_group_diary_path(:group_id => @group.id, :id => @diary.id), :method => :delete, :data => {:confirm => "本当に削除しますか？"} %>
     </div>
 <% end %>
 <div id="diary-detail">
@@ -39,4 +41,7 @@
     <div id="diary-detail-explain">
         <%= @diary.explain %>
     </div>
+
 </div>
+
+<%= render "group_member/return_link", id: @group.id %>

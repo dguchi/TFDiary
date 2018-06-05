@@ -38,10 +38,13 @@ class GroupDiariesController < DiariesController
   end
 
   def destroy
+    @diary = Diary.find(params[:id])
+    @group = Group.find(params[:group_id])
+    @diary.destroy
+    redirect_to group_group_diaries_path(@group.id)
   end
   
   def index
     @group = Group.find(params[:group_id])
-    @diaries = @group.diaries
   end
 end

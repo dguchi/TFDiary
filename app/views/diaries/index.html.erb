@@ -6,11 +6,11 @@
     <div id="index_calender">
     <%= month_calendar do |date| %>
       <% diaries = get_diary(@user, date) %>
-      <% if 0 == diaries.count %>
-          <%= date.day %>
-      <% else %>
+      <%= date.day %>
+      <br>
+      <% if 0 != diaries.count %>
         <% diaries.each do |diary| %>
-            <%= link_to date.day, diary_path(diary.id)  %>
+            <%= link_to diary.title, diary_path(diary.id)  %>
             <br>
         <% end %>
       <% end %>

@@ -24,7 +24,7 @@
     <div class="user-info div-center">
       <p><%= @user.name %></p>
       <% if @user.main_group_id %>
-      <p>所属グループ：<%= get_group(@user.main_group_id).name %></p>
+      <p>所属グループ：<%= link_to get_group(@user.main_group_id).name, top_group_member_path(get_group(@user.main_group_id).id) %></p>
       <% else %>
       <p>所属グループ：なし</p>
       <% end %>

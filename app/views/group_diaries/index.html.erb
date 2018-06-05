@@ -1,19 +1,22 @@
 
-<h2>過去の日誌</h2>
+<h2>グループ練習メニュー</h2>
 <br>
 
 <div id="index_calender_area">
     <div id="index_calender">
     <%= month_calendar do |date| %>
-      <% diaries = get_diary(@user, date) %>
-      <% if 0 == diaries.count %>
-          <%= date.day %>
-      <% else %>
+      <% diaries = get_diary_group(@group, date) %>
+      <%= date.day %>
+      <br>
+      <% if 0 != diaries.count %>
         <% diaries.each do |diary| %>
-            <%= link_to date.day, diary_path(diary.id)  %>
+            <%= link_to diary.title, group_group_diary_path(:group_id => @group.id, :id => diary.id)  %>
             <br>
         <% end %>
       <% end %>
     <% end %>
     </div>
+
+    <%= render "group_member/return_link", id: @group.id %>
+
 </div>

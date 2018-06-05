@@ -2,6 +2,8 @@
     <%= @diary.date.year %> 年
     <%= @diary.date.month %> 月
     <%= @diary.date.day %> 日
+    &ensp;
+    <%= @diary.title %>
 </h2>
 <% if current_user.id == @diary.user_id %>
     <div id="diary-edit-link">

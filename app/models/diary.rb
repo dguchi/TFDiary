@@ -7,6 +7,7 @@ class Diary < ActiveRecord::Base
     has_many :diary_menus, dependent: :destroy
     accepts_nested_attributes_for :diary_menus, allow_destroy: true, reject_if: :all_blank
     
+    validates :title, :presence => true
     validates :user_id_or_group_id, :presence => true
     validates :date, :presence => true
     
