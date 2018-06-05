@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @diaries = @user.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
   end
 
   def follow_index

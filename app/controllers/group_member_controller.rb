@@ -1,6 +1,7 @@
 class GroupMemberController < ApplicationController
   def top
     @group = Group.find(params[:id])
+    @diaries = @group.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
   end
 
   def index

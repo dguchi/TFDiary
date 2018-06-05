@@ -46,6 +46,12 @@
         &ensp;
         <%= link_to "メニュー一覧へ", group_group_diaries_path(@group.id) %>
         <div class="group-member-todaymenu-box">
+            <% @diaries.each do |diary| %>
+                <div class="group-todaymenu">
+                    <%= link_to diary.title, group_group_diary_path(@group.id, diary.id) %>
+                    <%= render "diaries/show_menu", diary: diary %>
+                </div>
+            <% end %>
         </div>
     </div>
     <div class="group-member-chat">
@@ -61,6 +67,5 @@
             <% end %>
         </div>
     </div>
-  
   </div>
 </div>

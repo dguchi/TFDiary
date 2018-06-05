@@ -24,7 +24,6 @@
         <%= f.hidden_field :group_id, :value => @group.id %>
         <%= f.submit "更新" %>
     <% end %>
-
-    <%= render "group_member/return_link", id: @group.id %>
-
 </div>
+
+<%= render "group_member/return_link", id: @group.id %>

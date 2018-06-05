@@ -85,7 +85,17 @@
     <div class="user-practice div-center">
         <div class="practice-box div-center">
             <span class="box-title">今日の練習メニュー</span>
-            <p>腹筋 100回 ✖️ 3セット</p>
+            <div class="group-member-todaymenu-box">
+                <% if @diaries.count == 0 %>
+                  登録無し
+                <% end %>
+                <% @diaries.each do |diary| %>
+                    <div class="group-todaymenu">
+                        <%= link_to diary.title, diary_path(diary.id) %>
+                        <%= render "diaries/show_menu", diary: diary %>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
   </div>

@@ -17,23 +17,7 @@
         メニュー内容
     </div>
     <div id="diary-detail-menu">
-        <ul>
-        <% @diary.diary_menus.each do |diary_menu| %>
-            <% menu = get_menu(diary_menu.menu_id) %>
-            <li>
-                <%= link_to menu.name, menu_path(menu.id) %>
-                <% if menu.drill? %>
-                    <%= diary_menu.num.to_s %> 回
-                <% else %>
-                    <%= diary_menu.num.to_s %> 本
-                <% end %>
-                <%= diary_menu.set.to_s %> セット
-                Rest
-                <%= diary_menu.rest_min %> 分
-                <%= diary_menu.rest_sec %> 秒
-            </li>
-        <% end %>
-        </ul>
+        <%= render "diaries/show_menu", diary: @diary %>
     </div>
     <div class="diary-column">
         説明
