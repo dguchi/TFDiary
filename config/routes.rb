@@ -60,7 +60,8 @@ Rails.application.routes.draw do
     resources :group_member, :only => [:index], shallow: true do
       member do
         get :top
-        get :menu_confirm
+        get :diary_index
+        get :diary_new
         get :setting
         get :menu_status
         get :request_index
@@ -69,6 +70,8 @@ Rails.application.routes.draw do
         get :delete_chat
       end
     end
+    
+    resources :group_diaries
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

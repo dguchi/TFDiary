@@ -1,0 +1,19 @@
+
+<h2>過去の日誌</h2>
+<br>
+
+<div id="index_calender_area">
+    <div id="index_calender">
+    <%= month_calendar do |date| %>
+      <% diaries = get_diary(@user, date) %>
+      <% if 0 == diaries.count %>
+          <%= date.day %>
+      <% else %>
+        <% diaries.each do |diary| %>
+            <%= link_to date.day, diary_path(diary.id)  %>
+            <br>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div>
+</div>

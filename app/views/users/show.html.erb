@@ -23,7 +23,11 @@
     </div>
     <div class="user-info div-center">
       <p><%= @user.name %></p>
-      <p>グループ：<%= @user.main_group_id %></p>
+      <% if @user.main_group_id %>
+      <p>所属グループ：<%= get_group(@user.main_group_id).name %></p>
+      <% else %>
+      <p>所属グループ：なし</p>
+      <% end %>
     </div>
   </div>
   <div class="user-notice div-center">

@@ -8,14 +8,11 @@ class GroupMemberController < ApplicationController
     @members = @group.user_followers
   end
 
-  def menu_confirm
-  end
-
-  def menu_status
-  end
-  
   def setting
     @group = Group.find(params[:id])
+  end
+  
+  def menu_status
   end
   
   def request_index

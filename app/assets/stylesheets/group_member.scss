@@ -50,10 +50,11 @@
     }
     
     .group-member-todaymenu-box {
-        height: 100px;
+        height: 150px;
         border: solid 1px black;
         border-radius: 5px;
         background: white;
+        overflow: scroll;
     }
     
     .group-member-chat {
@@ -63,10 +64,11 @@
     }
     
     .group-member-chat-box {
-        height: 100px;
+        height: 150px;
         border: solid 1px black;
         border-radius: 5px;
         background: white;
+        overflow: scroll;
     }
 }
 
@@ -112,6 +114,10 @@
     
     .chat-content {
         padding-left: 50px;
+        & p {
+            text-align: left;
+            margin: 0;
+        }
     }
 }
 

@@ -3,4 +3,8 @@ module GroupsHelper
         group = Group.find(group_id)
         (user_id == group.leader_id) || (user_id == group.subleader_id1) || (user_id == group.subleader_id2) || (user_id == group.subleader_id3)
     end
+    
+    def get_group(group_id)
+        Group.find(group_id)
+    end
 end
