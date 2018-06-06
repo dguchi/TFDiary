@@ -87,4 +87,10 @@ private
   def group_request_params
     params.require(:group_request).permit(:user_id, :group_id)
   end
+  
+  def search_params
+    params
+      .require(:search_group)
+      .permit(Search::Group::ATTRIBUTES)
+  end
 end
