@@ -27,7 +27,7 @@
     <div class="group-member-target">
         グループ目標
         <div class="group-member-target-box">
-            <%= @group.target %>
+            <%= simple_format(@group.target) %>
         </div>
     </div>
   </div>
@@ -46,6 +46,9 @@
         &ensp;
         <%= link_to "メニュー一覧へ", group_group_diaries_path(@group.id) %>
         <div class="group-member-todaymenu-box">
+            <% if @diaries.count == 0 %>
+              登録無し
+            <% end %>
             <% @diaries.each do |diary| %>
                 <div class="group-todaymenu">
                     <%= link_to diary.title, group_group_diary_path(@group.id, diary.id) %>

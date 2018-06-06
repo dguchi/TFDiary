@@ -23,7 +23,7 @@
         説明
     </div>
     <div id="diary-detail-explain">
-        <%= @diary.explain %>
+        <%= simple_format(@diary.explain) %>
     </div>
 </div>
 
@@ -64,7 +64,7 @@
                         <%= link_to "コメント削除", comment_path(comment.id), :method => 'DELETE' %>
                     <% end %>
                     <div class="comment-content">
-                        <%= comment.content %>
+                        <%= simple_format(comment.content) %>
                     </div>
                 </li>
             <% end %>

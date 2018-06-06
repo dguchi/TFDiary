@@ -39,7 +39,10 @@
             
             .comment-content {
                 padding-top: 5px;
-                padding-left: 10px;
+                padding-left: 50px;
+                & p {
+                    text-align: left;
+                }
             }
         }
         

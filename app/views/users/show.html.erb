@@ -90,7 +90,7 @@
                   登録無し
                 <% end %>
                 <% @diaries.each do |diary| %>
-                    <div class="group-todaymenu">
+                    <div class="user-todaymenu">
                         <%= link_to diary.title, diary_path(diary.id) %>
                         <%= render "diaries/show_menu", diary: diary %>
                     </div>
