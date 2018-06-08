@@ -16,6 +16,7 @@ class GroupMemberController < ApplicationController
 
   def menu_status
     # メニュー達成率の機能追加予定
+    @group = Group.find(params[:id])
   end
   
   def change_image

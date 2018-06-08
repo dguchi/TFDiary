@@ -60,6 +60,9 @@
     <div class="group-member-chat">
         <%= link_to "グループチャット", chat_index_group_member_path(@group.id) %>
         <div class="group-member-chat-box">
+            <% if @group.chats.count == 0 %>
+                チャットの投稿はまだありません。
+            <% end %>
             <% count = 1 %>
             <% @group.chats.reverse_each do |chat| %>
                 <%= render "group_member/chat", {chat: chat} %>
