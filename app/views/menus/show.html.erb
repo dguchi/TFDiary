@@ -36,7 +36,12 @@
         メニュー作成者
     </div>
     <div class="menu-author">
-        &emsp; <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
+        &emsp; 
+        <% if @author %>
+            <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
+        <% else %>
+            作成者は既に退会されています。
+        <% end %>
     </div>
     <div class="menu-column">
         メニュー説明

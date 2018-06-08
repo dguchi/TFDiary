@@ -1,0 +1,23 @@
+<h2>JOB割り当て</h2>
+<div id="member-index">
+    <% @members.each do |member| %>
+        <div class="member-user">
+            <div class="float-left">
+                <%= image_tag member.image, :size => "50x50" %>
+            </div>
+            <div class="float-left">
+            <div class="member-name float-left">
+                <%= link_to member.name, user_path(member.id) %>
+            </div>
+            <div class="member-job float-left">
+                <%= render "group_member/job", :member => member, :group => @group %>
+            </div>
+            <div class="member-button">
+                <%= render "group_member/job_button", :member => member, :group => @group %>
+            </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<%= render "group_member/return_link", id: @group.id %>

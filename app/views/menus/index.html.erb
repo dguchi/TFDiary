@@ -19,7 +19,9 @@
         <br>
         <%= f.submit "検索する" %>
     <% end %>
-    <br>
+    <p>
+        <%= button_to "新規メニュー作成", new_menu_path, {:method => :get, :class => "btn btn-primary"} %>
+    </p>
     <div class="menu-box">
         <ul>
         <% if @menus.count == 0 %>

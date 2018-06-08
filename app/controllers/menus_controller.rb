@@ -36,7 +36,7 @@ class MenusController < ApplicationController
   
   def show
     @menu = Menu.find(params[:id])
-    @author = User.find(@menu.author_id)
+    @author = User.find_by(id: @menu.author_id)
   end
   
   def search

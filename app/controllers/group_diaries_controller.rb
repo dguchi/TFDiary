@@ -1,4 +1,7 @@
 class GroupDiariesController < DiariesController
+  before_action :authenticate_user!
+  before_action :check_group_member
+
   def new
     @group = Group.find(params[:group_id])
     @diary = @group.diaries.build
@@ -47,4 +50,12 @@ class GroupDiariesController < DiariesController
   def index
     @group = Group.find(params[:group_id])
   end
+
+private
+  def check_group_member
+    if !view_context.current_user.following?(Group.find(params[:group_id]))
+      redirect_to root_path
+    end
+  end
+
 end

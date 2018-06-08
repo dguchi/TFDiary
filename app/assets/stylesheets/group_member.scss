@@ -55,6 +55,10 @@
         border-radius: 5px;
         background: white;
         overflow: scroll;
+        
+        .group-todaymenu li {
+            text-align: left;
+        }
     }
     
     .group-member-chat {
@@ -83,11 +87,28 @@
 .member-user {
     border-bottom: solid 2px silver;
     padding: 10px;
+    clear: both;
+    height: 90px;
     
     & img {
         width: 50px;
         height: 50px;
+        margin: 5px auto;
         border-radius: 30px;
+    }
+    
+    .member-name, .member-job {
+        width: 100px;
+        height: 30px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .member-button {
+        clear: both;
+        width: 400px;
+        height: 30px;
+        margin: auto;
     }
 }
 
@@ -150,4 +171,12 @@
     width: 50%;
     margin: 20px auto;
     text-align: right;
+}
+
+.assign-btn {
+    width: 120px;
+    height: 35px;
+    vertical-align: middle;
+    margin: 0px 5px;
+    float: left;
 }

@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @group = Group.new
   end
@@ -6,7 +8,9 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      view_context.current_user.follow(@group)
+      user = view_context.current_user
+      user.follow(@group)
+      user.update(:main_group_id => @group.id)
       redirect_to group_path(@group.id)
     else
       render :new
@@ -30,7 +34,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @request = GroupRequest.find_by(group_id: @group.id, user_id: view_context.current_user.id)
     if !@request
-      @request = GroupRequest.new
+      @request = @group.group_requests.build
     end
   end
   
@@ -58,7 +62,8 @@ class GroupsController < ApplicationController
   end
 
   def follow
-    @request = GroupRequest.new(group_request_params)
+    @group = Group.find(params[:id])
+    @request = @group.group_requests.build(group_request_params)
     if @request.save
       redirect_to group_path(@request.group_id)
     else
@@ -67,14 +72,12 @@ class GroupsController < ApplicationController
   end
   
   def follow_cancel
-    @request = GroupRequest.find_by(group_request_params)
-    group_id = @request.group_id
+    @group = Group.find(params[:id])
+    @request = @group.group_requests.find_by(group_request_params)
     @request.destroy
-    redirect_to group_path(group_id)
+    redirect_to group_path(@group.id)
   end
-  
-  def follow_approve
-  end
+
 private
   def group_params
     params.require(:group).permit(:name, :explain, :leader_id)
@@ -85,7 +88,7 @@ private
   end
   
   def group_request_params
-    params.require(:group_request).permit(:user_id, :group_id)
+    params.require(:group_request).permit(:user_id)
   end
   
   def search_params

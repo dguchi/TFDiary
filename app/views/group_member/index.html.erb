@@ -7,16 +7,7 @@
             &emsp;
             <%= link_to member.name, user_path(member.id) %>
             &emsp;
-            <% case member.id %>
-            <% when @group.leader_id then %>
-                リーダー
-            <% when @group.subleader_id1, @group.subleader_id2, @group.subleader_id3 then %>
-                サブリーダー
-            <% when @group.manager_id1, @group.manager_id2 then %>
-                マネージャー
-            <% else %>
-                <!--処理なし-->
-            <% end %>
+            <%= render "group_member/job", :member => member, :group => @group %>
         </div>
     <% end %>
 </div>

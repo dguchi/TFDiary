@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get :menu_index
       get :group_index
       get :regist_menu
+      get :set_main_group
     end
     
     resources :diaries, shallow: true do
@@ -49,11 +50,11 @@ Rails.application.routes.draw do
   resources :groups do
     collection do
       get :search
-      post :follow
-      patch :follow_cancel
     end
     
     member do
+      post :follow
+      patch :follow_cancel
       patch :change_image
     end
     
@@ -68,6 +69,10 @@ Rails.application.routes.draw do
         get :chat_index
         post :post_chat
         get :delete_chat
+        get :assign_job
+        patch :change_job
+        post :follow_approve
+        post :follow_reject
       end
     end
     

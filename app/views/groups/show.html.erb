@@ -29,16 +29,14 @@
         <%= link_to "グループページへ", top_group_member_path(@group.id) %>
     <% else %>
       <% if !@request.user_id %>
-        <%= form_for @request, :url => {:action => "follow"} do |f| %>
+        <%= form_for @request, :url => follow_group_path(@group.id) do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.hidden_field :group_id, :value => @group.id %>
           <%= f.submit "加入申請", :data => {:confirm => "加入申請しますか？"} %>
         <% end %>
       <% else %>
         加入申請中
-        <%= form_for @request, :url => {:action => "follow_cancel"} do |f| %>
+        <%= form_for @request, :url => follow_cancel_group_path(@group.id) do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.hidden_field :group_id, :value => @group.id %>
           <%= f.submit "キャンセル", :data => {:confirm => "キャンセルしますか？"} %>
         <% end %>
       <% end %>

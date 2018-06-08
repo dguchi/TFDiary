@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -57,3 +59,7 @@ gem "simple_calendar", "~> 2.0"
 gem 'nested_form_fields'
 gem 'devise'
 gem 'devise-i18n'
+gem 'faker'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+

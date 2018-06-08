@@ -70,4 +70,10 @@ class UsersController < ApplicationController
     view_context.current_user.stop_following(diary)
     render :nothing => true
   end
+  
+  def set_main_group
+    user = User.find(params[:id])
+    user.update(:main_group_id => params[:group_id])
+    redirect_to group_index_user_path(user.id)
+  end
 end

@@ -1,0 +1,5 @@
+<% if current_user.id == member_id %>
+    <%= f.submit "権限削除", :class => "btn btn-danger assign-btn", :data => {:confirm => "権限削除するとグループ設定にアクセスできなくなります。よろしいですか？"} %>
+<% else %>
+    <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+<% end %>

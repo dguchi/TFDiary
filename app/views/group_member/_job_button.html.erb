@@ -1,0 +1,82 @@
+<% if !admin_user?(group.id, member.id) %>
+    <div class="assign-leader">
+        <% if current_user.id == group.leader_id %>
+            <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+                <%= f.hidden_field :leader_id, :value => member.id %>
+                <%= f.submit "リーダー", :class => "btn btn-primary assign-btn", :data => {:confirm => "リーダー権限を移譲します。よろしいですか？"} %>
+            <% end %>
+        <% else %>
+            <div class="btn btn-default disabled assign-btn" onClick="alert('リーダー設定できるのはリーダーのみです')">
+                リーダー設定
+            </div>
+        <% end %>
+    </div>
+
+    <div class="assign-subleader">
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <% if !group.subleader_id1 %>
+                <%= f.hidden_field :subleader_id1, :value => member.id %>
+                <%= f.submit "サブリーダー", :class => "btn btn-primary assign-btn" %>
+            <% elsif !group.subleader_id2 %>
+                <%= f.hidden_field :subleader_id2, :value => member.id %>
+                <%= f.submit "サブリーダー", :class => "btn btn-primary assign-btn" %>
+            <% elsif !group.subleader_id3 %>
+                <%= f.hidden_field :subleader_id3, :value => member.id %>
+                <%= f.submit "サブリーダー", :class => "btn btn-primary assign-btn" %>
+            <% else %>
+                <div class="btn btn-default disabled assign-btn" onClick="alert('サブリーダーは3人までです')">
+                    サブリーダー
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+    
+    <div class="assign-manager">
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <% if !group.manager_id1 %>
+                <%= f.hidden_field :manager_id1, :value => member.id %>
+                <%= f.submit "マネージャー", :class => "btn btn-primary assign-btn" %>
+            <% elsif !group.manager_id2 %>
+                <%= f.hidden_field :manager_id2, :value => member.id %>
+                <%= f.submit "マネージャー", :class => "btn btn-primary assign-btn" %>
+            <% else %>
+                <button type="button" class="btn btn-primary assign-btn" onClick="alert('マネージャーは2人までです')">
+                    マネージャー
+                </button>
+            <% end %>
+        <% end %>
+    </div>
+<% else %>
+    <% if member.id == group.leader_id %>
+        &emsp;リーダーの方の権限操作はできません。
+    <% end %>
+    
+    <% if member.id == group.subleader_id1 %>
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <%= f.hidden_field :subleader_id1, :value => nil %>
+            <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+        <% end %>
+    <% elsif member.id == group.subleader_id2 %>
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <%= f.hidden_field :subleader_id2, :value => nil %>
+            <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+        <% end %>
+    <% elsif member.id == group.subleader_id3 %>
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <%= f.hidden_field :subleader_id3, :value => nil %>
+            <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+        <% end %>
+    <% end %>
+    
+    <% if member.id == group.manager_id1 %>
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <%= f.hidden_field :manager_id1, :value => nil %>
+            <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+        <% end %>
+    <% elsif  member.id == group.manager_id2 %>
+        <%= form_for group, :url => {:action => 'change_job'} do |f| %>
+            <%= f.hidden_field :manager_id2, :value => nil %>
+            <%= f.submit "権限削除", :class => "btn btn-danger assign-btn" %>
+        <% end %>
+    <% end %>
+<% end %>

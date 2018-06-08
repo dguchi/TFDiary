@@ -9,6 +9,12 @@
             <%= image_tag group.image, :size => "50x50" %>
             &emsp;
             <%= link_to group.name, top_group_member_path(group.id) %>
+            &emsp;
+            <% if @user.main_group_id == group.id %>
+                メイン所属グループ
+            <% else %>
+                <%= link_to "メイン所属グループに設定", set_main_group_user_path(@user.id, :group_id => group.id) %>
+            <% end %>
         </div>
     <% end %>
 </div>
