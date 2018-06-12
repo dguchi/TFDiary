@@ -1,0 +1,21 @@
+
+<h3><%= @group.name %>のメニューから追加</h3>
+<br>
+
+<div id="index_calender_area">
+    <div id="index_calender">
+    <%= month_calendar do |date| %>
+      <% diaries = get_diary_group(@group, date) %>
+      <%= date.day %>
+      <br>
+      <% if 0 != diaries.count %>
+        <% diaries.each do |diary| %>
+            <%= link_to diary.title, read_group_menu_user_diaries_path(@user.id, :diary_id => diary.id)  %>
+            <br>
+        <% end %>
+      <% end %>
+    <% end %>
+    </div>
+</div>
+
+<%= render "group_member/return_link", id: @group.id %>

@@ -51,6 +51,27 @@ class DiariesController < ApplicationController
     @comments = @diary.comments
     @comment = Comment.new
   end
+  
+  # def menu_squeeze
+  #   @user = User.find(params[:user_id])
+  #   @diary = @user.diaries.build(diary_params)
+  #   @menus = @user.following_by_type('Menu').where(:type => params[:type])
+  #   @menu_list = get_menu_list(@user)
+  #   render :new
+  # end
+
+  def select_group_menu
+    @user = User.find(params[:user_id])
+    @group = Group.find(@user.main_group_id)
+  end
+
+  def read_group_menu
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.build
+    @menu_list = get_menu_list(@user)
+    diary_menu_copy(@diary, @menu_list)
+    render :new
+  end
 
 private
   def diary_params
@@ -70,5 +91,21 @@ private
     end
     
     menu_list
+  end
+  
+  def diary_menu_copy(diary, menu_list)
+    diary_org = Diary.find(params[:diary_id])
+    diary_org.diary_menus.each do |diary_menu|
+      diary.diary_menus.build(:menu_id => diary_menu.menu_id,
+                              :num => diary_menu.num,
+                              :set => diary_menu.set,
+                              :rest_min => diary_menu.rest_min,
+                              :rest_sec => diary_menu.rest_sec)
+      
+      menu = Menu.find(diary_menu.menu_id)
+      if !menu_list.has_key?(menu.name)
+        menu_list[menu.name] = menu.id
+      end
+    end
   end
 end

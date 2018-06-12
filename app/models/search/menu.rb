@@ -9,7 +9,9 @@ class Search::Menu < Search::Base
     t = ::Menu.arel_table
     results = ::Menu.all
     results = results.where(contains(t[:name], name)) if name.present?
-    results = results.where(t[:kind].eq(kind)) if kind.present?
+    if Menu.kinds[:overall] != kind.to_i
+      results = results.where(t[:kind].eq(kind)) if kind.present?
+    end
     results
   end
 end

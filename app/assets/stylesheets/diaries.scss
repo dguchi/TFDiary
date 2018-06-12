@@ -229,3 +229,16 @@
 #diary-detail-explain p {
     text-align: left;
 }
+
+.column-field {
+    width: 60%;
+    height: 40px;
+    float: left;
+}
+
+.column-unit {
+    width: 40%;
+    height: 40px;
+    padding: 10px 0;
+    float: left;
+}

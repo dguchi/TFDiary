@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
+/* global $ */
+
+$(function(){
+    $('#menu-types').change(function(){
+    });
+});

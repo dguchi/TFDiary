@@ -7,7 +7,9 @@
         &emsp;
         <%= f.text_field :name %>
         <br>
-        <label><%= f.radio_button :kind, Menu.kinds[:run] ,{:checked => true}%>走</label>
+        <label><%= f.radio_button :kind, Menu.kinds[:overall] ,{:checked => true} %>全て</label>
+        &emsp;
+        <label><%= f.radio_button :kind, Menu.kinds[:run] %>走</label>
         &emsp;
         <label><%= f.radio_button :kind, Menu.kinds[:jump] %>跳</label>
         &emsp;

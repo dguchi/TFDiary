@@ -4,6 +4,7 @@
 <%= render "diaries/error_notice" %>
 
 <div class="diary-create">
+    <%= link_to "グループメニューから読み込み", select_group_menu_user_diaries_path(@user.id) %>
     <%= form_for @diary, :url => {:action => 'create'} do |f| %>
         <%= f.label :title, "タイトル", :class => "diary-label" %>
         <br>

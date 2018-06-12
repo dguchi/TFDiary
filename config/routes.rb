@@ -34,6 +34,12 @@ Rails.application.routes.draw do
     end
     
     resources :diaries, shallow: true do
+      collection do
+        get :menu_squeeze
+        get :select_group_menu
+        get :read_group_menu
+      end
+      
       # Comments
       resources :comments, :only => [:create, :destroy]
     end

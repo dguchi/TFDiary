@@ -3,17 +3,45 @@
     <tbody>
         <tr>
            <th>メニュー名</th>
-           <th>回数</th>
-           <th>セット数</th>
-           <th>レスト(分)</th>
-           <th>レスト(秒)</th>
+           <th>回数/セット数</th>
+           <th>レスト 分/秒</th>
+           <th></th>
         </tr>
         <%= f.nested_fields_for :diary_menus, wrapper_tag: :tr do |q| %>
-            <td><%= q.select :menu_id, @menu_list, class: 'form-control' %></td>
-            <td><%= q.number_field :num, :min => 0, class: 'form-control' %></td>
-            <td><%= q.number_field :set, :min => 0, class: 'form-control' %></td>
-            <td><%= q.number_field :rest_min, :min => 0, class: 'form-control' %></td>
-            <td><%= q.number_field :rest_sec, :sec => 0, class: 'form-control' %></td>
+            <!--メニュー名-->
+            <td>
+                <%= q.select :menu_id, @menu_list, class: 'form-control' %>
+            </td>
+            <!--回数/セット-->
+            <td>
+                <div class="column-field">
+                    <%= q.number_field :num, :min => 0, class: 'form-control' %>
+                </div>
+                <div class="column-unit">
+                    回
+                </div>
+                <div class="column-field">
+                    <%= q.number_field :set, :min => 0, class: 'form-control' %>
+                </div>
+                <div class="column-unit">
+                    セット
+                </div>
+            </td>
+            <!--レスト分/秒-->
+            <td>
+                <div class="column-field">
+                    <%= q.number_field :rest_min, :min => 0, class: 'form-control' %>
+                </div>
+                <div class="column-unit">
+                    分
+                </div>
+                <div class="column-field">
+                    <%= q.number_field :rest_sec, :min => 0, class: 'form-control' %>
+                </div>
+                <div class="column-unit">
+                    秒
+                </div>
+            </td>
             <td><%= q.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button' %></td>
         <% end %>
     </tbody>
