@@ -35,7 +35,8 @@ Rails.application.routes.draw do
     
     resources :diaries, shallow: true do
       collection do
-        get :menu_squeeze
+        post :add_all_menu
+        post :regist_menus
         get :select_group_menu
         get :read_group_menu
       end

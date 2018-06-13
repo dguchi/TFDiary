@@ -4,7 +4,6 @@
 <%= render "diaries/error_notice" %>
 
 <div class="diary-create">
-    <%= link_to "グループメニューから読み込み", select_group_menu_user_diaries_path(@user.id) %>
     <%= form_for @diary, :url => {:action => 'create'} do |f| %>
         <%= f.label :title, "タイトル", :class => "diary-label" %>
         <br>
@@ -16,6 +15,9 @@
         <br>
         <%= label :menu, "メニュー", :class => "diary-label" %>
         <br>
+        <button class="btn btn-primary" type="button" onClick="submitAction('<%= add_all_menu_user_diaries_path(@user.id) %>');">メニューの一括追加</button>
+        &emsp;
+        <%= link_to "グループメニューから読み込み", select_group_menu_user_diaries_path(@user.id), :class => "btn btn-primary" %>
         <%= render "diaries/diary_menu_fields", f: f %>
         <br>
         <%= f.label :explain, "説明", :class => "diary-label" %>

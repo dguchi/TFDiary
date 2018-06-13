@@ -17,6 +17,7 @@ ja:
         throw: 投
         drill: 補強・ドリル
         other: その他
+        overall: 全て
       secret:
         pub: 公開
         pri: 非公開

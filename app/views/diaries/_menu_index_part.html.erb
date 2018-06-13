@@ -1,0 +1,14 @@
+<ul class="list-group list-group-flush">
+<% if menus.count == 0 %>
+    <li class="list-group-item">
+        登録メニューがありません。
+    </li>
+<% else %>
+    <% menus.each do |menu| %>
+        <li class="list-group-item">
+            <%= check_box_tag "menu[#{menu.id}]" %>
+            <%= link_to menu.name, menu_path(menu.id) %>
+        </li>
+    <% end %>
+<% end %>
+</ul>

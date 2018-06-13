@@ -1,0 +1,60 @@
+<h2>メニュー一括追加</h2>
+<div class="add-menu-link">
+    <%= link_to "新規メニュー追加", new_menu_path, :class => "btn btn-primary" %>
+    &emsp;
+    <%= link_to "メニューを検索して登録", menus_path, :class => "btn btn-primary" %>
+</div>
+<%= form_tag regist_menus_user_diaries_path(@user.id), :method => :post do %>
+    <%= hidden_field :diary, :title, :value => @diary.title %>
+    <%= hidden_field :diary, :date, :value => @diary.date %>
+    <%= hidden_field :diary, :explain, :value => @diary.explain %>
+<div id="menu-index">
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#run-menu" role="button" aria-expanded="true" aria-controls="run-menu">走</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="run-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+            <%= render "diaries/menu_index_part", :menus => @menus_run %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#jump-menu" role="button" aria-expanded="false" aria-controls="jump-menu">跳</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="jump-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "diaries/menu_index_part", :menus => @menus_jump %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#throw-menu" role="button" aria-expanded="false" aria-controls="throw-menu">投</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="throw-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "diaries/menu_index_part", :menus => @menus_throw %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#drill-menu" role="button" aria-expanded="false" aria-controls="drill-menu">補強・サーキット</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="drill-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "diaries/menu_index_part", :menus => @menus_drill %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#other-menu" role="button" aria-expanded="false" aria-controls="other-menu">その他</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="other-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "diaries/menu_index_part", :menus => @menus_other %>
+        </div>
+    </div>
+</div>
+<div class="menu-add-submit">
+    <%= submit_tag "一括追加", :class => "btn btn-primary" %>
+</div>
+<% end %>

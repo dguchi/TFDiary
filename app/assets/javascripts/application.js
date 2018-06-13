@@ -17,8 +17,6 @@
 //= require nested_form_fields
 /* global $ */
 
-console.log("javascript read");
-
 function OnClickRegistMenu(menu_id) {
     var target = document.getElementById("menu-regist-button");
 
@@ -104,4 +102,9 @@ function OnClickDiaryFavorite(diary_id) {
             data: {diary_id: diary_id},
         });
     }
+}
+
+function submitAction(url) {
+    $('form').attr('action', url);
+    $('form').submit();
 }

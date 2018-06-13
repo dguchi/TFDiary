@@ -52,13 +52,23 @@ class DiariesController < ApplicationController
     @comment = Comment.new
   end
   
-  # def menu_squeeze
-  #   @user = User.find(params[:user_id])
-  #   @diary = @user.diaries.build(diary_params)
-  #   @menus = @user.following_by_type('Menu').where(:type => params[:type])
-  #   @menu_list = get_menu_list(@user)
-  #   render :new
-  # end
+  def add_all_menu
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.build(diary_params)
+    @menus_run = @user.following_menus.where(:kind => Menu.kinds[:run])
+    @menus_jump = @user.following_menus.where(:kind => Menu.kinds[:jump])
+    @menus_throw = @user.following_menus.where(:kind => Menu.kinds[:throw])
+    @menus_drill = @user.following_menus.where(:kind => Menu.kinds[:drill])
+    @menus_other = @user.following_menus.where(:kind => Menu.kinds[:other])
+  end
+  
+  def regist_menus
+    @user = User.find(params[:user_id])
+    @diary = @user.diaries.build(diary_params)
+    get_check_menu(@user, @diary)
+    @menu_list = get_menu_list(@user)
+    render :new
+  end
 
   def select_group_menu
     @user = User.find(params[:user_id])
@@ -91,6 +101,20 @@ private
     end
     
     menu_list
+  end
+  
+  def get_check_menu(user, diary)
+    menus = user.following_by_type('Menu')
+    menus.each do |menu|
+      logger.debug("************get_check_menu#{menu.id}**************")
+      if params[:menu]["#{menu.id}"]
+        diary.diary_menus.build(:menu_id => menu.id,
+                                :num => 0,
+                                :set => 0,
+                                :rest_min => 0,
+                                :rest_sec => 0)
+      end
+    end
   end
   
   def diary_menu_copy(diary, menu_list)

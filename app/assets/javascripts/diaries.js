@@ -4,7 +4,3 @@
 //= require_tree .
 /* global $ */
 
-$(function(){
-    $('#menu-types').change(function(){
-    });
-});
