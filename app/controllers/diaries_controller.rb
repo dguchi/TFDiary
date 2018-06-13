@@ -106,7 +106,6 @@ private
   def get_check_menu(user, diary)
     menus = user.following_by_type('Menu')
     menus.each do |menu|
-      logger.debug("************get_check_menu#{menu.id}**************")
       if params[:menu]["#{menu.id}"]
         diary.diary_menus.build(:menu_id => menu.id,
                                 :num => 0,
