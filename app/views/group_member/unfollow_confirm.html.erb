@@ -1,0 +1,22 @@
+<h2><%= @group.name %>から脱退</h2>
+
+<div class="group-unfollow-confirm">
+    <% if current_user.id == @group.leader_id %>
+        あなたは<strong>リーダー</strong>の為、グループから脱退することが出来ません。<br>
+        リーダー権限を移譲するか、他にメンバがいない場合は<br>
+        グループを削除して下さい<br>
+        <div class="group-unfollow-link">
+            <%= link_to "グループトップへ", top_group_member_path(@group.id) %>
+            &emsp;
+            <%= link_to "所属グループ一覧へ", group_index_user_path(current_user.id) %>
+        </div>
+    <% else %>
+        グループへ再加入するには、グループ管理者からの承認を得る必要があります。<br>
+        本当によろしいですか。<br>
+        <div class="group-unfollow-link">
+            <%= link_to "グループ一覧へ戻る", group_index_user_path(current_user.id) %>
+            &emsp;
+            <%= link_to "グループから脱退", unfollow_group_member(@group.id) %>
+        </div>
+    <% end %>
+</div>

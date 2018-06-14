@@ -83,6 +83,16 @@ class GroupMemberController < ApplicationController
     group.group_requests.find_by(user_id: user.id).destroy
     redirect_to request_index_group_member_path(group.id)
   end
+  
+  def unfollow_confirm
+    @group = Group.find(params[:id])
+  end
+
+  def unfollow
+    group = Group.find(params[:id])
+    view_context.current_user.stop_following(group)
+    redirect_to group_index_user_path(view_context.current_user.id)
+  end
 
 private
   def chat_params

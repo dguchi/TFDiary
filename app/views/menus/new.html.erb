@@ -5,18 +5,32 @@
 
 <div class="menu-create">
     <%= form_for @menu, :url => {:action => 'create'} do |f| %>
-        <%= f.label :name, "メニュー名" %>
-        <%= f.text_field :name %>
-        <br>
-        <%= f.label :kind, "分類" %>
-        <%= f.enum_select :kind %>
-        <br>
-        <%= f.label :explain, "メニューの説明" %>
-        <%= f.text_area :explain %>
-        <br>
-        <%= f.label :secret, "公開設定" %>
-        <%= f.enum_select :secret %>
-        <br>
-        <%= f.submit "登録する" %>
+        <div class="form-row">
+            <div class="col-auto form-margin">
+                <%= f.label :name, "メニュー名" %>
+                <%= f.text_field :name, :class => "form-control form-control-sm" %>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto form-margin">
+                <%= f.label :kind, "分類" %>
+                &emsp;
+                <%= f.enum_select :kind, :class => "form-control" %>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto form-margin">
+                <%= f.label :explain, "メニューの説明" %>
+                <%= f.text_area :explain, :class => "form-control form-control-lg" %>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto form-margin">
+                <%= f.label :secret, "公開設定" %>
+                &emsp;
+                <%= f.enum_select :secret, :class => "form-control" %>
+            </div>
+        </div>
+        <%= f.submit "登録する", :class => "btn btn-primary" %>
     <% end %>
 </div>

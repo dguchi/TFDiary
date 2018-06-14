@@ -5,13 +5,19 @@
 
 <div class="group-create">
     <%= form_for @group, :url => {:action => 'create'} do |f| %>
-        <%= f.label :name, "グループ名" %> <br>
-        <%= f.text_field :name %> <br>
-        <br>
-        <%= f.label :explain, "グループ説明" %> <br>
-        <%= f.text_area :explain, :size => "40×5" %> <br>
-        <br>
+        <div class="form-row align-items-center">
+            <div class="col-auto form-margin">
+                <%= f.label :name, "グループ名" %> <br>
+                <%= f.text_field :name, :class => "form-control" %> <br>
+            </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-auto form-margin">
+                <%= f.label :explain, "グループ説明" %> <br>
+                <%= f.text_area :explain, :size => "40×5", :class => "form-control" %> <br>
+            </div>
+        </div>
         <%= f.hidden_field :leader_id, :value => current_user.id %>
-        <%= f.submit "作成する" %>
+        <%= f.submit "作成する", :class => "btn btn-primary" %>
     <% end %>
 </div>

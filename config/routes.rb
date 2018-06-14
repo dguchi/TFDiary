@@ -80,6 +80,8 @@ Rails.application.routes.draw do
         patch :change_job
         post :follow_approve
         post :follow_reject
+        get :unfollow_confirm
+        get :unfollow
       end
     end
     

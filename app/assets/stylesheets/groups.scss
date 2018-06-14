@@ -6,6 +6,14 @@
     text-align: center;
 }
 
+.group-create {
+    width: 40%;
+    margin: auto;
+    .form-margin {
+        margin: 5px auto;
+    }
+}
+
 .group-box {
     border: solid 1px black;
     background-color: white;

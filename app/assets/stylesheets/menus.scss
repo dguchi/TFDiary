@@ -21,6 +21,14 @@
     text-align: center;
 }
 
+.menu-create {
+    width: 40%;
+    margin: auto;
+    .form-margin {
+        margin: 5px auto;
+    }
+}
+
 .menu-show {
     & ul {
         list-style-type: none;
