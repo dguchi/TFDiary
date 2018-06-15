@@ -1,12 +1,13 @@
 <h2>フォロワー一覧</h2>
 <div id="follower-index">
     フォロワー数(<%= @followers.count %>)
+    <ul class="list-group">
     <% @followers.each do |follower| %>
-        <div class="follower-user">
-            <%= image_tag follower.image, :size => "50x50" %>
+        <li class="list-group-item">
+            <%= image_tag follower.image, :size => "50x50", :class => "rounded-circle" %>
             &emsp;
             <%= link_to follower.name, user_path(follower.id) %>
-        </div>
+        </li>
     <% end %>
 </div>
 

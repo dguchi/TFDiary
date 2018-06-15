@@ -11,16 +11,20 @@
     <% end %>
     <br>
     <% if user_signed_in? %>
-        <%= link_to "新規グループ作成", new_group_path %><br>
+        <%= link_to "新規グループ作成", new_group_path, :class => "btn btn-primary" %><br>
         <br>
     <% end %>
     <div class="group-box">
-        <ul>
+        <ul class="list-group">
         <% if @groups.count == 0 %>
-            <li>グループが見つかりませんでした</li>
+            <li class="list-group-item">グループが見つかりませんでした</li>
         <% end %>
         <% @groups.each do |group| %>
-            <li><%= link_to group.name, group_path(group.id) %></li>
+            <li class="list-group-item">
+                <%= image_tag group.image, :size => "50x50", :class => "rounded-circle" %>
+                &ensp;
+                <%= link_to group.name, group_path(group.id) %>
+            </li>
         <% end %>
         </ul>
     </div>

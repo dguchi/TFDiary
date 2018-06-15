@@ -4,9 +4,10 @@
 </p>
 <div id="group-index">
     グループ数(<%= @groups.count %>)
+    <ul class="list-group">
     <% @groups.each do |group| %>
-        <div class="affiliation-group">
-            <%= image_tag group.image, :size => "50x50" %>
+        <li class="list-group-item">
+            <%= image_tag group.image, :size => "50x50", :class => "rounded-circle" %>
             &emsp;
             <%= link_to group.name, top_group_member_path(group.id) %>
             &emsp;
@@ -17,6 +18,6 @@
             <% end %>
             &emsp;
             <%= link_to "グループから抜ける", unfollow_confirm_group_member_path(group.id), :class => "btn btn-primary" %>
-        </div>
+        </li>
     <% end %>
 </div>
