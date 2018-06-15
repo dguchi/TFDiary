@@ -4,7 +4,7 @@
     &emsp;
     <%= link_to "メニューを検索して登録", menus_path, :class => "btn btn-primary" %>
 </div>
-<%= form_tag regist_menus_user_diaries_path(@user.id), :method => :post do %>
+<%= form_tag regist_menus_group_group_diaries_path(@group.id), :method => :post do %>
     <%= hidden_field :diary, :title, :value => @diary.title %>
     <%= hidden_field :diary, :date, :value => @diary.date %>
     <%= hidden_field :diary, :explain, :value => @diary.explain %>

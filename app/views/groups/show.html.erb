@@ -1,16 +1,14 @@
 <div class="group-show-body">
   <div class="group-profile">
     <div class="group-name">
-      <p><%= @group.name %></p>
+      <%= @group.name %>
     </div>
     <div class="group-image">
-      <%= image_tag @group.image, :size => "150x150" %>
-      <% admin_user?(@group.id, current_user.id)  %>
-        <br>
+      <% if admin_user?(@group.id, current_user.id) %>
         <%= form_for @group, :url => change_image_group_path(@group.id), :html => {method: 'PATCH'} do |f| %>
           <%= f.label :image, :class => "ignore" %>
-          <label for="group_image" class="square_btn">
-            画像選択
+          <label for="group_image" class="image-select">
+            <%= image_tag @group.image, :size => "150x150" %>
             <%= f.file_field :image, :class => "ignore" %>
           </label>
         <% end %>
@@ -22,6 +20,9 @@
                 }
             });
         </script>
+      <% else %>
+        <%= image_tag @group.image, :size => "150x150" %>
+      <% end %>
     </div>
   </div>
   <div class="group-link">

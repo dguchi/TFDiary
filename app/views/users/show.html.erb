@@ -1,13 +1,12 @@
 <div class="user-show-body">
   <div class="user-profile div-center">
     <div class="user-image div-center">
-      <%= image_tag @user.image, :size => "150x150" %>
       <% if current_user.id == @user.id %>
         <br>
         <%= form_for @user, :url => change_image_users_path, :html => {method: 'PATCH'} do |f| %>
           <%= f.label :image, :class => "ignore" %>
-          <label for="user_image" class="square_btn">
-            画像選択
+          <label for="user_image" class="image-select">
+            <%= image_tag @user.image, :size => "150x150" %>
             <%= f.file_field :image, :class => "ignore" %>
           </label>
         <% end %>
@@ -19,6 +18,8 @@
                 }
             });
         </script>
+      <% else %>
+        <%= image_tag @user.image, :size => "150x150" %>
       <% end %>
     </div>
     <div class="user-info div-center">

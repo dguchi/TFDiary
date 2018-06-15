@@ -85,7 +85,12 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :group_diaries
+    resources :group_diaries do
+      collection do
+        post :add_all_menu
+        post :regist_menus
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

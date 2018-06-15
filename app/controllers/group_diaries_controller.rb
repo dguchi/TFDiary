@@ -51,6 +51,26 @@ class GroupDiariesController < DiariesController
     @group = Group.find(params[:group_id])
   end
 
+  def add_all_menu
+    @group = Group.find(params[:group_id])
+    @user = view_context.current_user
+    @diary = @group.diaries.build(diary_params)
+    @menus_run = @user.following_menus.where(:kind => Menu.kinds[:run])
+    @menus_jump = @user.following_menus.where(:kind => Menu.kinds[:jump])
+    @menus_throw = @user.following_menus.where(:kind => Menu.kinds[:throw])
+    @menus_drill = @user.following_menus.where(:kind => Menu.kinds[:drill])
+    @menus_other = @user.following_menus.where(:kind => Menu.kinds[:other])
+  end
+
+  def regist_menus
+    @group = Group.find(params[:group_id])
+    @user = view_context.current_user
+    @diary = @group.diaries.build(diary_params)
+    get_check_menu(@user, @diary)
+    @menu_list = get_menu_list(@user)
+    render :new
+  end
+
 private
   def check_group_member
     if !view_context.current_user.following?(Group.find(params[:group_id]))
