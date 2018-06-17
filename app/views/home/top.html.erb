@@ -1,15 +1,14 @@
 <div class="home-body">
-    <p class="top-title text-success"><strong>TFDiary</strong></p>
     <%= image_tag asset_path("background.jpg"), :class => "top-image" %>
-    <div class="home-trans">
-        <div class="home-sentence">
-            <p>陸上競技専用の練習日記管理サービスです</p>
-            <br>
-            <p>グループで共有することで更に便利に</p>
-            <br>
-            <p>さあ、始めてみよう</p>
-            <br>
-            <p><%= link_to "新規登録", new_user_registration_path, :class => "btn btn-success btn-lg" %></p>
-        </div>
+    <div class="home-sentence text-white">
+        <div class="top-title text-success"><strong>TFDiary</strong></div>
+        <br>
+        <div class="d-none d-sm-block">陸上競技専用の練習日記管理サービスです</div>
+        <br>
+        <div class="d-none d-lg-block">グループで共有することで更に便利に</div>
+        <br>
+        <div class="d-none d-md-block">さあ、始めてみよう</div>
+        <br>
+        <p><%= link_to "新規登録", new_user_registration_path, :class => "btn btn-success btn-lg" %></p>
     </div>
 </div>

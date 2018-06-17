@@ -58,7 +58,6 @@ class UsersController < ApplicationController
   end
   
   def follow_diary
-    logger.debug("********follow_diary(#{params[:diary_id]})*********")
     diary = Diary.find(params[:diary_id])
     view_context.current_user.follow(diary)
     render :nothing => true
@@ -75,5 +74,23 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update(:main_group_id => params[:group_id])
     redirect_to group_index_user_path(user.id)
+  end
+  
+  def unregist_confirm
+  end
+  
+  def unregist
+    user = view_context.current_user
+    if user.valid_password?(params[:password])
+      # グループリーダーでない場合のみ退会可能
+      if !view_context.group_leader?(user.id)
+        user.soft_delete
+        sign_out(user)
+        redirect_to root_path
+      else
+        flash[:alert] = "所属しているグループのリーダーとなっています"
+        redirect_to unregist_confirm_users_path
+      end
+    end
   end
 end

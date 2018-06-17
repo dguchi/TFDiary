@@ -7,4 +7,13 @@ module GroupsHelper
     def get_group(group_id)
         Group.find(group_id)
     end
+    
+    def group_leader?(user_id)
+        ret = false
+        if Group.find_by(:leader_id => user_id)
+            ret = true
+        end
+        
+        ret
+    end
 end

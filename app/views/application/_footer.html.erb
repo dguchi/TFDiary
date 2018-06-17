@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li class="footer-link">
-          <%= link_to "利用規約", '#', :class => "text-white" %>
+          <%= link_to "利用規約", home_terms_path, :class => "text-white" %>
         </li>
         <li class="footer-link">
           <%= link_to "よくあるご質問", '#', :class => "text-white" %>
@@ -11,9 +11,11 @@
         <li class="footer-link">
           <%= link_to "お問い合わせ", '#', :class => "text-white" %>
         </li>
-        <li class="footer-link">
-          <%= link_to "退会について", '#', :class => "text-white" %>
-        </li>
+        <% if user_signed_in? %>
+          <li class="footer-link">
+            <%= link_to "退会について", unregist_confirm_users_path, :class => "text-white" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
     <div class="copy-right">

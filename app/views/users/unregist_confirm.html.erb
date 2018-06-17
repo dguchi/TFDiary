@@ -1,0 +1,24 @@
+<h2>退会について</h2>
+
+<div class="unregist_confirm">
+    <ul>
+        <li class="text-danger">
+            <strong>退会後はアカウントにアクセスできなくなります</strong>
+        </li>
+        <li>
+            グループリーダーとなっている場合は、<br>
+            <strong>リーダー権限を移譲</strong>してから退会してください
+        </li>
+    </ul>
+    <p>
+        本当に退会する場合はパスワードを入力し、<br>
+        「退会」ボタンを押してください
+    </p>
+    <%= form_tag unregist_users_path do %>
+        <div class="field">
+            <%= label_tag :password, "パスワード" %><br>
+            <%= password_field_tag :password %>
+        </div>
+        <%= submit_tag "退会", :class => "btn btn-danger" %>
+    <% end %>
+</div>

@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
   has_many :diaries, dependent: :destroy
   
   validates :name, :presence => true
+  
+  def soft_delete
+    update(deleted_at: Time.now)
+  end
+  
+  def active_for_authentication?
+    !deleted_at
+  end
+  
+  def inactive_message
+    !deleted_at ? super : :deleted_account
+  end
 end

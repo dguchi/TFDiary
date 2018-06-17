@@ -207,3 +207,15 @@
         }
     }
 }
+
+.unregist_confirm {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    
+    & ul {
+        list-style: none;
+        margin: 20px auto;
+        padding: 0;
+    }
+}

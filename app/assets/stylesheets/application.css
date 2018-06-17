@@ -23,6 +23,10 @@ h2, h3, p {
     text-align: center;
 }
 
+.notice p {
+   margin: 0; 
+}
+
 .body-content {
     overflow: scroll;
     padding-top: 10px;

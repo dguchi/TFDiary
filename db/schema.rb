@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180605010429) do
+ActiveRecord::Schema.define(version: 20180616015521) do
 
   create_table "chats", force: :cascade do |t|
     t.text     "content"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20180605010429) do
     t.string   "name"
     t.string   "image"
     t.integer  "main_group_id"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

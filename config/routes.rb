@@ -4,14 +4,26 @@ Rails.application.routes.draw do
   # Home
   get 'home/top'
   get 'home/tfdiary'
+  get 'home/terms'
 
-  devise_for :users, controllers: {
+  devise_for :users, :skip => [:registration], controllers: {
     confirmations: 'users/confirmations',
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords',
   }
   
+  devise_scope :user do
+    resource :registration,
+      only: [:new, :create, :edit, :update],
+      path: 'users',
+      path_names: { new: 'sign_up' },
+      controller: 'devise/registrations',
+      as: :user_registration do
+        get :cancel
+      end
+  end
+
   # Users
   resources :users, :only => [:show] do
     collection do
@@ -22,6 +34,8 @@ Rails.application.routes.draw do
       get :unfollow_user
       get :follow_diary
       get :unfollow_diary
+      get :unregist_confirm
+      post :unregist
     end
     
     member do

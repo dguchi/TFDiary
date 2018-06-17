@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home-body {
-    background-size: cover;
-    height: 900px;
+    // background-size: cover;
 }
 
 .home-tfdiary-body {
@@ -27,26 +26,24 @@
 }
 
 .top-title {
-    font-size: 30px;
+    font-size: 48px;
+    text-align: center;
     padding: 10px 0px;
     margin: 0;
 }
 
 .top-image {
     width: 100%;
-}
-
-.home-trans {
-    height: 100%;
-    background: rgba(255,255,255, 0.6);
+    filter: brightness(50%);
 }
 
 .home-sentence {
+    position: absolute;
+    width: 60%;
     height: 50%;
-
-    & p {
-        text-align: center;
-        font-size: 30px;
-        font-family: 'mplus-1c-regular';
-    }
+    top: 200px;
+    margin: auto 20%;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'mplus-1c-regular';
 }
