@@ -19,6 +19,11 @@ class UsersController < ApplicationController
   def menu_index
     @user = User.find(params[:id])
     @menus = @user.following_menus
+    @menus_run = @menus.where(:kind => Menu.kinds[:run])
+    @menus_jump = @menus.where(:kind => Menu.kinds[:jump])
+    @menus_throw = @menus.where(:kind => Menu.kinds[:throw])
+    @menus_drill = @menus.where(:kind => Menu.kinds[:drill])
+    @menus_other = @menus.where(:kind => Menu.kinds[:other])
   end
 
   def group_index

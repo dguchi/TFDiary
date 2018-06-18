@@ -79,3 +79,16 @@ footer {
 .clear {
     clear:both;
 }
+
+.terms-body p {
+    text-align: left;
+}
+
+.terms-body ul {
+    list-style-type: decimal;
+}
+
+.terms-body .child {
+    list-style-type: none;
+    padding: 0;
+}

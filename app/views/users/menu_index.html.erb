@@ -1,9 +1,48 @@
 <h2>登録メニュー一覧</h2>
 <div id="menu-index">
     登録メニュー数(<%= @menus.count %>)
-    <% @menus.each do |menu| %>
-        <div class="regist-menu">
-            <%= link_to menu.name, menu_path(menu.id) %>
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#run-menu" role="button" aria-expanded="true" aria-controls="run-menu">走</a>
         </div>
-    <% end %>
+        <div class="collapse" role="tabpanel" id="run-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="true">
+            <%= render "users/menu_index_part", :menus => @menus_run %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#jump-menu" role="button" aria-expanded="false" aria-controls="jump-menu">跳</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="jump-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "users/menu_index_part", :menus => @menus_jump %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#throw-menu" role="button" aria-expanded="false" aria-controls="throw-menu">投</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="throw-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "users/menu_index_part", :menus => @menus_throw %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#drill-menu" role="button" aria-expanded="false" aria-controls="drill-menu">補強・サーキット</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="drill-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "users/menu_index_part", :menus => @menus_drill %>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-secondary font-weight-bold" role="tab">
+            <a class="text-body text-white" data-toggle="collapse" href="#other-menu" role="button" aria-expanded="false" aria-controls="other-menu">その他</a>
+        </div>
+        <div class="collapse" role="tabpanel" id="other-menu" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
+            <%= render "users/menu_index_part", :menus => @menus_other %>
+        </div>
+    </div>
 </div>

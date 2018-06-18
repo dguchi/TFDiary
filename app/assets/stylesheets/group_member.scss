@@ -119,10 +119,7 @@
 }
 
 .chat {
-    width: 90%;
-    margin: auto;
-    border-bottom: solid 2px silver;
-    padding: 10px;
+    // border-bottom: solid 2px silver;
     text-align: left;
     
     .chat-user {
@@ -155,15 +152,6 @@
         .chat-post {
             padding: 5px 0px;
         }
-    }
-    
-    #group-chat-box {
-        width: 80%;
-        margin: auto;
-        padding: 10px 0px;
-        border: solid 1px black;
-        border-radius: 5px;
-        background: white;
     }
 }
 
