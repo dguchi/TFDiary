@@ -20,7 +20,9 @@
         <% end %>
     <% end %>
     </ul>
-
+    <div class="my-pagenate clearfix">
+        <%= paginate @group.chats %>
+    </div>
     <%= render "group_member/return_link", id: @group.id %>
 
 </div>

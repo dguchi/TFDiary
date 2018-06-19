@@ -101,7 +101,7 @@ private
       menu_list[menu.name] = menu.id
     end
     
-    menu_list
+    return menu_list
   end
   
   def get_check_menu(user, diary)

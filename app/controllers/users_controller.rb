@@ -13,12 +13,12 @@ class UsersController < ApplicationController
 
   def follow_index
     @user = User.find(params[:id])
-    @follows = @user.following_users
+    @follows = @user.following_users.page(params[:page]).per(20)
   end
 
   def follower_index
     @user = User.find(params[:id])
-    @followers = @user.user_followers
+    @followers = @user.user_followers.page(params[:page]).per(20)
   end
   
   def menu_index
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def group_index
     @user = User.find(params[:id])
-    @groups = @user.following_groups
+    @groups = @user.following_groups.page(params[:page]).per(20)
   end
   
   def change_image
@@ -96,6 +96,7 @@ class UsersController < ApplicationController
     if user.valid_password?(params[:password])
       # グループリーダーでない場合のみ退会可能
       if !view_context.group_leader?(user.id)
+        group_auth_delete(user.id)
         user.soft_delete
         sign_out(user)
         redirect_to root_path
@@ -119,5 +120,33 @@ private
     notice = User.find(diary.user_id).notices.build()
     notice.create_diary_favorite(user.name, diary_path(diary_id))
     notice.save
+  end
+  
+  # 退会時のグループ管理者権限削除
+  def group_auth_delete(user_id)
+    groups = Group.where(:subleader_id1 => user_id)
+    groups.each do |group|
+      group.update(subleader_id1: nil)
+    end
+    
+    groups = Group.where(:subleader_id2 => user_id)
+    groups.each do |group|
+      group.update(subleader_id2: nil)
+    end
+    
+    groups = Group.where(:subleader_id3 => user_id)
+    groups.each do |group|
+      group.update(subleader_id3: nil)
+    end
+    
+    groups = Group.where(:manager_id1 => user_id)
+    groups.each do |group|
+      group.update(manager_id1: nil)
+    end
+    
+    groups = Group.where(:manager_id2 => user_id)
+    groups.each do |group|
+      group.update(manager_id2: nil)
+    end
   end
 end

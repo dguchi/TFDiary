@@ -14,6 +14,9 @@
             <%= link_to "拒否", follow_reject_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-danger" %>
         </div>
     <% end %>
+    <div class="my-pagenate clearfix">
+        <%= paginate @requests %>
+    </div>
 </div>
 
 <%= render "group_member/return_link", id: @group.id %>

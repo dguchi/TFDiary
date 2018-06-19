@@ -97,3 +97,9 @@ footer {
     list-style-type: none;
     padding: 0;
 }
+
+.my-pagenate {
+    width: 40%;
+    margin: 10px auto;
+    float: right;
+}

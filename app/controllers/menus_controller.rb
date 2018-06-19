@@ -28,7 +28,7 @@ class MenusController < ApplicationController
   
   def index
     @menu = Search::Menu.new
-    @menus = Menu.all.order(created_at: :asc)
+    @menus = Menu.all.order(created_at: :asc).page(params[:page]).per(10)
   end
   
   def destroy

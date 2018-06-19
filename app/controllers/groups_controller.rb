@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
   
   def index
     @group = Search::Group.new
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(10)
   end
 
   def destroy

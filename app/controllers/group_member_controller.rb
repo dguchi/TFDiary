@@ -11,7 +11,7 @@ class GroupMemberController < ApplicationController
 
   def index
     @group = Group.find(params[:group_id])
-    @members = @group.user_followers
+    @members = @group.user_followers.page(params[:page]).per(20)
   end
 
   def menu_status
@@ -28,7 +28,7 @@ class GroupMemberController < ApplicationController
   
   def chat_index
     @group = Group.find(params[:id])
-    @chats = @group.chats
+    @chats = @group.chats.page(params[:page]).per(30)
     @chat = @group.chats.build
   end
   
@@ -56,7 +56,7 @@ class GroupMemberController < ApplicationController
   
   def request_index
     @group = Group.find(params[:id])
-    @requests = @group.group_requests
+    @requests = @group.group_requests.page(params[:page]).per(20)
   end
 
   def assign_job

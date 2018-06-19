@@ -48,6 +48,7 @@ group :development do
 end
 
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'bcrypt'
@@ -60,6 +61,4 @@ gem 'nested_form_fields'
 gem 'devise'
 gem 'devise-i18n'
 gem 'faker'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 
