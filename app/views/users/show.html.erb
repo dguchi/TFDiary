@@ -37,6 +37,7 @@
         <p>タイムライン</p>
         <div class="timeline-box div-center">
           <div class="timeline-area div-center">
+            <%= render "users/timeline", :notices => @user.notices %>
           </div>
         </div>
       </div>

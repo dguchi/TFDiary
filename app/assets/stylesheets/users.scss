@@ -32,7 +32,7 @@
         width: 90%;
         clear: both;
         .user-timeline {
-            width: 40%;
+            width: 50%;
             padding: 20px 30px;
             
             & p {
@@ -43,17 +43,15 @@
             .timeline-box {
                 width: 100%; /* ボックスの幅 */
                 background-color: #ffffff; /* ボックスの背景色 */
-                border: 1px #c0c0c0 solid; /* ボックスの境界線 */
+                // border: 1px #c0c0c0 solid; /* ボックスの境界線 */
                 font-size: 80%; /* ボックスの文字サイズ */
-                border-radius: 10px;
+                // border-radius: 10px;
                 margin: 0 auto;
     
                 .timeline-area {
-                    height: 120px; /* 本文領域の高さ */
+                    height: 150px; /* 本文領域の高さ */
                     overflow: auto;
-                    p {
-                        margin: 1em 10px; /* 段落のマージン（上下、左右） */
-                    }
+                    text-align: left;
                 }
             }
         }

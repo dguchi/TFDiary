@@ -36,6 +36,7 @@ class GroupMemberController < ApplicationController
     @group = Group.find(params[:id])
     @chat = @group.chats.build(chat_params)
     if @chat.save
+      create_chat_notice(@group)
       redirect_to chat_index_group_member_path(@group.id)
     else
       render :chat_index
@@ -74,6 +75,7 @@ class GroupMemberController < ApplicationController
     user = User.find(params[:user_id])
     user.follow(group)
     group.group_requests.find_by(user_id: user.id).destroy
+    create_addmember_notice(group, user)
     redirect_to request_index_group_member_path(group.id)
   end
 
@@ -119,5 +121,23 @@ private
   
   def change_job_params
     params.require(:group).permit(:leader_id, :subleader_id1, :subleader_id2, :subleader_id3, :manager_id1, :manager_id2)
+  end
+  
+  # メンバ追加通知
+  def create_addmember_notice(group, user)
+    group.user_followers.each do |member|
+      notice = member.notices.build()
+      notice.create_group_addmember(group.name, user.name, group_group_member_index_path(group.id))
+      notice.save
+    end
+  end
+
+  # チャット投稿通知
+  def create_chat_notice(group)
+    group.user_followers.each do |member|
+      notice = member.notices.build()
+      notice.create_group_chat(group.name, chat_index_group_member_path(group.id))
+      notice.save
+    end
   end
 end

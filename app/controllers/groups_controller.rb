@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_edit_params)
+      create_update_notice(@group)
       flash[:notice] = "グループ情報を更新しました"
       redirect_to top_group_member_path(@group.id)
     else
@@ -96,5 +97,14 @@ private
     params
       .require(:search_group)
       .permit(Search::Group::ATTRIBUTES)
+  end
+  
+  # グループ情報更新通知
+  def create_update_notice(group)
+    group.user_followers.each do |member|
+      notice = member.notices.build()
+      notice.create_group_updateinfo(group.name, top_group_member_path(group.id))
+      notice.save
+    end
   end
 end

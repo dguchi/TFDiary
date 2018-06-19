@@ -1,0 +1,7 @@
+<ul class="list-group list-unstyled">
+    <% notices.reverse_each do |notice| %>
+        <li class="list-group-item">
+            <%= link_to notice.msg, notice.link %>
+        </li>
+    <% end %>
+</ul>

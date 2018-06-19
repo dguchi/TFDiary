@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :confirmable
   
   has_many :diaries, dependent: :destroy
+  has_many :notices, dependent: :destroy
   
   validates :name, :presence => true
   

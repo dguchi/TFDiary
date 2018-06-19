@@ -12,6 +12,7 @@ class GroupDiariesController < DiariesController
     @group = Group.find(params[:group_id])
     @diary = @group.diaries.build(diary_params)
     if @diary.save
+      create_menu_notice(@group, @diary.id)
       redirect_to group_group_diary_path(:group_id => @group.id, :id => @diary.id)
     else
       render :new
@@ -78,4 +79,12 @@ private
     end
   end
 
+  # グループメニュー配信通知
+  def create_menu_notice(group, diary_id)
+    group.user_followers.each do |member|
+      notice = member.notices.build()
+      notice.create_group_diary(group.name, group_group_diary_path(group.id, diary_id))
+      notice.save
+    end
+  end
 end

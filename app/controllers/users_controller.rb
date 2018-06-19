@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    group = Group.find(@user.main_group_id)
-    if group
+    if @user.main_group_id
+      group = Group.find(@user.main_group_id)
       @diaries = group.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
     else
       @diaries = @user.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   def follow_user
     user = User.find(params[:user_id])
     view_context.current_user.follow(user)
+    create_follow_notice(view_context.current_user, user)
     render :nothing => true
   end
   
@@ -70,6 +71,7 @@ class UsersController < ApplicationController
   def follow_diary
     diary = Diary.find(params[:diary_id])
     view_context.current_user.follow(diary)
+    create_follow_notice(view_context.current_user, diary)
     render :nothing => true
   end
   
@@ -102,5 +104,20 @@ class UsersController < ApplicationController
         redirect_to unregist_confirm_users_path
       end
     end
+  end
+  
+private
+  # フォロー時の通知
+  def create_follow_notice(user, follow)
+    notice = follow.notices.build()
+    notice.create_user_favorite(user.name, user_path(user.id))
+    notice.save
+  end
+  
+  # 日誌いいね時の通知
+  def create_diary_notice(user, diary)
+    notice = User.find(diary.user_id).notices.build()
+    notice.create_diary_favorite(user.name, diary_path(diary_id))
+    notice.save
   end
 end

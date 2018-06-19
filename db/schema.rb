@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616015521) do
+ActiveRecord::Schema.define(version: 20180619001825) do
 
   create_table "chats", force: :cascade do |t|
     t.text     "content"
@@ -93,6 +93,14 @@ ActiveRecord::Schema.define(version: 20180616015521) do
     t.boolean  "secret",               default: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.text     "msg"
+    t.string   "link"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

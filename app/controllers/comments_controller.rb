@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @diary = Diary.find(params[:diary_id])
     @comment = @diary.comments.build(comment_params)
     if @comment.save
+      create_diary_comment_notice(view_context.current_user, @diary)
       redirect_to diary_path(@diary.id)
     else
       render diary_path(@diary.id)
@@ -24,5 +25,12 @@ private
       :user_id,
       :content
     )
+  end
+
+  # 日誌コメント時の通知
+  def create_diary_comment_notice(user, diary)
+    notice = User.find(diary.user_id).notices.build()
+    notice.create_diary_comment(user.name, diary_path(diary.id))
+    notice.save
   end
 end

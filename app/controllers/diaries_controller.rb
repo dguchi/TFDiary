@@ -11,6 +11,7 @@ class DiariesController < ApplicationController
     @user = User.find(params[:user_id])
     @diary = @user.diaries.build(diary_params)
     if @diary.save
+      create_notice(@user, @diary.id)
       redirect_to diary_path(@diary.id)
     else
       @menu_list = get_menu_list(@user)
@@ -129,6 +130,15 @@ private
       if !menu_list.has_key?(menu.name)
         menu_list[menu.name] = menu.id
       end
+    end
+  end
+  
+  # フォロワーへ日誌生成通知
+  def create_notice(user, diary_id)
+    user.user_followers.each do |follower|
+      notice = follower.notices.build()
+      notice.create_user_diary(user.name, diary_path(diary_id))
+      notice.save
     end
   end
 end
