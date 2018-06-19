@@ -116,6 +116,11 @@
     width: 60%;
     margin: auto;
     padding: 15px 0px;
+    
+    .tab-content {
+        background: white;
+        border-radius: 5px;
+    }
 }
 
 .chat {

@@ -1,8 +1,8 @@
 <h2>グループ設定</h2>
 <div class="group-member-setting text-center">
-    <p><%= link_to "グループ情報を更新", edit_group_path(@group.id), :class => "btn btn-outline-primary" %></p>
-    <p><%= link_to "JOB割り当て", assign_job_group_member_path(@group.id), :class => "btn btn-outline-warning" %></p>
-    <p><%= link_to "グループ練習メニュー", new_group_group_diary_path(@group.id), :class => "btn btn-outline-success" %></p>
+    <%= link_to "グループ情報を更新", edit_group_path(@group.id), :class => "btn btn-primary" %>
+    <%= link_to "JOB割り当て", assign_job_group_member_path(@group.id), :class => "btn btn-warning" %>
+    <%= link_to "グループ練習メニュー", new_group_group_diary_path(@group.id), :class => "btn btn-success" %>
 </div>
 
 <%= render "group_member/return_link", id: @group.id %>

@@ -11,14 +11,21 @@
 }
 
 .tfdiary-image {
-    width: 45%;
+    width: 50%;
+    margin: 30px auto;
     border-radius: 10px;
-    float:left;
+    float: left;
+    
+    & img {
+        border: solid 1px black;
+        border-radius: 5px;
+        
+    }
 }
 
-.tfdiary-image-gap {
-    width: 10%;
-    float:left;
+.tfdiary-image-area {
+    width: 80%;
+    margin: auto;
 }
 
 .home-login {

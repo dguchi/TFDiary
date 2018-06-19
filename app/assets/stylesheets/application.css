@@ -19,7 +19,12 @@ header {
     height: 70px;
 }
 
-h2, h3, p {
+h3, p {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 10px;
     text-align: center;
 }
 
@@ -29,7 +34,7 @@ h2, h3, p {
 
 .body-content {
     overflow: scroll;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     padding-bottom: 100px;
 }
 

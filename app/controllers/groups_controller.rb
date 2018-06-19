@@ -24,6 +24,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_edit_params)
+      flash[:notice] = "グループ情報を更新しました"
       redirect_to top_group_member_path(@group.id)
     else
       render :edit

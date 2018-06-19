@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @diaries = @user.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
+    group = Group.find(@user.main_group_id)
+    if group
+      @diaries = group.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
+    else
+      @diaries = @user.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
+    end
   end
 
   def follow_index
