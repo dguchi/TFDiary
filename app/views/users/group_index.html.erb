@@ -3,7 +3,7 @@
     <%= link_to "新規グループ作成", new_group_path %>
 </p>
 <div id="group-index">
-    グループ数(<%= @groups.count %>)
+    <%= render "page_counter", :models => @groups %>
     <ul class="list-group">
     <% @groups.each do |group| %>
         <li class="list-group-item">

@@ -77,7 +77,7 @@ function OnClickFollowUser(user_id) {
 
 function OnClickDiaryFavorite(diary_id) {
     var target = document.getElementById("diary-favo");
-    var target_count = document.getElementById("diary-favorite-count");
+    var target_count = document.getElementById("diary-favorite-count-link");
     if ("diary-favorite-button" == target.className)
     {
         target.className = "diary-unfavorite-button";

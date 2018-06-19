@@ -1,0 +1,18 @@
+<h3 class="pt-2"><%= link_to @menu.name, menu_path(@menu.id) %>登録者一覧</h3>
+
+<div class="menu-register">
+    <%= render "page_counter", :models => @registers %>
+    <ul class="list-group">
+        <% @registers.each do |register| %>
+            <li class="list-group-item">
+                <%= image_tag register.image, :size => "50x50", :class => "rounded-circle" %>
+                &emsp;
+                <%= link_to register.name, user_path(register.id) %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+<div class="my-pagenate clearfix">
+    <%= paginate @registers %>
+</div>

@@ -53,6 +53,7 @@ class GroupsController < ApplicationController
     @groups =  @group
       .matches
       .order(name: :asc)
+      .page(params[:page]).per(20)
     render :index
   end
   

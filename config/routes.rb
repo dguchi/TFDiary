@@ -55,6 +55,10 @@ Rails.application.routes.draw do
         get :read_group_menu
       end
       
+      member do
+        get :favoriter_index
+      end
+      
       # Comments
       resources :comments, :only => [:create, :destroy]
     end
@@ -64,6 +68,10 @@ Rails.application.routes.draw do
   resources :menus do
     collection do
       get :search
+    end
+    
+    member do
+      get :register_index
     end
   end
 

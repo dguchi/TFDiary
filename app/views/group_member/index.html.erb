@@ -1,6 +1,6 @@
 <h2>メンバ一覧</h2>
 <div id="member-index">
-    メンバ数(<%= @members.count %>)
+    <%= render "page_counter", :models => @members %>
     <% @members.each do |member| %>
         <div class="member-user">
             <%= image_tag member.image, :size => "50x50" %>

@@ -36,7 +36,7 @@
     いいね！
     </div>
     <div id="diary-favorite-count">
-    <%= current_user.following_by_type('Diary').count %>件
+        <%= link_to "#{@diary.user_followers.count}件", favoriter_index_diary_path(@diary.id), :id => "diary-favorite-count-link" %>
     </div>
 </div>
 <div class="clear"></div>

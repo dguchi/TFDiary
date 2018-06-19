@@ -30,13 +30,13 @@
         このメニューを登録している人
     </div>
     <div class="menu-followers-num">
-        &emsp; <%= @menu.followers_by_type('User').count %>人
+        &emsp; <%= link_to "#{@menu.followers_by_type('User').count}人", register_index_menu_path(@menu.id) %>
     </div>
     <div class="menu-column">
         メニュー作成者
     </div>
     <div class="menu-author">
-        &emsp; 
+        &emsp;
         <% if @author && @author.active_for_authentication? %>
             <%= image_tag @author.image, :class => "author-img" %> &ensp; <%= link_to @author.name, user_path(@author.id) %>
         <% else %>

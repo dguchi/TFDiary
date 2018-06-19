@@ -84,6 +84,11 @@ class DiariesController < ApplicationController
     render :new
   end
 
+  def favoriter_index
+    @diary = Diary.find(params[:id])
+    @favoriters = @diary.user_followers.page(params[:page]).per(20)
+  end
+  
 private
   def diary_params
     params.require(:diary).permit(

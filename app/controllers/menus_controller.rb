@@ -28,7 +28,7 @@ class MenusController < ApplicationController
   
   def index
     @menu = Search::Menu.new
-    @menus = Menu.all.order(created_at: :asc).page(params[:page]).per(10)
+    @menus = Menu.all.order(created_at: :asc).page(params[:page]).per(20)
   end
   
   def destroy
@@ -39,11 +39,17 @@ class MenusController < ApplicationController
     @author = User.find_by(id: @menu.author_id)
   end
   
+  def register_index
+    @menu = Menu.find(params[:id])
+    @registers = @menu.user_followers.page(params[:page]).per(20)
+  end
+  
   def search
     @menu = Search::Menu.new(search_params)
     @menus =  @menu
       .matches
       .order(name: :asc)
+      .page(params[:page]).per(20)
     render :index
   end
 private

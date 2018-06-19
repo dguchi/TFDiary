@@ -1,0 +1,7 @@
+<% if 0 == models.length %>
+    <%= models.offset_value %>ー<%= models.offset_value + models.length %>件表示
+<% else %>
+    <%= models.offset_value + 1 %>ー<%= models.offset_value + models.length %>件表示
+<% end %>
+&ensp; / &ensp;
+全体<%= models.total_count %>件

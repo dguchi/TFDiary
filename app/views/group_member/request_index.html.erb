@@ -1,7 +1,7 @@
 <h2>加入申請一覧</h2>
 
 <div id="member-index">
-    申請数(<%= @requests.count %>)
+    <%= render "page_counter", :models => @requests %>
     <% @requests.each do |req| %>
         <div class="member-user">
             <% user = get_user(req.user_id) %>

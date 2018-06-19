@@ -76,7 +76,6 @@ class UsersController < ApplicationController
   end
   
   def unfollow_diary
-    logger.debug("********unfollow_diary(#{params[:diary_id]})*********")
     diary = Diary.find(params[:diary_id])
     view_context.current_user.stop_following(diary)
     render :nothing => true

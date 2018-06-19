@@ -1,6 +1,6 @@
 <h2>フォロワー一覧</h2>
 <div id="follower-index">
-    フォロワー数(<%= @followers.count %>)
+    <%= render "page_counter", :models => @followers %>
     <ul class="list-group">
     <% @followers.each do |follower| %>
         <li class="list-group-item">

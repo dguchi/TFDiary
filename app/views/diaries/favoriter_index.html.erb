@@ -1,0 +1,18 @@
+<h3 class="pt-2"><%= link_to @diary.title, diary_path(@diary.id) %>にいいねした人</h3>
+
+<div class="diary-favoriter">
+    <%= render "page_counter", :models => @favoriters %>
+    <ul class="list-group">
+        <% @favoriters.each do |favoriter| %>
+            <li class="list-group-item">
+                <%= image_tag favoriter.image, :size => "50x50", :class => "rounded-circle" %>
+                &emsp;
+                <%= link_to favoriter.name, user_path(favoriter.id) %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+<div class="my-pagenate clearfix">
+    <%= paginate @favoriters %>
+</div>
