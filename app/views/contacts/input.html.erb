@@ -1,0 +1,34 @@
+<h2>お問い合わせ</h2>
+
+<div class="contact-form">
+    <% if @contact.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <strong>入力内容にエラーがあります</strong>
+      <ul>
+        <% @contact.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+     
+    <%= form_for @contact, :url => contacts_confirm_path do |f| %>
+      <table class="table">
+        <tr>
+          <th>お名前</th>
+          <td><%= f.text_field :name, :class => 'form-control' %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.text_field :email, :class => 'form-control' %></td>
+        </tr>
+        <tr>
+          <th>お問い合わせ内容</th>
+          <td><%= f.text_area :message, :class => 'form-control' %></td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= f.submit '確認', :class => 'btn btn-primary' %>
+      </div>
+    <% end %>
+</div>

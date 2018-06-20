@@ -116,6 +116,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # Contact
+  get 'contacts/input'
+  post 'contacts/confirm'
+  post 'contacts/send_msg'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -28,7 +28,7 @@ class GroupMemberController < ApplicationController
   
   def chat_index
     @group = Group.find(params[:id])
-    @chats = @group.chats.page(params[:page]).per(30)
+    @chats = @group.chats.order(created_at: :desc).page(params[:page]).per(30)
     @chat = @group.chats.build
   end
   

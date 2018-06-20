@@ -10,19 +10,18 @@
         <% end %>
     </div>
     <ul class="list-group">
-    <% if @group.chats.count == 0 %>
+    <% if @chats.count == 0 %>
         <li class="list-group-item">チャットの投稿はまだありません</li>
     <% else %>
-        <% @group.chats.reverse_each do |chat| %>
+        <% @chats.each do |chat| %>
             <% if chat.id != @chat.id %>
                 <li class="list-group-item"><%= render "group_member/chat", {chat: chat} %></li>
             <% end %>
         <% end %>
     <% end %>
     </ul>
-    <div class="my-pagenate clearfix">
-        <%= paginate @group.chats %>
-    </div>
-    <%= render "group_member/return_link", id: @group.id %>
-
 </div>
+<div class="my-pagenate">
+    <%= paginate @chats %>
+</div>
+<%= render "group_member/return_link", id: @group.id %>
