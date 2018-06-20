@@ -6,35 +6,36 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name, "アカウント名" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="actions text-center">
     <%= link_to "利用規約", home_terms_path %>に同意して
-    <%= f.submit t('.sign_up') %>
+    <%= f.submit t('.sign_up'), :class => "btn btn-success" %>
   </div>
 <% end %>
 
-既にアカウントを持っている方は<%= render "devise/shared/links" %>
-
+  <div class="text-center">
+    既にアカウントを持っている方は<%= render "devise/shared/links" %>
+  </div>
 </div>

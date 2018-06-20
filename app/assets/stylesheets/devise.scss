@@ -1,5 +1,5 @@
 
-.new-register, .login-form {
+.login-form {
     text-align: center;
 }
 
@@ -16,4 +16,9 @@
         border-radius: 5px;
         cursor: pointer;
     }
+}
+
+.new-register, .edit-register, .registration-form {
+    width: 60%;
+    margin: auto;
 }
