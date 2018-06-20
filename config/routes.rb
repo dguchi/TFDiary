@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home/top'
   get 'home/tfdiary'
   get 'home/terms'
+  get 'home/questions'
 
   devise_for :users, :skip => [:registration], controllers: {
     confirmations: 'users/confirmations',

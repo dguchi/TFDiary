@@ -28,7 +28,7 @@ class MenusController < ApplicationController
   
   def index
     @menu = Search::Menu.new
-    @menus = Menu.all.order(created_at: :asc).page(params[:page]).per(20)
+    @menus = Menu.where(:secret => false).order(created_at: :asc).page(params[:page]).per(20)
   end
   
   def destroy
@@ -52,6 +52,7 @@ class MenusController < ApplicationController
       .page(params[:page]).per(20)
     render :index
   end
+
 private
   def menu_params
     params.require(:menu).permit(:name, :kind, :explain, :secret)
