@@ -6,7 +6,11 @@
 <% else %>
     <% menus.each do |menu| %>
         <li class="list-group-item">
-            <%= link_to menu.name, menu_path(menu.id) %>
+            <% if (current_user != menu.author_id) && (menu.secret) %>
+                <%= menu.name %>
+            <% else %>
+                <%= link_to menu.name, menu_path(menu.id) %>
+            <% end %>
         </li>
     <% end %>
 <% end %>

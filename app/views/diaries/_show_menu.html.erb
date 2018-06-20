@@ -2,7 +2,7 @@
 <% diary.diary_menus.each do |diary_menu| %>
     <% menu = get_menu(diary_menu.menu_id) %>
     <li>
-        <% if (current_user != diary.user_id) && (menu.secret) %>
+        <% if (current_user != menu.author_id) && (menu.secret) %>
             <%= menu.name %>
         <% else %>
             <%= link_to menu.name, menu_path(menu.id) %>
