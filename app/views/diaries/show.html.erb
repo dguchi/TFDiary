@@ -46,7 +46,7 @@
         <%= f.text_area :content, :size => "40x3", :class => "dialy-comment-input" %>
         <br>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.submit "投稿" %>
+        <%= f.submit "投稿", :class => "btn btn-primary" %>
     <% end %>
 
     <% if 0 == @comments.count %>

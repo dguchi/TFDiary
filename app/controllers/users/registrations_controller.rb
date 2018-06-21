@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    user = User.find_by(:email => params[:user][:email])
+    if !user.active_for_authentication?
+      user.destroy
+    end
+
+    super
+  end
 
   # GET /resource/edit
   # def edit

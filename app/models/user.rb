@@ -12,14 +12,14 @@ class User < ActiveRecord::Base
   has_many :diaries, dependent: :destroy
   has_many :notices, dependent: :destroy
   
-  validates :name, :presence => true
+  validates :name, :presence => true, :uniqueness => true
   
   def soft_delete
     update(deleted_at: Time.now)
   end
   
   def active_for_authentication?
-    !deleted_at
+    super && !deleted_at
   end
   
   def inactive_message

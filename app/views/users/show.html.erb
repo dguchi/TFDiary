@@ -93,7 +93,7 @@
                 <% end %>
                 <% @diaries.each do |diary| %>
                     <div class="group-todaymenu">
-                        <%= link_to diary.title, diary_path(diary.id) %>
+                        <%= link_to diary.title, group_group_diary_path(diary.group_id, diary.id) %>
                         <%= render "diaries/show_menu", diary: diary %>
                     </div>
                 <% end %>
