@@ -2,70 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.user-show-body {
-    text-align: center;
-    margin: 20px auto;
-
-    .user-profile {
-        height: 250px;
-        width: 90%;
-        .user-image {
-            padding: 0 30px;
-            width: 40%; /* ボックスの幅 */
+.user-profile {
+    .user-image {
+        padding: 0 30px;
+        width: 40%; /* ボックスの幅 */
+        
+        & p {
+            margin: 5px 0;
         }
         
-        .user-image img {
-          border-radius: 20px;
-        }
-        
-        .user-info {
-            width: 50%;
-            line-height: 200%;
-            
-            & p {
-                margin: 0;
+        #user-follow-button {
+            margin-bottom: 10px;
+            display: inline-block;
+            padding: 0.3em 1em;
+            text-decoration: none;
+            border: solid 2px #67c5ff;
+            border-radius: 3px;
+            transition: .4s;
+            &:hover {
+                cursor : pointer;
             }
+        }
+        
+        .follow {
+            background: #67c5ff;
+            color: white;
+        }
+        
+        .unfollow {
+            background: white;
+            color: #67c5ff;
         }
     }
     
-    .user-notice {
-        width: 90%;
-        clear: both;
-        .user-timeline {
-            width: 50%;
-            padding: 20px 30px;
-            
-            & p {
-                font-style: italic;
-                margin: 0;
-            }
-            
-            .timeline-box {
-                width: 100%; /* ボックスの幅 */
-                background-color: #ffffff; /* ボックスの背景色 */
-                // border: 1px #c0c0c0 solid; /* ボックスの境界線 */
-                font-size: 80%; /* ボックスの文字サイズ */
-                // border-radius: 10px;
-                margin: 0 auto;
+    .user-image img {
+      border-radius: 20px;
+    }
     
-                .timeline-area {
-                    height: 150px; /* 本文領域の高さ */
-                    overflow: auto;
-                    text-align: left;
-                }
-            }
+    .user-info {
+        width: 60%;
+        line-height: 200%;
+        
+        & p {
+            margin: 0;
         }
         
         .user-practice {
-            padding: 20px 30px;
-            width: 50%;
-
             .practice-box{
+                height: 160px;
                 position: relative;
-                margin: 2em 0;
+                margin: 1em 0;
                 padding: 0.5em 1em;
                 border: solid 3px #95ccff;
                 border-radius: 8px;
+                overflow: scroll;
             }
             
             .practice-box .box-title {
@@ -78,7 +68,7 @@
                 color: black;
                 font-weight: bold;
             }
-
+    
             .practice-box p {
                 margin: 0; 
                 padding: 0;
@@ -89,29 +79,22 @@
             }
         }
     }
-    
-    #user-follow-button {
-        display: inline-block;
-        padding: 0.3em 1em;
-        text-decoration: none;
-        border: solid 2px #67c5ff;
-        border-radius: 3px;
-        transition: .4s;
-        &:hover {
-            cursor : pointer;
-        }
-    }
-    
-    .follow {
-        background: #67c5ff;
-        color: white;
-    }
-    
-    .unfollow {
-        background: white;
-        color: #67c5ff;
-    }
+}
 
+.user-notice {
+    height: 350px;
+    clear: both;
+    overflow: scroll;
+    
+    .timeline-area {
+        text-align: left;
+    }
+}
+
+.user-show-body {
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
 }
 
 .div-center {
@@ -133,8 +116,10 @@
 }
 
 #follow-index, #follower-index, #group-index {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
+    padding-top: 20px;
+    text-align: left;
     
     & ul {
         border: solid 1px black;

@@ -1,16 +1,25 @@
-<h2>フォロワー一覧</h2>
-<div id="follower-index">
-    <%= render "page_counter", :models => @followers %>
-    <ul class="list-group">
-    <% @followers.each do |follower| %>
+<div class="user-show-body">
+  <%= render "users/user_header", :user => @user, :diaries => get_diaries(@user) %>
+  <%= render "users/user_nav", :user => @user %>
+  <div class="user-notice div-center">
+    <div id="follower-index">
+      <ul class="list-group">
+      <% @followers.each do |follower| %>
         <li class="list-group-item">
             <%= image_tag follower.image, :size => "50x50", :class => "rounded-circle" %>
             &emsp;
             <%= link_to follower.name, user_path(follower.id) %>
         </li>
-    <% end %>
-</div>
-
-<div class="my-pagenate clearfix">
-    <%= paginate @followers %>
+      <% end %>
+    </div>
+    
+    <div class="my-pagenate w-75 clearfix">
+      <div class="float-left">
+        <%= render "page_counter", :models => @followers %>
+      </div>
+      <div class="float-right">
+        <%= paginate @followers %>
+      </div>
+    </div>
+  </div>
 </div>

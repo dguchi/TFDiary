@@ -1,9 +1,7 @@
-
-<h2>過去の日誌</h2>
-<br>
-
-<div id="index_calender_area">
-    <div id="index_calender">
+<div class="user-show-body">
+  <%= render "users/user_header", :user => @user, :diaries => get_diaries(@user) %>
+  <%= render "users/user_nav", :user => @user %>
+  <div class="user-notice div-center">
     <%= month_calendar do |date| %>
       <% diaries = get_diary(@user, date) %>
       <%= date.day %>
@@ -15,5 +13,5 @@
         <% end %>
       <% end %>
     <% end %>
-    </div>
+  </div>
 </div>

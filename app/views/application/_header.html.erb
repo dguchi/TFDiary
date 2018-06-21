@@ -27,12 +27,6 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to "個人ページ", user_path(current_user.id), class:"dropdown-item" %>
                 <%= link_to "日誌作成", new_user_diary_path(current_user.id), class:"dropdown-item"  %>
-                <%= link_to "過去の日誌", user_diaries_path(current_user.id), class:"dropdown-item"  %>
-                <%= link_to "登録メニュー", menu_index_user_path(current_user.id), class:"dropdown-item"  %>
-                <%= link_to "フォロー一覧", follow_index_user_path(current_user.id), class:"dropdown-item"   %>
-                <%= link_to "フォロワー一覧", follower_index_user_path(current_user.id), class:"dropdown-item"   %>
-                <%= link_to "所属グループ一覧", "/users/#{current_user.id}/group_index", class:"dropdown-item"  %>
-                <%= link_to "ユーザー設定", edit_user_registration_path, class:"dropdown-item"  %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: "DELETE", class:"dropdown-item", class:"dropdown-item"  %>
               </div>
             </li>

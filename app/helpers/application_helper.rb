@@ -3,7 +3,7 @@ module ApplicationHelper
         time.strftime("%Y-%m-%d %H:%M")
     end
     
-    def active?(action_name)
-        return "active" if controller_name == params[:action]
+    def active_action?(action_name)
+        return "active" if action_name == params[:action]
     end
 end

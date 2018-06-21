@@ -1,5 +1,11 @@
-<h2>登録メニュー一覧</h2>
-<div id="menu-index">
+<div class="user-show-body">
+  <%= render "users/user_header", :user => @user, :diaries => get_diaries(@user) %>
+  <%= render "users/user_nav", :user => @user %>
+  <div class="user-notice">
+    <div class="my-3">
+      <%= link_to "新規メニュー作成", new_menu_path, :class => "btn btn-primary" %>
+    </div>
+    
     登録メニュー数(<%= @menus.count %>)
     <div class="card">
         <div class="card-header bg-secondary font-weight-bold" role="tab">
@@ -45,4 +51,5 @@
             <%= render "users/menu_index_part", :menus => @menus_other %>
         </div>
     </div>
+  </div>
 </div>

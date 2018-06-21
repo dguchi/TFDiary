@@ -1,27 +1,35 @@
-<h2>所属グループ一覧</h2>
-<p>
-    <%= link_to "新規グループ作成", new_group_path %>
-</p>
-<div id="group-index">
-    <%= render "page_counter", :models => @groups %>
-    <ul class="list-group">
-    <% @groups.each do |group| %>
-        <li class="list-group-item">
-            <%= image_tag group.image, :size => "50x50", :class => "rounded-circle" %>
-            &emsp;
-            <%= link_to group.name, top_group_member_path(group.id) %>
-            &emsp;
-            <% if @user.main_group_id == group.id %>
-                メイン所属グループ
-            <% else %>
-                <%= link_to "メイングループに設定", set_main_group_user_path(@user.id, :group_id => group.id), :class => "btn btn-primary" %>
-            <% end %>
-            &emsp;
-            <%= link_to "グループから抜ける", unfollow_confirm_group_member_path(group.id), :class => "btn btn-primary" %>
-        </li>
-    <% end %>
-</div>
+<div class="user-show-body">
+  <%= render "users/user_header", :user => @user, :diaries => get_diaries(@user) %>
+  <%= render "users/user_nav", :user => @user %>
+  <div class="user-notice mt-3">
+    <%= link_to "新規グループ作成", new_group_path, :class => "btn btn-primary" %>
 
-<div class="my-pagenate clearfix">
-    <%= paginate @groups %>
+    <div id="group-index">
+      <ul class="list-group">
+      <% @groups.each do |group| %>
+        <li class="list-group-item">
+          <%= image_tag group.image, :size => "50x50", :class => "rounded-circle" %>
+          &emsp;
+          <%= link_to group.name, top_group_member_path(group.id) %>
+          &emsp;
+          <% if @user.main_group_id == group.id %>
+              メイン所属グループ
+          <% else %>
+              <%= link_to "メイングループに設定", set_main_group_user_path(@user.id, :group_id => group.id), :class => "btn btn-primary" %>
+          <% end %>
+          &emsp;
+          <%= link_to "グループから抜ける", unfollow_confirm_group_member_path(group.id), :class => "btn btn-primary" %>
+        </li>
+      <% end %>
+    </div>
+
+    <div class="my-pagenate w-75 clearfix">
+      <div class="float-left">
+        <%= render "page_counter", :models => @groups %>
+      </div>
+      <div class="float-right">
+        <%= paginate @groups %>
+      </div>
+    </div>
+  </div>
 </div>

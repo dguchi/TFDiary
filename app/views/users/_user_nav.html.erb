@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to "タイムライン", user_path(user.id), :class => "nav-link #{active_action?('show')}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "練習日誌", user_diaries_path(user.id), :class => "nav-link #{active_action?('index')}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "メニュー", menu_index_user_path(user.id), :class => "nav-link #{active_action?('menu_index')}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "フォロー", follow_index_user_path(user.id), :class => "nav-link #{active_action?('follow_index')}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "フォロワー", follower_index_user_path(user.id), :class => "nav-link #{active_action?('follower_index')}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "グループ", group_index_user_path(user.id), :class => "nav-link #{active_action?('group_index')}" %>
+  </li>
+  <% if current_user.id == user.id %> 
+  <li class="nav-item">
+    <%= link_to "設定", edit_user_registration_path(user.id), :class => "nav-link #{active_action?('edit')}" %>
+  </li>
+  <% end %>
+</ul>

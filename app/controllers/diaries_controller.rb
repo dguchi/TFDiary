@@ -44,7 +44,6 @@ class DiariesController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
-    @diaries = @user.diaries
   end
 
   def show
@@ -137,7 +136,7 @@ private
       end
     end
   end
-  
+
   # フォロワーへ日誌生成通知
   def create_notice(user, diary_id)
     user.user_followers.each do |follower|
