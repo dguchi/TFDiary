@@ -1,77 +1,39 @@
-<div class="group-member-top">
-  <div class="group-member-profile">
-    <div class="group-member-name">
-      グループ：<%= @group.name %>
-    </div>
-    <div class="group-member-image">
-      <% if admin_user?(@group.id, current_user.id) %>
-        <%= form_for @group, :url => change_image_group_path(@group.id), :html => {method: 'PATCH'} do |f| %>
-            <%= f.label :image, :class => "ignore" %>
-            <label for="group_image" class="image-select">
-                <%= image_tag @group.image, :size => "150x150" %>
-                <%= f.file_field :image, :class => "ignore" %>
-            </label>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
+
+  <div class="group-contents">
+    <div class="group-chat clearfix">
+      <div class="group-chat-post mx-auto float-left">
+        <%= form_for @chat, :url => {:action => "post_chat"} do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.text_area :content, :size => "40×5", :class => "form-control" %>
+          <div class="chat-post">
+            <%= f.submit "投稿", :class => "btn btn-outline-primary" %>
+          </div>
         <% end %>
-        <script type="text/javascript">
-            $('input[type=file]').on('change', function (e) {
-                console.log(e.target.files);
-                if (e.target.files[0].size > 0) {
-                    $(this).parents('form').submit();
-                }
-            });
-        </script>
-      <% else %>
-        <%= image_tag @group.image, :size => "150x150" %>
-      <% end %>
-    </div>
-    <div class="group-member-target">
-        グループ目標
-        <div class="group-member-target-box">
-            <%= simple_format(@group.target) %>
-        </div>
-    </div>
-  </div>
-  <div class="group-member-menu">
-    <%= link_to "メンバ一覧", group_group_member_index_path(@group.id) %>
-    &emsp;
-    <%= link_to "メニュー達成状況", menu_status_group_member_path(@group.id) %>
-    <% if admin_user?(@group.id, current_user.id) %>
-        <br>
-        <%= link_to "グループ設定", setting_group_member_path(@group.id) %>
-        &emsp;
-        <%= link_to "加入申請", request_index_group_member_path(@group.id) %>
-    <% end %>
-    <div class="group-member-todaymenu">
-        今日のメニュー
-        &ensp;
-        <%= link_to "メニュー一覧へ", group_group_diaries_path(@group.id) %>
-        <div class="group-member-todaymenu-box">
-            <% if @diaries.count == 0 %>
-              登録無し
+      </div>
+      <div class="group-chat-index mx-auto float-left">
+        <ul class="list-group">
+        <% if @chats.count == 0 %>
+          <li class="list-group-item">チャットの投稿はまだありません</li>
+        <% else %>
+          <% @chats.each do |chat| %>
+            <% if chat.id != @chat.id %>
+              <li class="list-group-item"><%= render "group_member/chat", {chat: chat} %></li>
             <% end %>
-            <% @diaries.each do |diary| %>
-                <div class="group-todaymenu">
-                    <%= link_to diary.title, group_group_diary_path(@group.id, diary.id) %>
-                    <%= render "diaries/show_menu", diary: diary %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-    <div class="group-member-chat">
-        <%= link_to "グループチャット", chat_index_group_member_path(@group.id) %>
-        <ul class="list-group group-member-chat-box">
-            <% if @group.chats.count == 0 %>
-                <li class="list-group-item">チャットの投稿はまだありません</li>
-            <% end %>
-            <% count = 1 %>
-            <% @group.chats.reverse_each do |chat| %>
-                <li class="list-group-item"><%= render "group_member/chat", {chat: chat} %></li>
-                <% count += 1 %>
-                <% if count > 5 %>
-                    <% break %>
-                <% end %>
-            <% end %>
+          <% end %>
+        <% end %>
         </ul>
+        <div class="my-pagenate w-75 clearfix">
+          <div class="float-left">
+            <%= render "page_counter", :models => @chats %>
+          </div>
+          <div class="float-right">
+            <%= paginate @chats %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,22 +1,26 @@
-<h2>メンバ一覧</h2>
-<div id="member-index">
-    <% @members.each do |member| %>
-        <div class="member-user">
-            <%= image_tag member.image, :size => "50x50" %>
-            &emsp;
-            <%= link_to member.name, user_path(member.id) %>
-            &emsp;
-            <%= render "group_member/job", :member => member, :group => @group %>
-        </div>
-    <% end %>
-</div>
-<div class="my-pagenate w-50 clearfix">
-  <div class="float-left">
-    <%= render "page_counter", :models => @members %>
-  </div>
-  <div class="float-right">
-    <%= paginate @members %>
-  </div>
-</div>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
 
-<%= render "group_member/return_link", id: @group.id %>
+  <div class="group-contents">
+    <div id="member-index">
+        <% @members.each do |member| %>
+            <div class="member-user">
+                <%= image_tag member.image, :size => "50x50" %>
+                &emsp;
+                <%= link_to member.name, user_path(member.id) %>
+                &emsp;
+                <%= render "group_member/job", :member => member, :group => @group %>
+            </div>
+        <% end %>
+    </div>
+    <div class="my-pagenate w-50 clearfix">
+      <div class="float-left">
+        <%= render "page_counter", :models => @members %>
+      </div>
+      <div class="float-right">
+        <%= paginate @members %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -91,12 +91,9 @@ Rails.application.routes.draw do
     resources :group_member, :only => [:index], shallow: true do
       member do
         get :top
-        get :diary_index
-        get :diary_new
         get :setting
         get :menu_status
         get :request_index
-        get :chat_index
         post :post_chat
         get :delete_chat
         get :assign_job

@@ -1,0 +1,51 @@
+<div class="group-member-top clearfix">
+  <div class="group-member-left float-left">
+    <div class="group-member-image">
+      <% if admin_user?(group.id, current_user.id) %>
+        <%= form_for group, :url => change_image_group_path(group.id), :html => {method: 'PATCH'} do |f| %>
+          <%= f.label :image, :class => "ignore" %>
+          <label for="group_image" class="image-select">
+            <%= image_tag group.image, :size => "150x150" %>
+            <%= f.file_field :image, :class => "ignore" %>
+          </label>
+        <% end %>
+        <script type="text/javascript">
+          $('input[type=file]').on('change', function (e) {
+            console.log(e.target.files);
+            if (e.target.files[0].size > 0) {
+              $(this).parents('form').submit();
+            }
+          });
+        </script>
+      <% else %>
+        <%= image_tag group.image, :size => "150x150" %>
+      <% end %>
+    </div>
+    <div class="group-member-name">
+      グループ：<%= group.name %>
+    </div>
+  </div>
+
+  <div class="group-member-right float-left">
+    <div class="group-member-target">
+      グループ目標
+      <div class="group-member-target-box">
+        <%= simple_format(@group.target) %>
+      </div>
+    </div>
+    <div class="group-member-todaymenu">
+      今日のメニュー
+      <div class="group-member-todaymenu-box">
+        <% if diaries.count == 0 %>
+          <p>登録無し</p>
+        <% end %>
+        <% diaries.each do |diary| %>
+          <div class="group-todaymenu">
+            <%= link_to diary.title, group_group_diary_path(group.id, diary.id) %>
+            <%= render "diaries/show_menu", diary: diary %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

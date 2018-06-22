@@ -1,22 +1,25 @@
-<h2>加入申請一覧</h2>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
 
-<div id="member-index">
-    <%= render "page_counter", :models => @requests %>
-    <% @requests.each do |req| %>
+  <div class="group-contents">
+    <div id="member-index">
+      <%= render "page_counter", :models => @requests %>
+      <% @requests.each do |req| %>
         <div class="member-user">
-            <% user = get_user(req.user_id) %>
-            <%= image_tag user.image, :size => "50x50" %>
-            &emsp;
-            <%= link_to user.name, user_path(user.id) %>
-            &emsp;
-            <%= link_to "承認", follow_approve_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-primary" %>
-            &ensp;
-            <%= link_to "拒否", follow_reject_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-danger" %>
+          <% user = get_user(req.user_id) %>
+          <%= image_tag user.image, :size => "50x50" %>
+          &emsp;
+          <%= link_to user.name, user_path(user.id) %>
+          &emsp;
+          <%= link_to "承認", follow_approve_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-primary" %>
+          &ensp;
+          <%= link_to "拒否", follow_reject_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-danger" %>
         </div>
-    <% end %>
-    <div class="my-pagenate clearfix">
+      <% end %>
+      <div class="my-pagenate clearfix">
         <%= paginate @requests %>
+      </div>
     </div>
+  </div>
 </div>
-
-<%= render "group_member/return_link", id: @group.id %>

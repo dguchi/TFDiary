@@ -2,39 +2,95 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.group-member-top {
-    text-align: center;
+.group-member {
+    width: 80%;
+    margin: auto;
 }
 
-.group-member-profile {
+.group-member-top {
+    height: 220px;
+    margin: 20px 0;
+}
+
+.group-member-left {
     width: 40%;
     margin: auto;
     padding: 10px 0;
 
     .group-member-name {
+        text-align: center;
     }
     
     .group-member-image {
         padding: 0 30px;
         width: 60%;
         margin: auto;
+        text-align: center;
     }
     
     .group-member-image img {
       border-radius: 20px;
     }
+}
+
+.group-member-right {
+    width: 60%;
+    margin: auto;
     
     .group-member-target {
-        
+        width: 90%;
+        margin: auto;
     }
     
     .group-member-target-box {
-        width: 80%;
-        height: 100px;
-        margin: auto;
+        height: 80px;
         border: solid 1px black;
         border-radius: 5px;
         background: white;
+        overflow: scroll;
+    }
+
+    .group-member-todaymenu {
+        width: 90%;
+        padding: 10px 0px;
+        margin: auto;
+    }
+    
+    .group-member-todaymenu-box {
+        height: 80px;
+        border: solid 1px black;
+        border-radius: 5px;
+        background: white;
+        overflow: scroll;
+    }
+}
+
+.group-contents {
+    height: 400px;
+    padding: 20px 0;
+    overflow: scroll;
+    
+    .group-chat {
+        width: 80%;
+        margin: auto;
+
+        .group-chat-post {
+            width: 300px;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+            
+            .chat-post {
+                padding: 5px 0px;
+            }
+        }
+        
+        .group-chat-index {
+            width: 500px;
+            padding: 10px;
+            height: 360px;
+            overflow: scroll;
+        }
     }
 }
 
@@ -43,24 +99,6 @@
     margin: auto;
     padding: 10px 0;
 
-    .group-member-todaymenu {
-        width: 60%;
-        padding: 10px 0px;
-        margin: auto;
-    }
-    
-    .group-member-todaymenu-box {
-        height: 150px;
-        border: solid 1px black;
-        border-radius: 5px;
-        background: white;
-        overflow: scroll;
-        
-        .group-todaymenu li {
-            text-align: left;
-        }
-    }
-    
     .group-member-chat {
         width: 60%;
         padding: 10px 0px;
@@ -80,7 +118,7 @@
     border: solid 1px black;
     border-radius: 5px;
     background-color: white;
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -140,22 +178,6 @@
         & p {
             text-align: left;
             margin: 0;
-        }
-    }
-}
-
-#group-chat {
-    width: 60%;
-    margin: auto;
-    
-    #group-chat-post {
-        width: 40%;
-        margin: auto;
-        padding: 10px 0px;
-        text-align: center;
-        
-        .chat-post {
-            padding: 5px 0px;
         }
     }
 }

@@ -1,8 +1,12 @@
-<h2>メニュー達成状況</h2>
-<div class="menu-status">
-    <%= image_tag asset_path("icon/kojichu.png"), :size => "100x100" %>
-    <br>
-    今後のアップデートで実装予定です。お楽しみに！
-</div>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
 
-<%= render "group_member/return_link", id: @group.id %>
+  <div class="group-contents">
+    <div class="menu-status">
+      <%= image_tag asset_path("icon/kojichu.png"), :size => "100x100" %>
+      <br>
+      今後のアップデートで実装予定です。お楽しみに！
+    </div>
+  </div>
+</div>

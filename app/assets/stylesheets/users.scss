@@ -6,6 +6,7 @@
     .user-image {
         padding: 0 30px;
         width: 40%; /* ボックスの幅 */
+        text-align: center;
         
         & p {
             margin: 5px 0;
@@ -51,9 +52,9 @@
             .practice-box{
                 height: 160px;
                 position: relative;
-                margin: 1em 0;
+                margin-bottom: 1em;
                 padding: 0.5em 1em;
-                border: solid 3px #95ccff;
+                border: solid 1px black;
                 border-radius: 8px;
                 overflow: scroll;
             }

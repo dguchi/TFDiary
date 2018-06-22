@@ -6,7 +6,8 @@ class GroupMemberController < ApplicationController
   
   def top
     @group = Group.find(params[:id])
-    @diaries = @group.diaries.where(:date => Time.now.strftime("%Y-%m-%d"))
+    @chats = @group.chats.order(created_at: :desc).page(params[:page]).per(20)
+    @chat = @group.chats.build
   end
 
   def index
@@ -27,9 +28,6 @@ class GroupMemberController < ApplicationController
   end
   
   def chat_index
-    @group = Group.find(params[:id])
-    @chats = @group.chats.order(created_at: :desc).page(params[:page]).per(30)
-    @chat = @group.chats.build
   end
   
   def post_chat
@@ -37,9 +35,9 @@ class GroupMemberController < ApplicationController
     @chat = @group.chats.build(chat_params)
     if @chat.save
       create_chat_notice(@group)
-      redirect_to chat_index_group_member_path(@group.id)
+      redirect_to top_group_member_path(@group.id)
     else
-      render :chat_index
+      render :top
     end
   end
   

@@ -1,20 +1,26 @@
-<h2>グループ情報更新</h2>
-<div class="text-center w-50 p-3 m-auto">
-    <%= form_for @group do |f| %>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
+
+  <div class="group-contents">
+    <div class="w-75 p-3 m-auto">
+      <%= form_for @group do |f| %>
         <div class="form-group">
-            <%= f.label :name, "グループ名" %>
-            <%= f.text_field :name, :size => "30", :class => "form-control" %>
+          <%= f.label :name, "グループ名" %>
+          <%= f.text_field :name, :size => "30", :class => "form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :explain, "グループ説明" %>
-            <%= f.text_area :explain, :size => "40×5", :class => "form-control" %>
+          <%= f.label :explain, "グループ説明" %>
+          <%= f.text_area :explain, :size => "40×5", :class => "form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :target, "グループ目標" %>
-            <%= f.text_area :target, :size => "40×5", :class => "form-control" %>
+          <%= f.label :target, "グループ目標" %>
+          <%= f.text_area :target, :size => "40×5", :class => "form-control" %>
         </div>
-        <div class="button">
-            <%= f.submit "更新", :class => "btn btn-primary" %>
+        <div class="button text-center">
+          <%= f.submit "更新", :class => "btn btn-primary" %>
         </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

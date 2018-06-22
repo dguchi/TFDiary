@@ -33,15 +33,17 @@
       <% end %>
     </div>
     <div class="user-info div-center float-left">
+      <div class="text-left">
       <% if user.main_group_id %>
-        <p>所属グループ：<%= link_to get_group(user.main_group_id).name, top_group_member_path(get_group(user.main_group_id).id) %></p>
+        所属グループ：<%= link_to get_group(user.main_group_id).name, top_group_member_path(get_group(user.main_group_id).id) %>
       <% else %>
-        <p>所属グループ：なし</p>
+        所属グループ：なし
       <% end %>
+      </div>
       
       <div class="user-practice div-center">
+          <div class="text-left">今日の練習メニュー</div>
           <div class="practice-box div-center">
-              <span class="box-title">今日の練習メニュー</span>
               <div class="group-member-todaymenu-box">
                   <% if diaries.count == 0 %>
                     登録無し

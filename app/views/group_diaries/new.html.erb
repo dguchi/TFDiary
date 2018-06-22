@@ -1,10 +1,12 @@
-<h2>グループ練習メニュー作成</h2>
-<br>
+<div class="group-member">
+  <%= render "group_member/group_header", :group => @group, :diaries => get_diaries_group(@group) %>
+  <%= render "group_member/group_nav", :group => @group %>
 
-<%= render "diaries/error_notice" %>
-
-<div class="diary-create">
-    <%= form_for @diary, :url => {:action => 'create'} do |f| %>
+  <div class="group-contents">
+    <%= render "diaries/error_notice" %>
+    
+    <div class="diary-create">
+      <%= form_for @diary, :url => {:action => 'create'} do |f| %>
         <%= f.label :title, "タイトル", :class => "diary-label" %>
         <br>
         <%= f.text_field :title, :size => "40" %>
@@ -23,7 +25,7 @@
         <%= f.text_area :explain, :size => "40x10", :class => "dialy-explain-input" %>
         <br>
         <%= f.submit "作成", :class => "btn btn-success" %>
-    <% end %>
-
-    <%= render "group_member/return_link", id: @group.id %>
+      <% end %>
+    </div>
+  </div>
 </div>
