@@ -7,6 +7,9 @@
       <%= link_to "グループ情報を更新", edit_group_path(@group.id), :class => "list-group-item list-group-item-action" %>
       <%= link_to "JOB割り当て", assign_job_group_member_path(@group.id), :class => "list-group-item list-group-item-action" %>
       <%= link_to "グループ練習メニュー作成", new_group_group_diary_path(@group.id), :class => "list-group-item list-group-item-action" %>
+      <% if @group.leader_id == current_user.id %>
+        <%= link_to "グループ削除", group_path(@group.id), :method => "DELETE", :class => "list-group-item list-group-item-action", :data => {:confirm => "メニューやチャットが全て削除されます。本当によろしいですか？"} %>
+      <% end %>
     </div>
   </div>
 </div>

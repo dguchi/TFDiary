@@ -32,13 +32,13 @@
       <% if !@request.user_id %>
         <%= form_for @request, :url => follow_group_path(@group.id) do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.submit "加入申請", :data => {:confirm => "加入申請しますか？"} %>
+          <%= f.submit "加入申請", :data => {:confirm => "加入申請しますか？"}, :class => "btn btn-primary" %>
         <% end %>
       <% else %>
         加入申請中
         <%= form_for @request, :url => follow_cancel_group_path(@group.id) do |f| %>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= f.submit "キャンセル", :data => {:confirm => "キャンセルしますか？"} %>
+          <%= f.submit "キャンセル", :data => {:confirm => "キャンセルしますか？"}, :class => "btn btn-danger" %>
         <% end %>
       <% end %>
     <% end %>

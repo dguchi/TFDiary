@@ -27,9 +27,6 @@ class GroupMemberController < ApplicationController
     redirect_to top_group_member(@group.id)
   end
   
-  def chat_index
-  end
-  
   def post_chat
     @group = Group.find(params[:id])
     @chat = @group.chats.build(chat_params)
@@ -45,7 +42,7 @@ class GroupMemberController < ApplicationController
     @group = Group.find(params[:id])
     @chat = Chat.find(params[:chat_id])
     @chat.destroy
-    redirect_to chat_index_group_member_path(@group.id)
+    redirect_to top_group_member_path(@group.id)
   end
   
   def setting
@@ -71,9 +68,9 @@ class GroupMemberController < ApplicationController
   def follow_approve
     group = Group.find(params[:id])
     user = User.find(params[:user_id])
+    create_addmember_notice(group, user)
     user.follow(group)
     group.group_requests.find_by(user_id: user.id).destroy
-    create_addmember_notice(group, user)
     redirect_to request_index_group_member_path(group.id)
   end
 
@@ -134,7 +131,7 @@ private
   def create_chat_notice(group)
     group.user_followers.each do |member|
       notice = member.notices.build()
-      notice.create_group_chat(group.name, chat_index_group_member_path(group.id))
+      notice.create_group_chat(group.name, top_group_member_path(group.id))
       notice.save
     end
   end

@@ -16,7 +16,7 @@
         <div class="group-unfollow-link">
             <%= link_to "グループ一覧へ戻る", group_index_user_path(current_user.id) %>
             &emsp;
-            <%= link_to "グループから脱退", unfollow_group_member(@group.id) %>
+            <%= link_to "グループから脱退", unfollow_group_member_path(@group.id) %>
         </div>
     <% end %>
 </div>

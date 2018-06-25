@@ -4,7 +4,6 @@
 
   <div class="group-contents">
     <div id="member-index">
-      <%= render "page_counter", :models => @requests %>
       <% @requests.each do |req| %>
         <div class="member-user">
           <% user = get_user(req.user_id) %>
@@ -17,7 +16,12 @@
           <%= link_to "拒否", follow_reject_group_member_path(@group.id, :user_id => user.id), :method => "POST", :class => "btn btn-danger" %>
         </div>
       <% end %>
-      <div class="my-pagenate clearfix">
+    </div>
+    <div class="my-pagenate w-75 clearfix">
+      <div class="float-left">
+        <%= render "page_counter", :models => @requests %>
+      </div>
+      <div class="float-right">
         <%= paginate @requests %>
       </div>
     </div>

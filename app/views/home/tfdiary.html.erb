@@ -1,43 +1,40 @@
 <div class="home-tfdiary-body" %>
-    <h2>TFDiaryとは</h2>
-    <p>陸上競技者専用の練習日誌サービスです</p>
-    <p>日々の練習記録を簡単に管理できます</p>
-    <div class="tfdiary-image-area clearfix">
-        <div class="tfdiary-image">
-            <%= image_tag asset_path("diary-image1.png"), :size => "300x300" %>
-        </div>
-        <div class="tfdiary-image">
-            <%= image_tag asset_path("diary-image2.png"), :size => "300x300" %>
-        </div>
+  <h2>TFDiaryとは</h2>
+  <p>陸上競技者専用の練習日誌サービスです</p>
+  <p>日々の練習記録を簡単に管理できます</p>
+  <div class="tfdiary-image-area clearfix">
+    <div class="tfdiary-image">
+      <%= image_tag asset_path("diary-image1.png"), :size => "300x300" %>
     </div>
-    <h3>グループでの使用で更に便利に</h3>
-    <br>
-    <p>グループでTFDiaryを使用することで、</p>
-    <p>練習メニューの配信やチャット機能を使用できます</p>
-    <div class="tfdiary-image-area clearfix">
-        <div class="tfdiary-image">
-            <%= image_tag '#' %>
-        </div>
-        <div class="tfdiary-image">
-            <%= image_tag '#' %>
-        </div>
+    <div class="tfdiary-image">
+      <%= image_tag asset_path("diary-image2.png"), :size => "300x300" %>
     </div>
-    <h3>ユーザ全員でメニューを共有できます</h3>
-    <br>
-    <p>全てのメニューは登録され、誰でも参照することができます</p>
-    <p>また、他のユーザーをフォローすることで</p>
-    <p>そのユーザーのメニューを参照することができます</p>
-    <div class="tfdiary-image-area clearfix">
-        <div class="tfdiary-image">
-            <%= image_tag '#' %>
-        </div>
-        <div class="tfdiary-image">
-            <%= image_tag '#' %>
-        </div>
+  </div>
+  <h3>グループでの使用で更に便利に</h3>
+  <br>
+  <p>グループでTFDiaryを使用することで、</p>
+  <p>練習メニューの配信やチャット機能を使用できます</p>
+  <div class="tfdiary-image-area">
+    <div class="text-center">
+      <%= image_tag asset_path("group-image1.png"), :size => "450x300" %>
     </div>
-    <p>他にも便利な機能が多数</p>
-    <p>下のリンクから簡単にユーザ登録できます</p>
-    <p><%= link_to "新規登録", new_user_registration_path, :class => "btn btn-success btn-lg" %></p>
-    <br>
-    <br>
+  </div>
+  <h3>ユーザ全員でメニューを共有できます</h3>
+  <br>
+  <p>全てのメニューは登録され、誰でも参照することができます</p>
+  <p>また、他のユーザーをフォローすることで</p>
+  <p>そのユーザーのメニューを参照することができます</p>
+  <div class="tfdiary-image-area clearfix">
+    <div class="tfdiary-image">
+      <%= image_tag asset_path("menu-image1.png"), :size => "300x300" %>
+    </div>
+    <div class="tfdiary-image">
+      <%= image_tag asset_path("menu-image2.png"), :size => "300x300" %>
+    </div>
+  </div>
+  <p>他にも便利な機能が多数</p>
+  <p>下のリンクから簡単にユーザ登録できます</p>
+  <p><%= link_to "新規登録", new_user_registration_path, :class => "btn btn-success btn-lg" %></p>
+  <br>
+  <br>
 </div>

@@ -32,6 +32,10 @@ class MenusController < ApplicationController
   end
   
   def destroy
+    @menu = Menu.find(params[:id])
+    @menu.update(:secret => true)
+    view_context.current_user.stop_following(@menu)
+    redirect_to menus_path
   end
   
   def show
@@ -48,6 +52,7 @@ class MenusController < ApplicationController
     @menu = Search::Menu.new(search_params)
     @menus =  @menu
       .matches
+      .where(:secret => false)
       .order(name: :asc)
       .page(params[:page]).per(20)
     render :index

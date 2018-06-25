@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :check_destroy_user, only: [:destroy]
+  before_action :check_admin_user, only: [:edit, :update, :change_image]
+  
   def new
     @group = Group.new
   end
@@ -46,6 +48,10 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
+    group_member_unfollow(@group)
+    @group.destroy
+    redirect_to root_path
   end
   
   def search
@@ -100,12 +106,36 @@ private
       .permit(Search::Group::ATTRIBUTES)
   end
   
+  def group_member_unfollow(group)
+    group.user_followers.each do |user|
+      user.stop_following(group)
+      if user.main_group_id == group.id
+        user.update(:main_group_id => nil)
+      end
+    end
+  end
+  
   # グループ情報更新通知
   def create_update_notice(group)
     group.user_followers.each do |member|
       notice = member.notices.build()
       notice.create_group_updateinfo(group.name, top_group_member_path(group.id))
       notice.save
+    end
+  end
+  
+  # before action
+  
+  def check_destroy_user
+    group = Group.find(params[:id])
+    if view_context.current_user.id != group.leader_id
+        redirect_to root_path
+    end
+  end
+  
+  def check_admin_user
+    if !view_context.admin_user?(params[:id], view_context.current_user.id)
+      redirect_to root_path(params[:id])
     end
   end
 end
