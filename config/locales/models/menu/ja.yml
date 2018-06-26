@@ -7,7 +7,7 @@ ja:
         name: メニュー名
         explain: メニュー説明
         secret: 公開設定
-        type: 分類
+        kind: 分類
         
   enums:
     menu:
