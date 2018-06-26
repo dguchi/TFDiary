@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "TFDiary"
-set :repo_url, "git@github.com:dguchi/TFDiary"
+set :repo_url, "git@github.com:dguchi/TFDiary.git"
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
