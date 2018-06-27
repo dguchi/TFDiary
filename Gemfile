@@ -46,7 +46,7 @@ group :development do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  
+
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
@@ -54,7 +54,7 @@ group :development do
 end
 
 group :production, :staging do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.4.10'
   gem 'unicorn'
 end
 
@@ -72,4 +72,3 @@ gem 'nested_form_fields'
 gem 'devise'
 gem 'devise-i18n'
 gem 'faker'
-
