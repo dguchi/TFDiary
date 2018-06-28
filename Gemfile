@@ -46,13 +46,13 @@ group :development do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
-  gem 'capistrano'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
 end
+
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rbenv'
+gem 'capistrano3-unicorn'
 
 group :production, :staging do
   gem 'mysql2', '~> 0.4.10'
