@@ -43,10 +43,10 @@ namespace :deploy do
         within current_path do
                 # データベース作成のsqlセット
                 # データベース名はdatabase.ymlに設定した名前で
-                  sql = "CREATE DATABASE IF NOT EXISTS hoge_app_production;"
+                  sql = "CREATE DATABASE IF NOT EXISTS TFDiary_production;"
                   # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=root --password=root -e '#{sql}'"
+                execute "mysql --user=root --password=localdb -e '#{sql}'"
 
         end
       end
