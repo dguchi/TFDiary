@@ -20,6 +20,15 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+staging:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: TFDiary_production
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASS'] %>
+  socket: /var/lib/mysql/mysql.sock
+
 production:
   adapter: mysql2
   encoding: utf8

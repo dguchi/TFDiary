@@ -11,5 +11,4 @@ require "capistrano3/unicorn"
 install_plugin Capistrano::SCM::Git
 
 # taskを記述したファイルを読み込む用に設定。
-# なおデフォルトでは *.rakeとなっているのでもとの記述をそのまま使う場合は注意!！
-# Dir.glob("lib/capistrano/tasks/*.rb").each { |r| import r }
+Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
