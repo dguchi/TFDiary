@@ -4,8 +4,8 @@ class UserImagesUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # 画像の上限を700pxにする
   process :resize_to_limit => [700, 700]
