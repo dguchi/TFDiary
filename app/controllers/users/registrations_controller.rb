@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     user = User.find_by(:email => params[:user][:email])
-    if !user.active_for_authentication?
+    if (!user.nil?) && (!user.active_for_authentication?)
       user.destroy
     end
 
