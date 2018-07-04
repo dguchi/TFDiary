@@ -83,7 +83,7 @@ private
   def create_menu_notice(group, diary_id)
     group.user_followers.each do |member|
       notice = member.notices.build()
-      notice.create_group_diary(group.name, group_group_diary_path(group.id, diary_id))
+      notice.create_group_diary(group, group_group_diary_path(group.id, diary_id))
       notice.save
     end
   end

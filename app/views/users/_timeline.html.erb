@@ -1,6 +1,10 @@
 <ul class="list-group list-unstyled">
-    <% notices.reverse_each do |notice| %>
+    <% notices.each do |notice| %>
         <li class="list-group-item">
+            <% if notice.image_path %>
+                <%= image_tag notice.image_path, :size => "30x30", :class => "rounded-circle" %>
+                &ensp;
+            <% end %>
             <%= link_to notice.msg, notice.link %>
         </li>
     <% end %>

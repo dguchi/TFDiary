@@ -9,13 +9,17 @@ class DiariesController < ApplicationController
   
   def create
     @user = User.find(params[:user_id])
-    @diary = @user.diaries.build(diary_params)
-    if @diary.save
-      create_notice(@user, @diary.id)
-      redirect_to diary_path(@diary.id)
+    if view_context.current_user.id == @user.id
+      @diary = @user.diaries.build(diary_params)
+      if @diary.save
+        create_notice(@user, @diary.id)
+        redirect_to diary_path(@diary.id)
+      else
+        @menu_list = get_menu_list(@user)
+        render :new
+      end
     else
-      @menu_list = get_menu_list(@user)
-      render :new
+      redirect_to user_path(@user.id)
     end
   end
 
@@ -28,17 +32,23 @@ class DiariesController < ApplicationController
   def update
     @diary = Diary.find(params[:id])
     @user = User.find(@diary.user_id)
-    if @diary.update(diary_params)
-      redirect_to user_diaries_path(@user.id)
+    if @diary.user_id == @user.id
+      if @diary.update(diary_params)
+        redirect_to user_diaries_path(@user.id)
+      else
+        @menu_list = get_menu_list(@user)
+        render :edit
+      end
     else
-      @menu_list = get_menu_list(@user)
-      render :edit
+      redirect_to user_diaries_path(@user.id)
     end
   end
 
   def destroy
     @diary = Diary.find(params[:id])
-    @diary.destroy
+    if view_context.current_user.id == @diary.user_id
+      @diary.destroy
+    end
     redirect_to user_diaries_path(@diary.user_id)
   end
   
@@ -141,7 +151,7 @@ private
   def create_notice(user, diary_id)
     user.user_followers.each do |follower|
       notice = follower.notices.build()
-      notice.create_user_diary(user.name, diary_path(diary_id))
+      notice.create_user_diary(user, diary_path(diary_id))
       notice.save
     end
   end

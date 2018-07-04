@@ -22,6 +22,6 @@
         <%= f.text_area :explain, :size => "40x10", :class => "dialy-explain-input" %>
         <br>
         <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.submit "更新" %>
+        <%= f.submit "更新", :class => "btn btn-success" %>
     <% end %>
 </div>

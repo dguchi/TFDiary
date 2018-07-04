@@ -119,7 +119,7 @@ private
   def create_update_notice(group)
     group.user_followers.each do |member|
       notice = member.notices.build()
-      notice.create_group_updateinfo(group.name, top_group_member_path(group.id))
+      notice.create_group_updateinfo(group, top_group_member_path(group.id))
       notice.save
     end
   end

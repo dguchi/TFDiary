@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_current_user, :only => [:show]
   
   def show
     @user = User.find(params[:id])
+    @notices = @user.notices.order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def follow_index
@@ -101,18 +103,31 @@ class UsersController < ApplicationController
   end
   
 private
+  def check_current_user
+    unless view_context.current_user.id == params[:id].to_i
+      redirect_to user_diaries_path(params[:id])
+    end
+  end
+
   # フォロー時の通知
   def create_follow_notice(user, follow)
+    latest = follow.notices.order(created_at: :desc).first
     notice = follow.notices.build()
-    notice.create_user_favorite(user.name, user_path(user.id))
-    notice.save
+    notice.create_user_favorite(user, user_path(user.id))
+    unless latest.msg == notice.msg
+      notice.save
+    end
   end
   
   # 日誌いいね時の通知
   def create_diary_notice(user, diary)
-    notice = User.find(diary.user_id).notices.build()
-    notice.create_diary_favorite(user.name, diary_path(diary_id))
-    notice.save
+    diuser = User.find(diary.user_id)
+    latest = diuser.notices.order(created_at: :desc).first
+    notice = diuser.notices.build()
+    notice.create_diary_favorite(user, diary_path(diary_id))
+    unless latest.msg == notice.msg
+      notice.save
+    end
   end
   
   # 退会時のグループ管理者権限削除

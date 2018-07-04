@@ -2,6 +2,9 @@
   <%= render "users/user_header", :user => @user, :diaries => get_diaries(@user) %>
   <%= render "users/user_nav", :user => @user %>
   <div class="user-notice div-center">
+    <div class="my-3">
+      <%= link_to "日誌を作成", new_user_diary_path, :class => "btn btn-primary" %>
+    </div>
     <%= month_calendar do |date| %>
       <% diaries = get_diary(@user, date) %>
       <%= date.day %>

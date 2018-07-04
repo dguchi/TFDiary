@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :check_auther_action, :only => [:update, :destroy]
 
   def new
     @menu = Menu.new
@@ -28,12 +29,12 @@ class MenusController < ApplicationController
   
   def index
     @menu = Search::Menu.new
-    @menus = Menu.where(:secret => false).order(created_at: :asc).page(params[:page]).per(20)
+    @menus = Menu.where(:secret => Menu.secrets[:pub]).order(created_at: :desc).page(params[:page]).per(20)
   end
   
   def destroy
     @menu = Menu.find(params[:id])
-    @menu.update(:secret => true)
+    @menu.update(:secret => Menu.secrets[:pri])
     view_context.current_user.stop_following(@menu)
     redirect_to menus_path
   end
@@ -60,12 +61,19 @@ class MenusController < ApplicationController
 
 private
   def menu_params
-    params.require(:menu).permit(:name, :kind, :explain, :secret)
+    params.require(:menu).permit(:name, :kind, :explain)
   end
   
   def search_params
     params
       .require(:search_menu)
       .permit(Search::Menu::ATTRIBUTES)
+  end
+  
+  def check_auther_action
+    menu = Menu.find(params[:id])
+    unless menu.author_id == view_context.current_user.id
+      redirect_to menu_path(menu.id)
+    end
   end
 end

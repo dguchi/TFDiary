@@ -1,7 +1,9 @@
 <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to "タイムライン", user_path(user.id), :class => "nav-link #{active_action?('show')}" %>
-  </li>
+  <% if current_user.id == user.id %>
+    <li class="nav-item">
+      <%= link_to "お知らせ", user_path(user.id), :class => "nav-link #{active_action?('show')}" %>
+    </li>
+  <% end %>
   <li class="nav-item">
     <%= link_to "練習日誌", user_diaries_path(user.id), :class => "nav-link #{active_action?('index')}" %>
   </li>

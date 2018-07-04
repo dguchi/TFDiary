@@ -122,7 +122,7 @@ private
   def create_addmember_notice(group, user)
     group.user_followers.each do |member|
       notice = member.notices.build()
-      notice.create_group_addmember(group.name, user.name, group_group_member_index_path(group.id))
+      notice.create_group_addmember(group, user.name, group_group_member_index_path(group.id))
       notice.save
     end
   end
@@ -130,9 +130,12 @@ private
   # チャット投稿通知
   def create_chat_notice(group)
     group.user_followers.each do |member|
+      latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
-      notice.create_group_chat(group.name, top_group_member_path(group.id))
-      notice.save
+      notice.create_group_chat(group, top_group_member_path(group.id))
+      unless latest.msg == notice.msg
+        notice.save
+      end
     end
   end
 end

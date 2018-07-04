@@ -3,7 +3,16 @@
   <%= render "users/user_nav", :user => @user %>
   <div class="user-notice div-center">
     <div class="timeline-area div-center">
-      <%= render "users/timeline", :notices => @user.notices %>
+      <%= render "users/timeline", :notices => @notices %>
+    </div>
+  </div>
+
+  <div class="my-pagenate w-75 clearfix">
+    <div class="float-left">
+      <%= render "page_counter", :models => @notices %>
+    </div>
+    <div class="float-right">
+      <%= paginate @notices %>
     </div>
   </div>
 </div>

@@ -18,7 +18,6 @@
             <%= f.label :explain, "メニューの説明" %>
             <%= f.text_area :explain, :class => "form-control" %>
         </div>
-        <%= f.hidden_field :secret, :value => @menu.secret %>
         <div class="text-center">
             <%= f.submit "更新", :class => "btn btn-primary" %>
         </div>
