@@ -34,7 +34,12 @@
         <% end %>
         </ul>
     </div>
-    <div class="my-pagenate clearfix">
+    <div class="my-pagenate w-50 clearfix">
+      <div class="float-left">
+        <%= render "page_counter", :models => @menus %>
+      </div>
+      <div class="float-right">
         <%= paginate @menus %>
+      </div>
     </div>
 </div>
