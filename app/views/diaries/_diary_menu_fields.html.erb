@@ -1,12 +1,14 @@
 <div id="diary-menu-table">
 <table class="table table-bordered table-hover table-font">
-    <tbody>
+    <thead>
         <tr class="table-primary">
            <th>メニュー名</th>
            <th>回数/セット数</th>
            <th>レスト 分/秒</th>
            <th></th>
         </tr>
+    </thead>
+    <tbody id="sortdata">
         <%= f.nested_fields_for :diary_menus, wrapper_tag: :tr do |q| %>
             <!--メニュー名-->
             <td>
@@ -46,5 +48,11 @@
         <% end %>
     </tbody>
 </table>
+<script type="text/javascript">
+    jQuery(function($) {
+        $('#sortdata').sortable();
+    });
+</script>
+
 <%= f.add_nested_fields_link :diary_menus, 'メニュー追加', class: 'btn btn-primary', role: 'button' %>
 </div>

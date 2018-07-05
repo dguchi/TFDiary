@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180704075457) do
+ActiveRecord::Schema.define(version: 20180705055244) do
 
   create_table "chats", force: :cascade do |t|
     t.text     "content"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20180704075457) do
   create_table "diary_menus", force: :cascade do |t|
     t.integer  "diary_id"
     t.integer  "menu_id"
-    t.integer  "set"
-    t.integer  "num"
+    t.integer  "set",        default: 0
+    t.integer  "num",        default: 0
     t.integer  "rest_min",   default: 0
     t.integer  "rest_sec",   default: 0
     t.datetime "created_at",             null: false
