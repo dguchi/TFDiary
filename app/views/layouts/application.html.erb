@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>TFDiary</title>
+  <meta property="og:title" content="TFDiary" />
+  <meta property="og:image" content=<%= asset_path("preview_image.png") %>>
+  <meta property="og:description" content="陸上競技専用の練習日記管理サービス" />
+  
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
