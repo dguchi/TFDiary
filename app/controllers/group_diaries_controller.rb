@@ -12,7 +12,7 @@ class GroupDiariesController < DiariesController
     @group = Group.find(params[:group_id])
     @diary = @group.diaries.build(diary_params)
     if @diary.save
-      create_menu_notice(@group, @diary.id)
+      create_menu_notice(@group)
       redirect_to group_group_diary_path(:group_id => @group.id, :id => @diary.id)
     else
       render :new
@@ -80,11 +80,11 @@ private
   end
 
   # グループメニュー配信通知
-  def create_menu_notice(group, diary_id)
+  def create_menu_notice(group)
     group.user_followers.each do |member|
       latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
-      notice.create_group_diary(group, group_group_diary_path(group.id, diary_id))
+      notice.create_group_diary(group, group_group_diaries_path(group.id))
       unless latest&.msg == notice.msg
         notice.save
       end

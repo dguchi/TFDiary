@@ -11,7 +11,7 @@
     <tbody id="sortdata">
         <%= f.nested_fields_for :diary_menus, wrapper_tag: :tr do |q| %>
             <!--メニュー名-->
-            <td>
+            <td class="sortable-handle">
                 <%= q.select :menu_id, @menu_list, class: 'form-control' %>
             </td>
             <!--回数/セット-->
@@ -48,9 +48,10 @@
         <% end %>
     </tbody>
 </table>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript">
     jQuery(function($) {
-        $('#sortdata').sortable();
+        $('#sortdata').sortable({handle: ".sortable-handle"});
     });
 </script>
 
