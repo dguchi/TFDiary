@@ -114,7 +114,7 @@ private
     latest = follow.notices.order(created_at: :desc).first
     notice = follow.notices.build()
     notice.create_user_favorite(user, user_path(user.id))
-    unless latest.msg == notice.msg
+    unless latest&.msg == notice.msg
       notice.save
     end
   end
@@ -125,7 +125,7 @@ private
     latest = diuser.notices.order(created_at: :desc).first
     notice = diuser.notices.build()
     notice.create_diary_favorite(user, diary_path(diary_id))
-    unless latest.msg == notice.msg
+    unless latest&.msg == notice.msg
       notice.save
     end
   end

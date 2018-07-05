@@ -124,7 +124,7 @@ private
       latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
       notice.create_group_addmember(group, user.name, group_group_member_index_path(group.id))
-      unless latest.msg == notice.msg
+      unless latest&.msg == notice.msg
         notice.save
       end
     end
@@ -136,7 +136,7 @@ private
       latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
       notice.create_group_chat(group, top_group_member_path(group.id))
-      unless latest.msg == notice.msg
+      unless latest&.msg == notice.msg
         notice.save
       end
     end

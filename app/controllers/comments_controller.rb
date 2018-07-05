@@ -38,8 +38,11 @@ private
 
   # 日誌コメント時の通知
   def create_diary_comment_notice(user, diary)
+    latest = user.notices.order(created_at: :desc).first
     notice = User.find(diary.user_id).notices.build()
     notice.create_diary_comment(user, diary_path(diary.id))
-    notice.save
+    unless latest&.msg == notice.msg
+      notice.save
+    end
   end
 end

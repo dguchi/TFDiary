@@ -82,9 +82,12 @@ private
   # グループメニュー配信通知
   def create_menu_notice(group, diary_id)
     group.user_followers.each do |member|
+      latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
       notice.create_group_diary(group, group_group_diary_path(group.id, diary_id))
-      notice.save
+      unless latest&.msg == notice.msg
+        notice.save
+      end
     end
   end
 end

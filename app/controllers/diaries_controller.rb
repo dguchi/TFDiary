@@ -150,9 +150,12 @@ private
   # フォロワーへ日誌生成通知
   def create_notice(user, diary_id)
     user.user_followers.each do |follower|
+      latest = follower.notices.order(created_at: :desc).first
       notice = follower.notices.build()
       notice.create_user_diary(user, diary_path(diary_id))
-      notice.save
+      unless latest&.msg == notice.msg
+        notice.save
+      end
     end
   end
 end
