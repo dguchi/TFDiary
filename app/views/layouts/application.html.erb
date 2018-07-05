@@ -2,9 +2,13 @@
 <html>
 <head>
   <title>TFDiary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="turbolinks-cache-control" content="no-cache">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="TFDiary" />
   <meta property="og:image" content=<%= asset_path("preview_image.jpg") %>>
   <meta property="og:description" content="陸上競技専用の練習日記管理サービス" />
+  <meta property="twitter:card" content="summary_large_image">
   
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
