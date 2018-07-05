@@ -2,7 +2,7 @@ class GroupMemberController < ApplicationController
   before_action :authenticate_user!
   before_action :check_group_member, except: [:index]
   before_action :check_group_member_index, only: [:index]
-  before_action :check_admin_user, only: [:setting, :request_index, :assign_job, :change_job]
+  before_action :check_admin_user, only: [:setting, :request_index, :follow_approve, :follow_reject, :assign_job, :change_job]
   
   def top
     @group = Group.find(params[:id])
@@ -121,9 +121,12 @@ private
   # メンバ追加通知
   def create_addmember_notice(group, user)
     group.user_followers.each do |member|
+      latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
       notice.create_group_addmember(group, user.name, group_group_member_index_path(group.id))
-      notice.save
+      unless latest.msg == notice.msg
+        notice.save
+      end
     end
   end
 

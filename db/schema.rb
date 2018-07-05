@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180704014329) do
+ActiveRecord::Schema.define(version: 20180704075457) do
 
   create_table "chats", force: :cascade do |t|
     t.text     "content"
@@ -81,8 +81,9 @@ ActiveRecord::Schema.define(version: 20180704014329) do
     t.integer  "subleader_id1"
     t.integer  "subleader_id2"
     t.integer  "subleader_id3"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "approve_auto",  default: false
   end
 
   create_table "menus", force: :cascade do |t|

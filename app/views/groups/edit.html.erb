@@ -17,6 +17,17 @@
           <%= f.label :target, "グループ目標" %>
           <%= f.text_area :target, :size => "40×5", :class => "form-control" %>
         </div>
+        <div class="form-group clearfix">
+          <div class="float-left">
+            <%= f.label :approve_auto, "加入申請自動承認" %>
+          </div>
+          <div class="ml-3 float-left">
+            <label><%= f.radio_button :approve_auto, true %> ON</label>
+          </div>
+          <div class="ml-3 float-left">
+            <label><%= f.radio_button :approve_auto, false %> OFF</label>
+          </div>
+        </div>
         <div class="button text-center">
           <%= f.submit "更新", :class => "btn btn-primary" %>
         </div>

@@ -25,11 +25,14 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    if @group.update(group_edit_params)
+    update_params = group_edit_params
+    update_params[:approve_auto] = (update_params[:approve_auto] == "true") ? true : false
+    if @group.update(update_params)
       create_update_notice(@group)
       flash[:notice] = "グループ情報を更新しました"
       redirect_to top_group_member_path(@group.id)
     else
+      flash[:alert] = "更新失敗しました。入力漏れがないか確認して下さい"
       render :edit
     end
   end
@@ -67,16 +70,23 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group.image = params[:group][:image]
     @group.save
-    redirect_to group_path(@group.id)
+    redirect_to top_group_member_path(@group.id)
   end
 
   def follow
     @group = Group.find(params[:id])
-    @request = @group.group_requests.build(group_request_params)
-    if @request.save
-      redirect_to group_path(@request.group_id)
+    if @group.approve_auto
+      user = User.find(params[:group_request][:user_id])
+      create_addmember_notice(@group, user)
+      user.follow(@group)
+      redirect_to top_group_member_path(@group.id)
     else
-      render :show
+      @request = @group.group_requests.build(group_request_params)
+      if @request.save
+        redirect_to group_path(@request.group_id)
+      else
+        render :show
+      end
     end
   end
   
@@ -93,7 +103,7 @@ private
   end
   
   def group_edit_params
-    params.require(:group).permit(:name, :explain, :target)
+    params.require(:group).permit(:name, :explain, :target, :approve_auto)
   end
   
   def group_request_params
@@ -114,13 +124,28 @@ private
       end
     end
   end
-  
+
+  # メンバ追加通知
+  def create_addmember_notice(group, user)
+    group.user_followers.each do |member|
+      latest = member.notices.order(created_at: :desc).first
+      notice = member.notices.build()
+      notice.create_group_addmember(group, user.name, group_group_member_index_path(group.id))
+      unless latest.msg == notice.msg
+        notice.save
+      end
+    end
+  end
+
   # グループ情報更新通知
   def create_update_notice(group)
     group.user_followers.each do |member|
+      latest = member.notices.order(created_at: :desc).first
       notice = member.notices.build()
       notice.create_group_updateinfo(group, top_group_member_path(group.id))
-      notice.save
+      unless latest.msg == notice.msg
+        notice.save
+      end
     end
   end
   
