@@ -1,6 +1,6 @@
 class UserImagesUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -8,7 +8,7 @@ class UserImagesUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   # 画像の上限を700pxにする
-  # process :resize_to_limit => [700, 700]
+  process :resize_to_limit => [700, 700]
 
   # 保存形式をJPGにする
   # process :convert => 'jpg'

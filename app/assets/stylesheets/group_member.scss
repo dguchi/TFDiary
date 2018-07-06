@@ -66,10 +66,8 @@
 }
 
 .group-contents {
-    height: 400px;
     padding: 20px 0;
-    overflow: scroll;
-    
+
     .group-chat {
         width: 80%;
         margin: auto;
@@ -88,8 +86,6 @@
         .group-chat-index {
             width: 500px;
             padding: 10px;
-            height: 360px;
-            overflow: scroll;
         }
     }
 }
