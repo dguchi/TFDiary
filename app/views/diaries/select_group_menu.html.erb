@@ -2,7 +2,7 @@
 <h3><%= @group.name %>のメニューから追加</h3>
 <br>
 
-<div id="index_calender_area">
+<div id="index_calender_area" class="w-75 mx-auto text-center">
     <div id="index_calender">
     <%= month_calendar do |date| %>
       <% diaries = get_diary_group(@group, date) %>
