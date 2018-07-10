@@ -1,5 +1,7 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
+  
+  @@diary = nil
 
   def new
     @user = User.find(params[:user_id])
@@ -62,9 +64,14 @@ class DiariesController < ApplicationController
     @comment = Comment.new
   end
   
+  def save_diary_all
+    @user = User.find(params[:user_id])
+    @@diary = @user.diaries.build(diary_params)
+    redirect_to add_all_menu_user_diaries_path(@user.id)
+  end
+
   def add_all_menu
     @user = User.find(params[:user_id])
-    @diary = @user.diaries.build(diary_params)
     @menus_run = @user.following_menus.where(:kind => Menu.kinds[:run])
     @menus_jump = @user.following_menus.where(:kind => Menu.kinds[:jump])
     @menus_throw = @user.following_menus.where(:kind => Menu.kinds[:throw])
@@ -74,10 +81,16 @@ class DiariesController < ApplicationController
   
   def regist_menus
     @user = User.find(params[:user_id])
-    @diary = @user.diaries.build(diary_params)
+    @diary = @@diary
     get_check_menu(@user, @diary)
     @menu_list = get_menu_list(@user)
     render :new
+  end
+
+  def save_diary_group
+    @user = User.find(params[:user_id])
+    @@diary = @user.diaries.build(diary_params)
+    redirect_to select_group_menu_user_diaries_path(@user.id)
   end
 
   def select_group_menu
@@ -87,7 +100,7 @@ class DiariesController < ApplicationController
 
   def read_group_menu
     @user = User.find(params[:user_id])
-    @diary = @user.diaries.build
+    @diary = @@diary
     @menu_list = get_menu_list(@user)
     diary_menu_copy(@diary, @menu_list)
     render :new

@@ -50,8 +50,10 @@ Rails.application.routes.draw do
     
     resources :diaries, shallow: true do
       collection do
-        post :add_all_menu
+        post :save_diary_all
+        get :add_all_menu
         post :regist_menus
+        post :save_diary_group
         get :select_group_menu
         get :read_group_menu
       end

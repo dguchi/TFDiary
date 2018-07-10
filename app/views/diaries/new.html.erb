@@ -15,9 +15,9 @@
         <br>
         <%= label :menu, "メニュー", :class => "diary-label" %>
         <br>
-        <button class="btn btn-primary" type="button" onClick="submitAction('<%= add_all_menu_user_diaries_path(@user.id) %>');">メニューの一括追加</button>
+        <button class="btn btn-primary" type="button" onClick="submitAction('<%= save_diary_all_user_diaries_path(@user.id) %>');">メニューの一括追加</button>
         &emsp;
-        <%= link_to "グループメニューから読み込み", select_group_menu_user_diaries_path(@user.id), :class => "btn btn-primary" %>
+        <button class="btn btn-primary" type="button" onClick="submitAction('<%= save_diary_group_user_diaries_path(@user.id) %>');">グループメニューから読み込み</button>
         <%= render "diaries/diary_menu_fields", f: f %>
         <br>
         <%= f.label :explain, "説明", :class => "diary-label" %>
