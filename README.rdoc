@@ -1,66 +1,39 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version 2.4.1
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-## Name
+## サービス名
 TFDiary
 
-## Description
+## サービス概要
 陸上競技専用の練習日誌作成サービス
 
-## Demo
+## サービス詳細
 日々の練習を簡単に記録できます。
 更にグループ機能を用いるとグループメンバへ練習メニューを配信して、
 メンバーは配信されたメニューから練習日誌を記録することができ、更に簡単になります。
 他にも陸上競技者の為の機能を搭載していきます。
 
-## Requirements
+## 動作状況
 macOS High Sierra、iOS11にて
 Chromeでの動作は確認しています。
 
-## Installation
+## サービス利用方法
 下記にて公開しています
 https://tfdiary.hi-assist.com/
 
-## Usage
+## 使用方法
 Youtubeにて随時使い方の説明を更新中です。
 https://www.youtube.com/watch?v=McgBsGw6TGU&list=PLaQxjEcNGzy1jAboKf8mMANC0Fy_ajRcA
 
-## Contributing
+## 貢献
 不具合、改善要望等の報告は下記の問い合わせページからお願い致します。
 https://tfdiary.hi-assist.com/
 
-## License
+## ライセンス
 誰でもサービスを利用することができます。
 このサービスは
 HiAssistServiceの出口
 によって運用されています。
 
-## Environments
+## 開発環境
 Rails 4.2.10
 Ruby 2.4.1
