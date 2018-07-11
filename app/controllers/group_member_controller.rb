@@ -98,7 +98,7 @@ private
   
   def check_group_member
     if !view_context.current_user.following?(Group.find(params[:id]))
-      redirect_to root_path
+      redirect_to group_path(params[:id])
     end
   end
 
