@@ -14,11 +14,14 @@
           &emsp;
           <% if @user.main_group_id == group.id %>
               メイン所属グループ
-          <% else %>
-              <%= link_to "メイングループに設定", set_main_group_user_path(@user.id, :group_id => group.id), :class => "btn btn-primary" %>
           <% end %>
-          &emsp;
-          <%= link_to "グループから抜ける", unfollow_confirm_group_member_path(group.id), :class => "btn btn-primary" %>
+          <% if @user.id == current_user.id %>
+            <% if @user.main_group_id != group.id %>
+              <%= link_to "メイングループに設定", set_main_group_user_path(@user.id, :group_id => group.id), :class => "btn btn-primary" %>
+            <% end %>
+            &emsp;
+            <%= link_to "グループから抜ける", unfollow_confirm_group_member_path(group.id), :class => "btn btn-primary" %>
+          <% end %>
         </li>
       <% end %>
     </div>
