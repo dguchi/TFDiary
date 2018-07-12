@@ -95,7 +95,14 @@ class DiariesController < ApplicationController
 
   def select_group_menu
     @user = User.find(params[:user_id])
-    @group = Group.find(@user.main_group_id)
+    unless @user.main_group_id.nil?
+      @group = Group.find(@user.main_group_id)
+    else
+      flash[:alert] = "メイングループが設定されていません"
+      @diary = @@diary
+      @menu_list = get_menu_list(@user)
+      render :new
+    end
   end
 
   def read_group_menu
