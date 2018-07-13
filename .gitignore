@@ -96,3 +96,6 @@ config/settings.yml
 **.jpg
 **.jpeg
 **.png
+
+config/deploy/production.rb
+config/deploy/staging.rb

@@ -1,7 +1,6 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
-  
-  @@diary = nil
+  before_action :delete_tmp, except: [:add_all_menu, :regist_menus, :select_group_menu, :read_group_menu]
 
   def new
     @user = User.find(params[:user_id])
@@ -66,7 +65,7 @@ class DiariesController < ApplicationController
   
   def save_diary_all
     @user = User.find(params[:user_id])
-    @@diary = @user.diaries.build(diary_params)
+    set_diary_temp(@user)
     redirect_to add_all_menu_user_diaries_path(@user.id)
   end
 
@@ -81,7 +80,7 @@ class DiariesController < ApplicationController
   
   def regist_menus
     @user = User.find(params[:user_id])
-    @diary = @@diary
+    @diary = @user.diaries.find_by(temp: true)
     get_check_menu(@user, @diary)
     @menu_list = get_menu_list(@user)
     render :new
@@ -89,7 +88,7 @@ class DiariesController < ApplicationController
 
   def save_diary_group
     @user = User.find(params[:user_id])
-    @@diary = @user.diaries.build(diary_params)
+    set_diary_temp(@user)
     redirect_to select_group_menu_user_diaries_path(@user.id)
   end
 
@@ -99,7 +98,7 @@ class DiariesController < ApplicationController
       @group = Group.find(@user.main_group_id)
     else
       flash[:alert] = "メイングループが設定されていません"
-      @diary = @@diary
+      @diary = @user.diaries.find_by(temp: true)
       @menu_list = get_menu_list(@user)
       render :new
     end
@@ -107,7 +106,7 @@ class DiariesController < ApplicationController
 
   def read_group_menu
     @user = User.find(params[:user_id])
-    @diary = @@diary
+    @diary = @user.diaries.find_by(temp: true)
     @menu_list = get_menu_list(@user)
     diary_menu_copy(@diary, @menu_list)
     render :new
@@ -127,7 +126,14 @@ private
       diary_menus_attributes: [:id, :menu_id, :num, :set, :rest_min, :rest_sec, :_destroy]
     )
   end
-  
+
+  def delete_tmp
+    tmp = view_context.current_user.diaries.find_by(temp: true)
+    unless tmp.nil?
+      tmp.destroy
+    end
+  end
+
   def get_menu_list(user)
     menu_list = Hash.new
     menus = user.following_by_type('Menu')
@@ -165,6 +171,12 @@ private
         menu_list[menu.name] = menu.id
       end
     end
+  end
+
+  def set_diary_temp(user)
+    diary_temp = user.diaries.build(diary_params)
+    diary_temp.temp = true
+    diary_temp.save
   end
 
   # フォロワーへ日誌生成通知

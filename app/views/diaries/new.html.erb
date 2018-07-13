@@ -4,7 +4,7 @@
 <%= render "diaries/error_notice" %>
 
 <div class="diary-create">
-    <%= form_for @diary, :url => {:action => 'create'} do |f| %>
+    <%= form_for @diary, :url => {:action => 'create'}, :method => "POST" do |f| %>
         <%= f.label :title, "タイトル", :class => "diary-label" %>
         <br>
         <%= f.text_field :title, :size => "40" %>
