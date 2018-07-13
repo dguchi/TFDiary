@@ -1,4 +1,5 @@
 class GroupMemberController < ApplicationController
+  before_action :group_delete_check
   before_action :authenticate_user!
   before_action :check_group_member, except: [:index]
   before_action :check_group_member_index, only: [:index]
@@ -95,7 +96,14 @@ private
   def chat_params
     params.require(:chat).permit(:user_id, :content)
   end
-  
+
+  def group_delete_check
+    unless Group.find_by(id: params[:id]) || Group.find_by(id: params[:group_id])
+      flash[:alert] = "グループが存在しません"
+      redirect_to root_path
+    end
+  end
+
   def check_group_member
     if !view_context.current_user.following?(Group.find(params[:id]))
       redirect_to group_path(params[:id])
